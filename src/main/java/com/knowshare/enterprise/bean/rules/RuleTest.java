@@ -16,14 +16,13 @@ import com.knowshare.dto.academia.CarreraDTO;
  */
 @Component
 public class RuleTest {
-	
+
 	@Autowired
 	private KieContainer kieContainer;
-	
-	public void methodTest(String item){
+
+	public void methodTest(String item) {
 		StatelessKieSession testSession = kieContainer.newStatelessKieSession();
-		
+
 		testSession.execute(new CarreraDTO().setNombre("Probando"));
 	}
-
 }
