@@ -17,6 +17,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.knowshare.dto.academia.CarreraDTO;
 import com.knowshare.dto.perfilusuario.UsuarioDTO;
+import com.knowshare.enterprise.bean.rules.utils.OperacionsConjuntos;
 import com.knowshare.enums.TipoRelacionesPersonalidadEnum;
 
 /**
@@ -104,8 +105,8 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 	}
 	
 	private double calcularDistanciaCarreras(List<CarreraDTO> carreras1,List<CarreraDTO> carreras2){
-		List<CarreraDTO> interseccion = new ArrayList<>(carreras1);
-		interseccion.retainAll(carreras2);
+		List<CarreraDTO> interseccion = OperacionsConjuntos
+				.interseccion(carreras1, carreras2);
 		if(carreras1.get(0).getNombre().equals(carreras2.get(0).getNombre()))
 			return 0;
 		else if (interseccion.contains(carreras2.get(0)))
@@ -123,12 +124,10 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 		return 1;
 	}
 	
-	@SuppressWarnings("unchecked")
 	private <T> double calcularDistanciaJaccard(List<T> set1, List<T> set2){
-		List<T> interseccion = new ArrayList<>(set1);
-		interseccion.retainAll(set2);
+		List<T> interseccion = OperacionsConjuntos.interseccion(set1, set2);
 		
-		List<T> union = (List<T>) Arrays.asList(set1,set2);
+		List<T> union = OperacionsConjuntos.union(set1, set2);
 		return ((union.size() - interseccion.size()) / union.size());
 	}
 	
