@@ -28,8 +28,10 @@ public class RulesProperties {
     
     private String version;
     
+    private String maven;
+    
     public String getRulesPath() {
-        return this.url + this.groupId + "/" +
+        return this.url + this.maven + this.groupId + "/" +
         		this.artifactId + "/" + this.version +
         		"/" + this.artifactId + "-" + this.version + 
         		".jar";
@@ -117,5 +119,19 @@ public class RulesProperties {
 	 */
 	public void setVersion(String version) {
 		this.version = version;
+	}
+
+	/**
+	 * @return the maven
+	 */
+	public String getMaven() {
+		return maven;
+	}
+
+	/**
+	 * @param maven the maven to set
+	 */
+	public void setMaven(String maven) {
+		this.maven = maven;
 	}
 }
