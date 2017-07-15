@@ -9,5 +9,5 @@ package com.knowshare.enterprise.bean.rules;
  */
 public interface RuleFireFacade {
 
-	Object fireRules(Object item);
+	<T> T fireRules(Object item,String global,T clazz);
 }

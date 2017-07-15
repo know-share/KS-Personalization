@@ -4,6 +4,7 @@
 package com.knowshare.enterprise.bean.rules.usuarios;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -14,6 +15,9 @@ import com.knowshare.dto.perfilusuario.UsuarioDTO;
 import com.knowshare.enterprise.bean.rules.RuleFireFacade;
 import com.knowshare.enterprise.bean.rules.distancias.DistanciasUsuarioFacade;
 import com.knowshare.enterprise.bean.usuario.UsuarioFacade;
+import com.knowshare.entities.perfilusuario.InfoUsuario;
+import com.knowshare.enums.TipoUsuariosEnum;
+import com.knowshare.fact.rules.TipoConexionEnum;
 import com.knowshare.fact.rules.UsuarioFact;
 
 /**
@@ -32,19 +36,20 @@ public class RecomendacionConexionBean implements RecomendacionConexionFacade {
 	@Autowired
 	private UsuarioFacade usuarioBean;
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<?> recomendacionesUsuario(UsuarioDTO usuario) {
-		final List<UsuarioDTO> usuarios = usuarioBean.getAllEstudiantesExceptOne(usuario.getUsername());
+		final List<UsuarioDTO> usuarios = usuarioBean.getMyNoConnections(usuario.getUsername(), TipoUsuariosEnum.ESTUDIANTE);
 		final List<UsuarioFact> usuariosFact =new ArrayList<>();
+		final List<InfoUsuario> recomendaciones = new ArrayList<>();
+		final Map<String,UsuarioDTO> mapUsuarios = new HashMap<>();
 		Map<String,String> map = null;
 		switch(usuario.getTipoUsuario()){
 			case ESTUDIANTE:
 				for(UsuarioDTO u:usuarios){
 					usuariosFact.add(new UsuarioFact().setUsername(u.getUsername())
 							.setDistancia(distanciasUsuarioBean.calcularDistanciaEntreEstudiantes(usuario, u)));
+					mapUsuarios.put(u.getUsername(), u);
 				}
-				map = (Map<String,String>)ruleFireBean.fireRules(usuariosFact);
 				break;
 			case EGRESADO:
 				break;
@@ -53,9 +58,15 @@ public class RecomendacionConexionBean implements RecomendacionConexionFacade {
 			default:
 				break;
 		}
+		map = ruleFireBean.fireRules(usuariosFact,"mapRecomendaciones",new HashMap<String,String>());
 		for(String s:map.keySet()){
-			System.out.println(s);
+			if(map.get(s).equals(TipoConexionEnum.CONFIANZA.getValue())){
+				InfoUsuario info = new InfoUsuario()
+						.setNombre(mapUsuarios.get(s).getNombre() + " " +mapUsuarios.get(s).getApellido())
+						.setUsername(mapUsuarios.get(s).getUsername());
+				recomendaciones.add(info);
+			}
 		}
-		return null;
+		return recomendaciones;
 	}
 }

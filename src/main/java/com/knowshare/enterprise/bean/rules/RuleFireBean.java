@@ -3,7 +3,6 @@
  */
 package com.knowshare.enterprise.bean.rules;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.kie.api.runtime.KieContainer;
@@ -21,16 +20,17 @@ public class RuleFireBean implements RuleFireFacade{
 	@Autowired
 	private KieContainer kieContainer;
 
-	public Object fireRules(Object item) {
-		final KieSession kieSession = kieContainer.newKieSession();// .newStatelessKieSession();
+	@SuppressWarnings("unchecked")
+	public <T> T fireRules(Object item,String global,T clazz) {
+		final KieSession kieSession = kieContainer.newKieSession();
 		if(item instanceof List){
 			List<?> list = (List<?>)item;
 			for (Object object : list) {
 				kieSession.insert(object);
 			}
 		}
-		kieSession.setGlobal("mapRecomendaciones", new HashMap<String,String>());
+		kieSession.setGlobal(global, clazz);
 		kieSession.fireAllRules();
-		return kieSession.getGlobal("mapRecomendaciones");
+		return (T)kieSession.getGlobal(global);
 	}
 }

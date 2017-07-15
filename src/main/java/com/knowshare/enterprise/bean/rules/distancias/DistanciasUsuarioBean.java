@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.core.JsonParseException;
@@ -26,6 +28,9 @@ import com.knowshare.enums.TipoRelacionesPersonalidadEnum;
  */
 @Component
 public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
+	
+	@Autowired
+	private ApplicationContext ctx;
 
 	@Override
 	public double calcularDistanciaEntreEstudiantes(UsuarioDTO usuario1, UsuarioDTO usuario2) {
@@ -76,15 +81,13 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 			String personalidad2)
 			throws JsonParseException, JsonMappingException, IOException{
 		ObjectMapper jsonMapper = new ObjectMapper();
-		File jsonFile = new File("classpath:personalidades/relaciones.json");
+		File jsonFile = ctx.getResource("classpath:personalidades/relaciones.json").getFile();//new File("classpath:personalidades/relaciones.json");
 		JsonNode array = jsonMapper.readValue(jsonFile, JsonNode.class);
 		for (JsonNode jsonNode : array) {
 			if(jsonNode.get("nombre").asText().equals(personalidad1)){
 				JsonNode relaciones = jsonNode.get("relaciones");
 				for (JsonNode jsonNode2 : relaciones) {
-					List<String> relacionesStr = jsonNode2.get("personalidades")
-							.findValuesAsText(personalidad2);
-					if(!relacionesStr.isEmpty())
+					if(isInArray(jsonNode2.get("personalidades"),personalidad2))
 						return TipoRelacionesPersonalidadEnum
 								.valueOfAbr(jsonNode2.get("tipo").asText());
 				}
@@ -92,9 +95,7 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 				if(jsonNode.get("nombre").asText().equals(personalidad2)){
 					JsonNode relaciones = jsonNode.get("relaciones");
 					for (JsonNode jsonNode2 : relaciones) {
-						List<String> relacionesStr = jsonNode2.get("personalidades")
-								.findValuesAsText(personalidad1);
-						if(!relacionesStr.isEmpty())
+						if(isInArray(jsonNode2.get("personalidades"),personalidad1))
 							return TipoRelacionesPersonalidadEnum
 									.valueOfAbr(jsonNode2.get("tipo").asText());
 					}
@@ -102,6 +103,13 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 			}
 		}
 		return null;
+	}
+	
+	private boolean isInArray(JsonNode array, String personalidad){
+		for(JsonNode obj: array)
+			if(obj.asText().equals(personalidad))
+				return true;
+		return false;
 	}
 	
 	private double calcularDistanciaCarreras(List<CarreraDTO> carreras1,List<CarreraDTO> carreras2){
