@@ -21,6 +21,7 @@ import com.knowshare.fact.rules.TipoConexionEnum;
 import com.knowshare.fact.rules.UsuarioFact;
 
 /**
+ * {@link RecomendacionConexionFacade}
  * @author miguel
  *
  */

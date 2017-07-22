@@ -23,6 +23,7 @@ import com.knowshare.enterprise.bean.rules.utils.OperacionsConjuntos;
 import com.knowshare.enums.TipoRelacionesPersonalidadEnum;
 
 /**
+ * {@link DistanciasUsuarioFacade}
  * @author miguel
  *
  */
@@ -46,6 +47,12 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 		return normalizarDistancia(distancia, 3);
 	}
 	
+	/**
+	 * Cálculo de distancia entre dos personalidades
+	 * @param personalidad1
+	 * @param personalidad2
+	 * @return distancia
+	 */
 	private double calcularDistanciaPersonalidad(String personalidad1,String personalidad2){
 		try {
 			TipoRelacionesPersonalidadEnum relacion = 
@@ -76,6 +83,16 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 		return 0;
 	}
 	
+	/**
+	 * Según las dos personalidades se retorna el tipo de relación que
+	 * ambas poseen.
+	 * @param personalidad1
+	 * @param personalidad2
+	 * @return {@link TipoRelacionesPersonalidadEnum}
+	 * @throws JsonParseException
+	 * @throws JsonMappingException
+	 * @throws IOException
+	 */
 	private TipoRelacionesPersonalidadEnum relacionPersonalidades(
 			String personalidad1,
 			String personalidad2)
@@ -105,6 +122,13 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 		return null;
 	}
 	
+	/**
+	 * Método que busca una personalidad dentro de un nodo de un archivo 
+	 * JSON
+	 * @param array
+	 * @param personalidad
+	 * @return true si encuentra la personalidad en el array si no, false.
+	 */
 	private boolean isInArray(JsonNode array, String personalidad){
 		for(JsonNode obj: array)
 			if(obj.asText().equals(personalidad))
@@ -112,6 +136,12 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 		return false;
 	}
 	
+	/**
+	 * Cálculo de distancia entre dos carreras.
+	 * @param carreras1
+	 * @param carreras2
+	 * @return distancia de las carreras.
+	 */
 	private double calcularDistanciaCarreras(List<CarreraDTO> carreras1,List<CarreraDTO> carreras2){
 		List<CarreraDTO> interseccion = OperacionsConjuntos
 				.interseccion(carreras1, carreras2);
@@ -132,6 +162,13 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 		return 1;
 	}
 	
+	/**
+	 * Dado dos conjuntos set1 y set2 se operan ambos conjuntos para obtener
+	 * la distancia de jaccard.
+	 * @param set1
+	 * @param set2
+	 * @return distancia de jaccard entre set1 y set2
+	 */
 	private <T> double calcularDistanciaJaccard(List<T> set1, List<T> set2){
 		List<T> interseccion = OperacionsConjuntos.interseccion(set1, set2);
 		
@@ -139,6 +176,12 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 		return ((union.size() - interseccion.size()) / union.size());
 	}
 	
+	/**
+	 * Normaliza la distancia según el parámetro max.
+	 * @param distancia a normalizar
+	 * @param max 
+	 * @return distancia normalizada
+	 */
 	private double normalizarDistancia(double distancia, int max){
 		double min=0;
 		double newMax = 1;
