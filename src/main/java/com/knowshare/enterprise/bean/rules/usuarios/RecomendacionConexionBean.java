@@ -12,11 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.knowshare.dto.perfilusuario.UsuarioDTO;
+import com.knowshare.dto.rules.RecomendacionDTO;
 import com.knowshare.enterprise.bean.rules.RuleFireFacade;
 import com.knowshare.enterprise.bean.rules.distancias.DistanciasUsuarioFacade;
 import com.knowshare.enterprise.bean.usuario.UsuarioFacade;
-import com.knowshare.entities.perfilusuario.InfoUsuario;
-import com.knowshare.enums.TipoUsuariosEnum;
 import com.knowshare.fact.rules.TipoConexionEnum;
 import com.knowshare.fact.rules.UsuarioFact;
 
@@ -39,35 +38,96 @@ public class RecomendacionConexionBean implements RecomendacionConexionFacade {
 
 	@Override
 	public List<?> recomendacionesUsuario(UsuarioDTO usuario) {
-		final List<UsuarioDTO> usuarios = usuarioBean.getMyNoConnections(usuario.getUsername(), TipoUsuariosEnum.ESTUDIANTE);
+		final List<UsuarioDTO> usuarios = usuarioBean.getMyNoConnections(usuario.getUsername());
 		final List<UsuarioFact> usuariosFact =new ArrayList<>();
-		final List<InfoUsuario> recomendaciones = new ArrayList<>();
+		final List<RecomendacionDTO> recomendacionesConfianza = new ArrayList<>();
+		final List<RecomendacionDTO> recomendacionesRelevante = new ArrayList<>();
+		final List<RecomendacionDTO> recomendacionesNoRecomendar = new ArrayList<>();
 		final Map<String,UsuarioDTO> mapUsuarios = new HashMap<>();
 		Map<String,String> map = null;
 		switch(usuario.getTipoUsuario()){
 			case ESTUDIANTE:
 				for(UsuarioDTO u:usuarios){
 					usuariosFact.add(new UsuarioFact().setUsername(u.getUsername())
-							.setDistancia(distanciasUsuarioBean.calcularDistanciaEntreEstudiantes(usuario, u)));
+							.setDistancia(distanciasUsuarioBean.calcularDistanciaEstudianteUsuario(usuario, u)));
+					mapUsuarios.put(u.getUsername(), u);
+				}
+				break;
+			case PROFESOR:
+				for(UsuarioDTO u:usuarios){
+					usuariosFact.add(new UsuarioFact().setUsername(u.getUsername())
+							.setDistancia(distanciasUsuarioBean.calcularDistanciaProfesorUsuario(usuario, u)));
 					mapUsuarios.put(u.getUsername(), u);
 				}
 				break;
 			case EGRESADO:
-				break;
-			case PROFESOR:
+				for(UsuarioDTO u:usuarios){
+					usuariosFact.add(new UsuarioFact().setUsername(u.getUsername())
+							.setDistancia(distanciasUsuarioBean.calcularDistanciaEgresadoUsuario(usuario, u)));
+					mapUsuarios.put(u.getUsername(), u);
+				}
 				break;
 			default:
 				break;
 		}
 		map = ruleFireBean.fireRules(usuariosFact,"mapRecomendaciones",new HashMap<String,String>());
+		
 		for(String s:map.keySet()){
+			RecomendacionDTO info = new RecomendacionDTO()
+					.setNombre(mapUsuarios.get(s).getNombre() + " " +mapUsuarios.get(s).getApellido())
+					.setUsername(mapUsuarios.get(s).getUsername());
 			if(map.get(s).equals(TipoConexionEnum.CONFIANZA.getValue())){
-				InfoUsuario info = new InfoUsuario()
-						.setNombre(mapUsuarios.get(s).getNombre() + " " +mapUsuarios.get(s).getApellido())
-						.setUsername(mapUsuarios.get(s).getUsername());
-				recomendaciones.add(info);
+				info.setConexion(TipoConexionEnum.CONFIANZA);
+				recomendacionesConfianza.add(info);
+			}else if(map.get(s).equals(TipoConexionEnum.RELEVANTE.getValue())){
+				info.setConexion(TipoConexionEnum.RELEVANTE);
+				recomendacionesRelevante.add(info);
+			}else{
+				info.setConexion(TipoConexionEnum.NO_RECOMENDAR);
+				recomendacionesNoRecomendar.add(info);
 			}
 		}
-		return recomendaciones;
+		return recomendacionesRandom(recomendacionesConfianza, recomendacionesRelevante, recomendacionesNoRecomendar);
+	}
+	
+	/**
+	 * Coger 2 elementos random de cada lista excepto de no recomendar, para esta 
+	 * se coge solamente 1
+	 * @param confianza
+	 * @param relevante
+	 * @param noRecomendar
+	 * @return lista con los elementos aleatorios.
+	 */
+	private List<RecomendacionDTO> recomendacionesRandom(List<RecomendacionDTO> confianza,List<RecomendacionDTO> relevante,
+			List<RecomendacionDTO> noRecomendar){
+		
+		final List<RecomendacionDTO> finalList = new ArrayList<>();
+		int numRandom = 0;
+		int lastNum = 0;
+		
+		if(!confianza.isEmpty()){
+			lastNum = (int)(Math.random()*confianza.size());
+			finalList.add(confianza.get(lastNum));
+			
+			if(confianza.size() > 1){
+				while((numRandom = (int)(Math.random()*confianza.size())) == lastNum);
+				finalList.add(confianza.get(numRandom));
+			}
+		}
+		if(!relevante.isEmpty()){
+			lastNum = (int)(Math.random()*relevante.size());
+			finalList.add(relevante.get(lastNum));
+			
+			if(relevante.size() > 1){
+				while((numRandom = (int)(Math.random()*relevante.size())) == lastNum);
+				finalList.add(relevante.get(numRandom));
+			}
+		}
+		if(!noRecomendar.isEmpty()){
+			lastNum = (int)(Math.random()*noRecomendar.size());
+			finalList.add(noRecomendar.get(lastNum));
+		}
+		
+		return finalList;
 	}
 }

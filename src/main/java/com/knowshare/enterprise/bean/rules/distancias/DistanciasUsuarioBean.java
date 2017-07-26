@@ -20,6 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.knowshare.dto.academia.CarreraDTO;
 import com.knowshare.dto.perfilusuario.UsuarioDTO;
 import com.knowshare.enterprise.bean.rules.utils.OperacionsConjuntos;
+import com.knowshare.entities.perfilusuario.Enfasis;
 import com.knowshare.enums.TipoRelacionesPersonalidadEnum;
 
 /**
@@ -34,7 +35,7 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 	private ApplicationContext ctx;
 
 	@Override
-	public double calcularDistanciaEntreEstudiantes(UsuarioDTO usuario1, UsuarioDTO usuario2) {
+	public double calcularDistanciaEstudianteUsuario(UsuarioDTO usuario1, UsuarioDTO usuario2) {
 		double distancia = 0.0;
 		distancia += calcularDistanciaPersonalidad(usuario1.getPersonalidad().getNombre(), 
 				usuario2.getPersonalidad().getNombre());
@@ -42,7 +43,71 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 		distancia += calcularDistanciaCarreras(Arrays.asList(usuario1.getCarrera(),usuario1.getSegundaCarrera()),
 				Arrays.asList(usuario2.getCarrera(),usuario2.getSegundaCarrera()));
 		
-		distancia += calcularDistanciaJaccard(usuario1.getGustos(),usuario2.getGustos());
+		switch(usuario2.getTipoUsuario()){
+			case ESTUDIANTE:
+				distancia += calcularDistanciaJaccard(usuario1.getGustos(),usuario2.getGustos());
+				break;
+			case PROFESOR:
+				distancia += calcularDistanciaJaccard(usuario1.getHabilidades(),usuario2.getHabilidades());
+				break;
+			case EGRESADO:
+//				distancia += calcularDistanciaEnfasis(usuario1.getEnfasis(),usuario2.getEnfasis());
+//				preferencia de ideas tags (no sé)
+				break;
+			default:
+				break;
+		}
+		
+		return normalizarDistancia(distancia, 3);
+	}
+	
+	@Override
+	public double calcularDistanciaProfesorUsuario(UsuarioDTO usuario1, UsuarioDTO usuario2) {
+		double distancia = 0.0;
+		distancia += calcularDistanciaPersonalidad(usuario1.getPersonalidad().getNombre(), 
+				usuario2.getPersonalidad().getNombre());
+		
+		distancia += calcularDistanciaCarreras(Arrays.asList(usuario1.getCarrera()),
+				Arrays.asList(usuario2.getCarrera(),usuario2.getSegundaCarrera()));
+		
+		switch(usuario2.getTipoUsuario()){
+			case ESTUDIANTE:
+				distancia += calcularDistanciaJaccard(usuario1.getHabilidades(),usuario2.getHabilidades());
+				break;
+			case PROFESOR:
+				distancia += calcularDistanciaJaccard(usuario1.getAreasConocimiento(),usuario2.getAreasConocimiento());
+				break;
+			case EGRESADO:
+				distancia += calcularDistanciaEnfasis(usuario1.getEnfasis(),usuario2.getEnfasis());
+				break;
+			default:
+				break;
+		}
+		
+		return normalizarDistancia(distancia, 3);
+	}
+	
+	@Override
+	public double calcularDistanciaEgresadoUsuario(UsuarioDTO usuario1, UsuarioDTO usuario2) {
+		double distancia = 0.0;
+		distancia += calcularDistanciaPersonalidad(usuario1.getPersonalidad().getNombre(), 
+				usuario2.getPersonalidad().getNombre());
+		
+		distancia += calcularDistanciaCarreras(Arrays.asList(usuario1.getCarrera(),usuario1.getSegundaCarrera()),
+				Arrays.asList(usuario2.getCarrera(),usuario2.getSegundaCarrera()));
+		
+		switch(usuario2.getTipoUsuario()){
+			case ESTUDIANTE:
+			case PROFESOR:
+				distancia += calcularDistanciaEnfasis(usuario1.getEnfasis(),usuario2.getEnfasis());
+				break;
+			case EGRESADO:
+				if(null != usuario1.getGustos() && null != usuario2.getGustos())
+					distancia += calcularDistanciaJaccard(usuario1.getGustos(),usuario2.getGustos());
+				break;
+			default:
+				break;
+		}
 		
 		return normalizarDistancia(distancia, 3);
 	}
@@ -120,6 +185,33 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 			}
 		}
 		return null;
+	}
+	
+	/**
+	 * Calcula la distancia que hay entre varios énfasis de un usuario dado.
+	 * @param enfasis1 Lista del usuario actual
+	 * @param enfasis2 Lista de la posible conexión
+	 * @return distancia entre los énfasis de cada usuario.
+	 */
+	private double calcularDistanciaEnfasis(List<Enfasis> enfasis1, List<Enfasis> enfasis2){
+		List<Enfasis> principales1 = null;
+		List<Enfasis> principales2 = null;
+		if(enfasis1.size() > 2)
+			principales1 = Arrays.asList(enfasis1.get(0),enfasis1.get(2));
+		else
+			principales1 = Arrays.asList(enfasis1.get(0));
+		
+		if(enfasis2.size() > 2)
+			principales2 = Arrays.asList(enfasis2.get(0),enfasis2.get(2));
+		else
+			principales2 = Arrays.asList(enfasis2.get(0));
+		
+		if(OperacionsConjuntos.interseccion(principales1, principales2).size() > 0)
+			return 0;
+		List<Enfasis> interseccion = OperacionsConjuntos.interseccion(enfasis1, enfasis2);
+		if(OperacionsConjuntos.interseccion(interseccion, principales2).size() > 0)
+			return 0.5;
+		return 1;
 	}
 	
 	/**

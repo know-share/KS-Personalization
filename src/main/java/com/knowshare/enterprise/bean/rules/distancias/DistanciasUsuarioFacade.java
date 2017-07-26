@@ -15,12 +15,29 @@ import com.knowshare.enums.TipoUsuariosEnum;
 public interface DistanciasUsuarioFacade {
 	
 	/**
-	 * Dado dos usuarios de tipo estudiante (ver {@link TipoUsuariosEnum}) se
+	 * Dado dos usuarios y según el tipo (ver {@link TipoUsuariosEnum}) se
 	 * calculan las distancias según atributos que constituyen el perfil de cada uno. 
-	 * @param usuario1 Usuario actual
-	 * @param usuario2 Usuario que posiblemente es conexión
+	 * @param usuario1 Usuario actual de tipo ESTUDIANTE
+	 * @param usuario2 Usuario que posiblemente es conexión de cualquier tipo
 	 * @return distancia entre los dos usuarios
 	 */
-	double calcularDistanciaEntreEstudiantes(UsuarioDTO usuario1, UsuarioDTO usuario2);
-
+	double calcularDistanciaEstudianteUsuario(UsuarioDTO usuario1, UsuarioDTO usuario2);
+	
+	/**
+	 * Dado dos usuarios y según el tipo (ver {@link TipoUsuariosEnum}) se
+	 * calculan las distancias según atributos que constituyen el perfil de cada uno. 
+	 * @param usuario1 Usuario actual de tipo PROFESOR
+	 * @param usuario2 Usuario que posiblemente es conexión de cualquier tipo
+	 * @return distancia entre los dos usuarios
+	 */
+	double calcularDistanciaProfesorUsuario(UsuarioDTO usuario1, UsuarioDTO usuario2);
+	
+	/**
+	 * Dado dos usuarios y según el tipo (ver {@link TipoUsuariosEnum}) se
+	 * calculan las distancias según atributos que constituyen el perfil de cada uno. 
+	 * @param usuario1 Usuario actual de tipo EGRESADO
+	 * @param usuario2 Usuario que posiblemente es conexión de cualquier tipo
+	 * @return distancia entre los dos usuarios
+	 */
+	double calcularDistanciaEgresadoUsuario(UsuarioDTO usuario1, UsuarioDTO usuario2);
 }
