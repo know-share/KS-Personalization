@@ -21,7 +21,7 @@ import com.knowshare.fact.rules.UsuarioFact;
 
 /**
  * {@link RecomendacionConexionFacade}
- * @author miguel
+ * @author Miguel Montañez
  *
  */
 @Component
@@ -35,14 +35,23 @@ public class RecomendacionConexionBean implements RecomendacionConexionFacade {
 	
 	@Autowired
 	private UsuarioFacade usuarioBean;
-
+	
 	@Override
-	public List<?> recomendacionesUsuario(UsuarioDTO usuario) {
+	public List<?> setDeRecomendaciones(UsuarioDTO usuario) {
 		final List<UsuarioDTO> usuarios = usuarioBean.getMyNoConnections(usuario.getUsername());
-		final List<UsuarioFact> usuariosFact =new ArrayList<>();
 		final List<RecomendacionDTO> recomendacionesConfianza = new ArrayList<>();
 		final List<RecomendacionDTO> recomendacionesRelevante = new ArrayList<>();
 		final List<RecomendacionDTO> recomendacionesNoRecomendar = new ArrayList<>();
+		this.recomendacionesUsuario(usuario,usuarios,recomendacionesConfianza,
+				recomendacionesRelevante,recomendacionesNoRecomendar);
+		return recomendacionesRandom(recomendacionesConfianza, recomendacionesRelevante, recomendacionesNoRecomendar);
+	}
+
+	@Override
+	public void recomendacionesUsuario(UsuarioDTO usuario, List<UsuarioDTO> usuarios,
+			List<RecomendacionDTO> recomendacionesConfianza, List<RecomendacionDTO> recomendacionesRelevante,
+			List<RecomendacionDTO> recomendacionesNoRecomendar) {
+		final List<UsuarioFact> usuariosFact =new ArrayList<>();
 		final Map<String,UsuarioDTO> mapUsuarios = new HashMap<>();
 		Map<String,String> map = null;
 		switch(usuario.getTipoUsuario()){
@@ -75,7 +84,8 @@ public class RecomendacionConexionBean implements RecomendacionConexionFacade {
 		for(String s:map.keySet()){
 			RecomendacionDTO info = new RecomendacionDTO()
 					.setNombre(mapUsuarios.get(s).getNombre() + " " +mapUsuarios.get(s).getApellido())
-					.setUsername(mapUsuarios.get(s).getUsername());
+					.setUsername(mapUsuarios.get(s).getUsername())
+					.setCarrera(mapUsuarios.get(s).getCarrera().getNombre());
 			if(map.get(s).equals(TipoConexionEnum.CONFIANZA.getValue())){
 				info.setConexion(TipoConexionEnum.CONFIANZA);
 				recomendacionesConfianza.add(info);
@@ -87,7 +97,6 @@ public class RecomendacionConexionBean implements RecomendacionConexionFacade {
 				recomendacionesNoRecomendar.add(info);
 			}
 		}
-		return recomendacionesRandom(recomendacionesConfianza, recomendacionesRelevante, recomendacionesNoRecomendar);
 	}
 	
 	/**
