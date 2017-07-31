@@ -5,6 +5,7 @@ package com.knowshare.enterprise.bean.rules.busqueda;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -33,6 +34,7 @@ public class BusquedaUsuarioBean implements BusquedaUsuarioFacade{
 		List<RecomendacionDTO> busqueda = null;
 		switch(filtro.toUpperCase()){
 			case "HABILIDAD":
+				busqueda = buscarPorHabilidad(usuario,parametro);
 				break;
 			case "AREA":
 				break;
@@ -55,6 +57,22 @@ public class BusquedaUsuarioBean implements BusquedaUsuarioFacade{
 		busqueda.addAll(recomendacionesConfianza);
 		busqueda.addAll(recomendacionesRelevante);
 		busqueda.addAll(recomendacionesNoRecomendar);
+		return busqueda;
+	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	private List<RecomendacionDTO> buscarPorHabilidad(UsuarioDTO usuario, String parametro){
+		final List<RecomendacionDTO> busqueda = new ArrayList<>();
+		final List<Map> usuariosBusqueda = usuarioBean.buscarPorHabilidad(usuario, parametro);
+		for(Map m : usuariosBusqueda){
+			if(!usuario.getUsername().equalsIgnoreCase(m.get("username").toString())){
+				RecomendacionDTO dto = new RecomendacionDTO()
+						.setNombre(m.get("nombre") +" "+m.get("apellido"))
+						.setUsername(m.get("username").toString())
+						.setCarrera(((List<Map>)m.get("carreras")).get(0).get("_id").toString());
+				busqueda.add(dto);
+			}
+		}
 		return busqueda;
 	}
 
