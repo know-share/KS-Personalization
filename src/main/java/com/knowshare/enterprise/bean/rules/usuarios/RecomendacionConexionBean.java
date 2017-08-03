@@ -3,6 +3,8 @@
  */
 package com.knowshare.enterprise.bean.rules.usuarios;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -53,27 +55,35 @@ public class RecomendacionConexionBean implements RecomendacionConexionFacade {
 			List<RecomendacionDTO> recomendacionesNoRecomendar) {
 		final List<UsuarioFact> usuariosFact =new ArrayList<>();
 		final Map<String,UsuarioDTO> mapUsuarios = new HashMap<>();
+		final Map<String,Double> mapDistancias = new HashMap<>();
+		double distancia;
 		Map<String,String> map = null;
 		switch(usuario.getTipoUsuario()){
 			case ESTUDIANTE:
 				for(UsuarioDTO u:usuarios){
+					distancia = distanciasUsuarioBean.calcularDistanciaEstudianteUsuario(usuario, u);
 					usuariosFact.add(new UsuarioFact().setUsername(u.getUsername())
-							.setDistancia(distanciasUsuarioBean.calcularDistanciaEstudianteUsuario(usuario, u)));
+							.setDistancia(distancia));
 					mapUsuarios.put(u.getUsername(), u);
+					mapDistancias.put(u.getUsername(), distancia);
 				}
 				break;
 			case PROFESOR:
 				for(UsuarioDTO u:usuarios){
+					distancia = distanciasUsuarioBean.calcularDistanciaProfesorUsuario(usuario, u);
 					usuariosFact.add(new UsuarioFact().setUsername(u.getUsername())
-							.setDistancia(distanciasUsuarioBean.calcularDistanciaProfesorUsuario(usuario, u)));
+							.setDistancia(distancia));
 					mapUsuarios.put(u.getUsername(), u);
+					mapDistancias.put(u.getUsername(), distancia);
 				}
 				break;
 			case EGRESADO:
 				for(UsuarioDTO u:usuarios){
+					distancia = distanciasUsuarioBean.calcularDistanciaEgresadoUsuario(usuario, u);
 					usuariosFact.add(new UsuarioFact().setUsername(u.getUsername())
-							.setDistancia(distanciasUsuarioBean.calcularDistanciaEgresadoUsuario(usuario, u)));
+							.setDistancia(distancia));
 					mapUsuarios.put(u.getUsername(), u);
+					mapDistancias.put(u.getUsername(), distancia);
 				}
 				break;
 			default:
@@ -82,10 +92,16 @@ public class RecomendacionConexionBean implements RecomendacionConexionFacade {
 		map = ruleFireBean.fireRules(usuariosFact,"mapRecomendaciones",new HashMap<String,String>());
 		
 		for(String s:map.keySet()){
+			Double truncatedDouble = BigDecimal.valueOf((1-mapDistancias.get(s))*100)
+				    .setScale(2, RoundingMode.HALF_UP)
+				    .doubleValue();
+			
 			RecomendacionDTO info = new RecomendacionDTO()
 					.setNombre(mapUsuarios.get(s).getNombre() + " " +mapUsuarios.get(s).getApellido())
 					.setUsername(mapUsuarios.get(s).getUsername())
-					.setCarrera(mapUsuarios.get(s).getCarrera().getNombre());
+					.setCarrera(mapUsuarios.get(s).getCarrera().getNombre())
+					.setPorcentaje(truncatedDouble)
+					.setTipoUsuario(mapUsuarios.get(s).getTipoUsuario());
 			if(map.get(s).equals(TipoConexionEnum.CONFIANZA.getValue())){
 				info.setConexion(TipoConexionEnum.CONFIANZA);
 				recomendacionesConfianza.add(info);

@@ -14,6 +14,7 @@ import com.knowshare.dto.perfilusuario.UsuarioDTO;
 import com.knowshare.dto.rules.RecomendacionDTO;
 import com.knowshare.enterprise.bean.rules.usuarios.RecomendacionConexionFacade;
 import com.knowshare.enterprise.bean.usuario.UsuarioFacade;
+import com.knowshare.enums.TipoUsuariosEnum;
 
 /**
  * {@link BusquedaUsuarioFacade}
@@ -70,7 +71,8 @@ public class BusquedaUsuarioBean implements BusquedaUsuarioFacade{
 				RecomendacionDTO dto = new RecomendacionDTO()
 						.setNombre(m.get("nombre") +" "+m.get("apellido"))
 						.setUsername(m.get("username").toString())
-						.setCarrera(((List<Map>)m.get("carreras")).get(0).get("_id").toString());
+						.setCarrera(((List<Map>)m.get("carreras")).get(0).get("_id").toString())
+						.setTipoUsuario(TipoUsuariosEnum.valueOf(m.get("tipo").toString()));
 				busqueda.add(dto);
 			}
 		}
@@ -86,7 +88,8 @@ public class BusquedaUsuarioBean implements BusquedaUsuarioFacade{
 				RecomendacionDTO dto = new RecomendacionDTO()
 						.setNombre(m.get("nombre") +" "+m.get("apellido"))
 						.setUsername(m.get("username").toString())
-						.setCarrera(((List<Map>)m.get("carreras")).get(0).get("_id").toString());
+						.setCarrera(((List<Map>)m.get("carreras")).get(0).get("_id").toString())
+						.setTipoUsuario(TipoUsuariosEnum.valueOf(m.get("tipo").toString()));
 				busqueda.add(dto);
 			}
 		}
