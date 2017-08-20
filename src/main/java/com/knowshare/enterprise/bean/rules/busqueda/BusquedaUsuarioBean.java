@@ -71,6 +71,7 @@ public class BusquedaUsuarioBean implements BusquedaUsuarioFacade{
 				RecomendacionDTO dto = new RecomendacionDTO()
 						.setNombre(m.get("nombre") +" "+m.get("apellido"))
 						.setUsername(m.get("username").toString())
+						.setGenero(m.get("genero").toString())
 						.setCarrera(((List<Map>)m.get("carreras")).get(0).get("_id").toString())
 						.setTipoUsuario(TipoUsuariosEnum.valueOf(m.get("tipo").toString()));
 				busqueda.add(dto);
@@ -88,6 +89,7 @@ public class BusquedaUsuarioBean implements BusquedaUsuarioFacade{
 				RecomendacionDTO dto = new RecomendacionDTO()
 						.setNombre(m.get("nombre") +" "+m.get("apellido"))
 						.setUsername(m.get("username").toString())
+						.setGenero(m.get("genero").toString())
 						.setCarrera(((List<Map>)m.get("carreras")).get(0).get("_id").toString())
 						.setTipoUsuario(TipoUsuariosEnum.valueOf(m.get("tipo").toString()));
 				busqueda.add(dto);

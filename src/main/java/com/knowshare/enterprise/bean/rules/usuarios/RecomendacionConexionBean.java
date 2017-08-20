@@ -99,6 +99,7 @@ public class RecomendacionConexionBean implements RecomendacionConexionFacade {
 			RecomendacionDTO info = new RecomendacionDTO()
 					.setNombre(mapUsuarios.get(s).getNombre() + " " +mapUsuarios.get(s).getApellido())
 					.setUsername(mapUsuarios.get(s).getUsername())
+					.setGenero(mapUsuarios.get(s).getGenero())
 					.setCarrera(mapUsuarios.get(s).getCarrera().getNombre())
 					.setPorcentaje(truncatedDouble)
 					.setTipoUsuario(mapUsuarios.get(s).getTipoUsuario());
