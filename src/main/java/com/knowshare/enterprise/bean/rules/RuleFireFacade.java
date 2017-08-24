@@ -6,7 +6,7 @@ package com.knowshare.enterprise.bean.rules;
 /**
  * Encargado de disparar las reglas de negocio para que la aplicación
  * pueda usarlas posteriormente.
- * @author miguel
+ * @author Miguel Montañez
  *
  */
 public interface RuleFireFacade {

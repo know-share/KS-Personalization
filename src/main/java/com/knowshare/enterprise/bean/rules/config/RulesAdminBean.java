@@ -15,11 +15,17 @@ import org.kie.api.runtime.KieContainer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Component;
+
+import com.knowshare.entities.app.SystemPreferences;
 
 /**
  * {@link RulesAdminFacade}
- * @author miguel
+ * @author Miguel Montañez
  *
  */
 @Component
@@ -32,6 +38,9 @@ public class RulesAdminBean implements RulesAdminFacade {
 	
 	@Autowired
 	private KieContainer kieContainer;
+	
+	@Autowired
+	private MongoTemplate mongoTemplate;
 
 	@Override
 	public boolean updateRules() {
@@ -53,6 +62,19 @@ public class RulesAdminBean implements RulesAdminFacade {
 			logger.error("::::: Error actualizando reglas del repositorio. Error: " + e.getMessage() + ":::::");
 			return false;
 		}
+	}
+	
+	public boolean updateRulesSystem(short state){
+		final Update update = new Update()
+				.set("rules", state);
+		return mongoTemplate.updateFirst(new Query(Criteria.where("_id").is("system")), update, SystemPreferences.class)
+				.getN() > 0;
+	}
+	
+	public boolean isRulesOn(){
+		final SystemPreferences preferences = mongoTemplate
+				.findOne(new Query(Criteria.where("_id").is("system")), SystemPreferences.class);
+		return preferences != null && preferences.getRules() == 1;
 	}
 
 }

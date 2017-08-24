@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * {@link RuleFireFacade}
- * @author miguel
+ * @author Miguel Montañez
  *
  */
 @Component

@@ -47,6 +47,13 @@ public class BusquedaUsuarioBean implements BusquedaUsuarioFacade{
 		return busqueda;
 	}
 	
+	/**
+	 * Busca usuarios aplicando el filtro por NOMBRE
+	 * @param usuario que realiza la acción de buscar
+	 * @param parametro valor de la consulta a ejecutar
+	 * @return Lista con los usuarios ordenados según el tipo de
+	 * filtro
+	 */
 	private List<RecomendacionDTO> buscarPorNombre(UsuarioDTO usuario, String parametro){
 		final List<RecomendacionDTO> busqueda = new ArrayList<>();
 		final List<UsuarioDTO> usuariosBusqueda = usuarioBean.buscarPorNombre(usuario, parametro);
@@ -62,6 +69,13 @@ public class BusquedaUsuarioBean implements BusquedaUsuarioFacade{
 		return busqueda;
 	}
 	
+	/**
+	 * Busca usuarios aplicando el filtro por HABILIDAD
+	 * @param usuario que realiza la acción de buscar
+	 * @param parametro valor de la consulta a ejecutar
+	 * @return Lista con los usuarios ordenados según el tipo de
+	 * filtro
+	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private List<RecomendacionDTO> buscarPorHabilidad(UsuarioDTO usuario, String parametro){
 		final List<RecomendacionDTO> busqueda = new ArrayList<>();
@@ -80,6 +94,13 @@ public class BusquedaUsuarioBean implements BusquedaUsuarioFacade{
 		return busqueda;
 	}
 	
+	/**
+	 * Busca usuarios aplicando el filtro por AREA
+	 * @param usuario que realiza la acción de buscar
+	 * @param parametro valor de la consulta a ejecutar
+	 * @return Lista con los usuarios ordenados según el tipo de
+	 * filtro
+	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private List<RecomendacionDTO> buscarPorAreaConocimiento(UsuarioDTO usuario, String parametro){
 		final List<RecomendacionDTO> busqueda = new ArrayList<>();

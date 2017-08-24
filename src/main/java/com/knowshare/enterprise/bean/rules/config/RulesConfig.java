@@ -21,7 +21,7 @@ import org.springframework.context.annotation.Configuration;
  * En rulesProperties se encuentran los datos de conexión
  * y de artefactos para traer las reglas en tiempo de 
  * ejecución.
- * @author miguel
+ * @author Miguel Montañez
  *
  */
 @Configuration

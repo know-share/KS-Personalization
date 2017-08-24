@@ -16,6 +16,14 @@ import com.knowshare.dto.rules.RecomendacionDTO;
  */
 public interface BusquedaUsuarioFacade {
 	
+	/**
+	 * Busca un usuario según los filtros
+	 * @param usuario Usuario que está buscando.
+	 * @param filtro HABILIDAD, AREA o NOMBRE
+	 * @param parametro el valor de la consulta
+	 * @return Lista con los usuarios ordenados según el tipo de
+	 * filtro
+	 */
 	List<RecomendacionDTO> buscarUsuario(UsuarioDTO usuario, String filtro,String parametro);
 
 }
