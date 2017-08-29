@@ -30,6 +30,11 @@ public class RulesConfig {
 	@Autowired
 	private RulesProperties rulesProperties;
 
+	/**
+	 * Bean encargado de conectarse con el motor de reglas en su creación
+	 * @return
+	 * @throws IOException
+	 */
 	@Bean
 	public KieContainer kieContainer() throws IOException {
 		KieServices ks = KieServices.Factory.get();
