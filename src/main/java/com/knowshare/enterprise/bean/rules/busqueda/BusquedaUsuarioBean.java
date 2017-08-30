@@ -29,6 +29,8 @@ public class BusquedaUsuarioBean implements BusquedaUsuarioFacade{
 	
 	@Autowired
 	private RecomendacionConexionFacade recomendacionBean;
+	
+	private static final String USERNAME = "username";
 
 	@Override
 	public List<RecomendacionDTO> buscarUsuario(UsuarioDTO usuario, String filtro,String parametro) {
@@ -81,10 +83,10 @@ public class BusquedaUsuarioBean implements BusquedaUsuarioFacade{
 		final List<RecomendacionDTO> busqueda = new ArrayList<>();
 		final List<Map> usuariosBusqueda = usuarioBean.buscarPorHabilidad(parametro);
 		for(Map m : usuariosBusqueda){
-			if(!usuario.getUsername().equalsIgnoreCase(m.get("username").toString())){
+			if(!usuario.getUsername().equalsIgnoreCase(m.get(USERNAME).toString())){
 				RecomendacionDTO dto = new RecomendacionDTO()
 						.setNombre(m.get("nombre") +" "+m.get("apellido"))
-						.setUsername(m.get("username").toString())
+						.setUsername(m.get(USERNAME).toString())
 						.setGenero(m.get("genero").toString())
 						.setCarrera(((List<Map>)m.get("carreras")).get(0).get("_id").toString())
 						.setTipoUsuario(TipoUsuariosEnum.valueOf(m.get("tipo").toString()));
@@ -106,10 +108,10 @@ public class BusquedaUsuarioBean implements BusquedaUsuarioFacade{
 		final List<RecomendacionDTO> busqueda = new ArrayList<>();
 		final List<Map> usuariosBusqueda = usuarioBean.buscarPorAreaConocimiento(parametro);
 		for(Map m : usuariosBusqueda){
-			if(!usuario.getUsername().equalsIgnoreCase(m.get("username").toString())){
+			if(!usuario.getUsername().equalsIgnoreCase(m.get(USERNAME).toString())){
 				RecomendacionDTO dto = new RecomendacionDTO()
 						.setNombre(m.get("nombre") +" "+m.get("apellido"))
-						.setUsername(m.get("username").toString())
+						.setUsername(m.get(USERNAME).toString())
 						.setGenero(m.get("genero").toString())
 						.setCarrera(((List<Map>)m.get("carreras")).get(0).get("_id").toString())
 						.setTipoUsuario(TipoUsuariosEnum.valueOf(m.get("tipo").toString()));
