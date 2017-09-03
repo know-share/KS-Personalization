@@ -21,7 +21,7 @@ import org.springframework.context.annotation.Configuration;
  * En rulesProperties se encuentran los datos de conexión
  * y de artefactos para traer las reglas en tiempo de 
  * ejecución.
- * @author miguel
+ * @author Miguel Montañez
  *
  */
 @Configuration
@@ -30,6 +30,11 @@ public class RulesConfig {
 	@Autowired
 	private RulesProperties rulesProperties;
 
+	/**
+	 * Bean encargado de conectarse con el motor de reglas en su creación
+	 * @return
+	 * @throws IOException
+	 */
 	@Bean
 	public KieContainer kieContainer() throws IOException {
 		KieServices ks = KieServices.Factory.get();

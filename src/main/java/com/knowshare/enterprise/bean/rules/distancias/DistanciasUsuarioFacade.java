@@ -9,7 +9,7 @@ import com.knowshare.enums.TipoUsuariosEnum;
 /**
  * Lógica para el cálculo de distancias entre los diferentes tipos
  * de usuarios que posee la aplicación.
- * @author miguel
+ * @author Miguel Montañez
  *
  */
 public interface DistanciasUsuarioFacade {

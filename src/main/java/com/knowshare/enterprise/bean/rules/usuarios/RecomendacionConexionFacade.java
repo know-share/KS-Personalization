@@ -9,7 +9,7 @@ import com.knowshare.dto.perfilusuario.UsuarioDTO;
 import com.knowshare.dto.rules.RecomendacionDTO;
 
 /**
- * Recomendacioines de conexion entre usuarios.
+ * Recomendaciones de conexion entre usuarios.
  * @author Miguel Montañez
  * 
  */

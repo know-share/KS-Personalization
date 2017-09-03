@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 /**
  * Encargado de alojar las propiedades necesarias
  * para la conexión con el motor de reglas.
- * @author miguel
+ * @author Miguel Montañez
  *
  */
 @Component

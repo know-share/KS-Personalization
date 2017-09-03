@@ -29,6 +29,8 @@ public class BusquedaUsuarioBean implements BusquedaUsuarioFacade{
 	
 	@Autowired
 	private RecomendacionConexionFacade recomendacionBean;
+	
+	private static final String USERNAME = "username";
 
 	@Override
 	public List<RecomendacionDTO> buscarUsuario(UsuarioDTO usuario, String filtro,String parametro) {
@@ -47,6 +49,13 @@ public class BusquedaUsuarioBean implements BusquedaUsuarioFacade{
 		return busqueda;
 	}
 	
+	/**
+	 * Busca usuarios aplicando el filtro por NOMBRE
+	 * @param usuario que realiza la acción de buscar
+	 * @param parametro valor de la consulta a ejecutar
+	 * @return Lista con los usuarios ordenados según el tipo de
+	 * filtro
+	 */
 	private List<RecomendacionDTO> buscarPorNombre(UsuarioDTO usuario, String parametro){
 		final List<RecomendacionDTO> busqueda = new ArrayList<>();
 		final List<UsuarioDTO> usuariosBusqueda = usuarioBean.buscarPorNombre(usuario, parametro);
@@ -62,15 +71,23 @@ public class BusquedaUsuarioBean implements BusquedaUsuarioFacade{
 		return busqueda;
 	}
 	
+	/**
+	 * Busca usuarios aplicando el filtro por HABILIDAD
+	 * @param usuario que realiza la acción de buscar
+	 * @param parametro valor de la consulta a ejecutar
+	 * @return Lista con los usuarios ordenados según el tipo de
+	 * filtro
+	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private List<RecomendacionDTO> buscarPorHabilidad(UsuarioDTO usuario, String parametro){
 		final List<RecomendacionDTO> busqueda = new ArrayList<>();
 		final List<Map> usuariosBusqueda = usuarioBean.buscarPorHabilidad(parametro);
 		for(Map m : usuariosBusqueda){
-			if(!usuario.getUsername().equalsIgnoreCase(m.get("username").toString())){
+			if(!usuario.getUsername().equalsIgnoreCase(m.get(USERNAME).toString())){
 				RecomendacionDTO dto = new RecomendacionDTO()
 						.setNombre(m.get("nombre") +" "+m.get("apellido"))
-						.setUsername(m.get("username").toString())
+						.setUsername(m.get(USERNAME).toString())
+						.setGenero(m.get("genero").toString())
 						.setCarrera(((List<Map>)m.get("carreras")).get(0).get("_id").toString())
 						.setTipoUsuario(TipoUsuariosEnum.valueOf(m.get("tipo").toString()));
 				busqueda.add(dto);
@@ -79,15 +96,23 @@ public class BusquedaUsuarioBean implements BusquedaUsuarioFacade{
 		return busqueda;
 	}
 	
+	/**
+	 * Busca usuarios aplicando el filtro por AREA
+	 * @param usuario que realiza la acción de buscar
+	 * @param parametro valor de la consulta a ejecutar
+	 * @return Lista con los usuarios ordenados según el tipo de
+	 * filtro
+	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private List<RecomendacionDTO> buscarPorAreaConocimiento(UsuarioDTO usuario, String parametro){
 		final List<RecomendacionDTO> busqueda = new ArrayList<>();
 		final List<Map> usuariosBusqueda = usuarioBean.buscarPorAreaConocimiento(parametro);
 		for(Map m : usuariosBusqueda){
-			if(!usuario.getUsername().equalsIgnoreCase(m.get("username").toString())){
+			if(!usuario.getUsername().equalsIgnoreCase(m.get(USERNAME).toString())){
 				RecomendacionDTO dto = new RecomendacionDTO()
 						.setNombre(m.get("nombre") +" "+m.get("apellido"))
-						.setUsername(m.get("username").toString())
+						.setUsername(m.get(USERNAME).toString())
+						.setGenero(m.get("genero").toString())
 						.setCarrera(((List<Map>)m.get("carreras")).get(0).get("_id").toString())
 						.setTipoUsuario(TipoUsuariosEnum.valueOf(m.get("tipo").toString()));
 				busqueda.add(dto);

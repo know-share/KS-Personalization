@@ -9,10 +9,12 @@ import java.util.List;
 
 /**
  * Clase utilitario que contiene operaciones entre conjuntos.
- * @author miguel
+ * @author Miguel Montañez
  *
  */
 public class OperacionsConjuntos {
+	
+	private OperacionsConjuntos(){}
 	
 	/**
 	 * Union entre dos conjuntos

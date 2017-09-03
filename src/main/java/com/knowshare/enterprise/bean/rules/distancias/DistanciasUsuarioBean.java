@@ -25,7 +25,7 @@ import com.knowshare.enums.TipoRelacionesPersonalidadEnum;
 
 /**
  * {@link DistanciasUsuarioFacade}
- * @author miguel
+ * @author Miguel Montañez
  *
  */
 @Component
@@ -135,15 +135,7 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 					default:
 						return 0;
 				}
-		} catch (JsonParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
 		}
 		return 0;
 	}
@@ -161,9 +153,9 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 	private TipoRelacionesPersonalidadEnum relacionPersonalidades(
 			String personalidad1,
 			String personalidad2)
-			throws JsonParseException, JsonMappingException, IOException{
+			throws IOException{
 		ObjectMapper jsonMapper = new ObjectMapper();
-		File jsonFile = ctx.getResource("classpath:personalidades/relaciones.json").getFile();//new File("classpath:personalidades/relaciones.json");
+		File jsonFile = ctx.getResource("classpath:personalidades/relaciones.json").getFile();
 		JsonNode array = jsonMapper.readValue(jsonFile, JsonNode.class);
 		for (JsonNode jsonNode : array) {
 			if(jsonNode.get("nombre").asText().equals(personalidad1)){
@@ -206,10 +198,10 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 		else
 			principales2 = Arrays.asList(enfasis2.get(0));
 		
-		if(OperacionsConjuntos.interseccion(principales1, principales2).size() > 0)
+		if(!OperacionsConjuntos.interseccion(principales1, principales2).isEmpty())
 			return 0;
 		List<Enfasis> interseccion = OperacionsConjuntos.interseccion(enfasis1, enfasis2);
-		if(OperacionsConjuntos.interseccion(interseccion, principales2).size() > 0)
+		if(!OperacionsConjuntos.interseccion(interseccion, principales2).isEmpty())
 			return 0.5;
 		return 1;
 	}
