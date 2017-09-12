@@ -15,7 +15,6 @@ import com.knowshare.entities.idea.Tag;
 public interface BusquedaIdeaFacade {
 	
 	List<IdeaDTO> findRed(String username);
-	List<IdeaDTO> findByTags(List<Tag> tags,String username);
 	List<IdeaDTO> findIdeas(List<Tag> tags, String criterio,String username);
 
 }

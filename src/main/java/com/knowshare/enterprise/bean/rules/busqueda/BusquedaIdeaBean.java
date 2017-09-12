@@ -77,8 +77,7 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 		}
 		return dtos;
 	}
-
-	@Override
+	
 	public List<IdeaDTO> findByTags(List<Tag> tags,String username) {
 		final Query query = new Query(Criteria.where("tags")
 				.all(tags));
@@ -133,6 +132,40 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 		return dtos;
 	}
 	
+	public List<IdeaDTO> findNuevas(String username){
+		Usuario usuario = usuRep.findByUsernameIgnoreCase(username);
+		List<InfoUsuario> conexiones = usuario.getAmigos();
+		conexiones.addAll(usuario.getSiguiendo());
+		List<String> usuariosConexion = new ArrayList<>();
+		for (InfoUsuario i : conexiones) {
+			usuariosConexion.add(i.getUsername());
+		}
+		List<ObjectId> ids = usuRep.findUsuariosByUsername(usuariosConexion)
+				.stream().map(Usuario::getId).collect(Collectors.toList());
+		Sort sort = new Sort(Direction.DESC,"lights");
+		List<Idea> cercanas = ideaRep.findIdeaNueva(ids,sort);
+		List<Usuario> noRed = usuRep.findMyNoConnections(username);
+		List<String> usuariosNoConexion = new ArrayList<>();
+		for (Usuario usu : noRed) {
+			usuariosNoConexion.add(usu.getUsername());
+		}
+		List<ObjectId> idsNoRed = usuRep.findUsuariosByUsername(usuariosNoConexion)
+				.stream().map(Usuario::getId).collect(Collectors.toList());
+		List<Idea> lejanas = ideaRep.findIdeaNueva(idsNoRed,sort);
+		cercanas.addAll(lejanas);
+		List<IdeaDTO> dtos = new ArrayList<>();
+		IdeaDTO dto;
+		for (Idea idea : cercanas) {
+			dto = MapEntities.mapIdeaToDTO(idea);
+			if(isLight(idea, username)!=null)
+				dto.setIsLight(true);
+			else
+				dto.setIsLight(false);
+			dtos.add(dto);
+		}
+		return dtos;
+	}
+	
 	@Override
 	public List<IdeaDTO> findIdeas(List<Tag> tags, String criterio,String username) {
 		if(criterio.equals("tag")){
@@ -140,6 +173,9 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 		}
 		if(criterio.equals("continuar")){
 			return findContinuar(username);
+		}
+		if(criterio.equals("nueva")){
+			return findNuevas(username);
 		}
 		return null;
 	}
