@@ -7,7 +7,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -51,8 +54,7 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 				distancia += calcularDistanciaJaccard(usuario1.getHabilidades(),usuario2.getHabilidades());
 				break;
 			case EGRESADO:
-//				distancia += calcularDistanciaEnfasis(usuario1.getEnfasis(),usuario2.getEnfasis());
-//				preferencia de ideas tags (no sé)
+				distancia += calcularDistanciaPrefIdeaTags(usuario1.getPreferenciaIdeasTag(),usuario2.getPreferenciaIdeasTag());
 				break;
 			default:
 				break;
@@ -110,6 +112,105 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 		}
 		
 		return normalizarDistancia(distancia, 3);
+	}
+	
+	private double calcularDistanciaPrefIdeaTags(Map<String,Integer> tags1, Map<String,Integer> tags2){
+		int size = Double.valueOf(Math.pow(2, tags1.size())).intValue() - 1;
+		final ArrayList<ArrayList<Integer>> matrizBinaria = generarMatrizBinaria(tags1.size(),size);
+		double pesoTotal = 0d;
+		final List<String> tagsRelacionados = OperacionsConjuntos.interseccion(tags1.keySet(), tags2.keySet());
+		if( matrizBinaria != null && !tagsRelacionados.isEmpty()){
+			int numCol = tags1.size();
+			llenarMatrizConPesos(matrizBinaria, tags1.values(), numCol);
+			final ArrayList<Integer> vectorPesos = sumarPesosPorFilas(matrizBinaria, numCol);
+			final ArrayList<Integer> cuantosPesosUnicos = obtenerNumerosUnicos(vectorPesos);
+			final ArrayList<ArrayList<Double>> tuplaNormalizada = 
+					normalizarPesos(cuantosPesosUnicos,cuantosPesosUnicos.size());
+			for(String id: tagsRelacionados)
+				pesoTotal += tags2.get(id);
+			pesoTotal *= tagsRelacionados.size();
+			for(int i = 0; i < cuantosPesosUnicos.size() ; i++){
+				if(tuplaNormalizada.get(i).get(0) == pesoTotal)
+					return tuplaNormalizada.get(i).get(1);
+			}
+		}
+		return 1;
+	}
+	
+	private ArrayList<ArrayList<Integer>> generarMatrizBinaria(int columns, int size){
+		if( columns == 0 )
+			return null;
+		ArrayList<ArrayList<Integer>> matrizBinaria = new ArrayList<>();
+		for(int i = 0; i <= size;i++){
+			ArrayList<Integer> row = new ArrayList<>();
+			for(int j = 0; j < columns ; j++){
+				int pow = Double.valueOf(Math.pow(2, j)).intValue();
+				int result = (i&pow) == pow?1:0;
+				row.add(0, result);
+			}
+			matrizBinaria.add(row);
+		}
+		return matrizBinaria;
+	}
+	
+	private void llenarMatrizConPesos(
+			ArrayList<ArrayList<Integer>> matrizBinaria,
+			Collection<Integer> atributoConPeso,
+			int numCol
+		){
+		Integer[] pesos = atributoConPeso.toArray(new Integer[0]);
+		for(int i = 0;i < Math.pow(2, numCol); i++){
+			for(int j = 0; j < numCol ; j++){
+				matrizBinaria.get(i).set(j, matrizBinaria.get(i).get(j)*pesos[j]);
+			}
+		}
+	}
+	
+	private ArrayList<Integer> sumarPesosPorFilas(
+			ArrayList<ArrayList<Integer>> matrizBinaria,
+			int numCol
+		){
+		final ArrayList<Integer> vectorPesos = new ArrayList<>();
+		for(int i = 0; i < Math.pow(2, numCol) ; i++){
+			int sum = 0;
+			int contUnos = 0;
+			for(int j = 0; j < numCol ; j++){
+				if(matrizBinaria.get(i).get(j) != 0)
+					contUnos++;
+				sum += matrizBinaria.get(i).get(j);
+			}
+			vectorPesos.add(sum * contUnos);
+		}
+		return vectorPesos;
+	}
+	
+	private ArrayList<Integer> obtenerNumerosUnicos(ArrayList<Integer> vectorPesos){
+		ArrayList<Integer> unicos = new ArrayList<>();
+		for(Integer i: vectorPesos)
+			if(!unicos.contains(i))
+				unicos.add(i);
+		Collections.sort(unicos);
+		Collections.reverse(unicos);
+		return unicos;
+	}
+	
+	private ArrayList<ArrayList<Double>> normalizarPesos(ArrayList<Integer> vectorPesos, int cuantosPesosUnicos){
+		final ArrayList<ArrayList<Double>> tuplaNormalizada = new ArrayList<>();
+		double normalizacion = 1d/(cuantosPesosUnicos - 1);
+		double aumento = normalizacion;
+		for(int i = 0; i < cuantosPesosUnicos;i++){
+			ArrayList<Double> row = new ArrayList<>();
+			row.add(vectorPesos.get(i).doubleValue());
+			if(i==0)
+				row.add(0d);
+			else if(i == (cuantosPesosUnicos - 1))
+				row.add(1d);
+			else
+				row.add(normalizacion);
+			normalizacion += aumento;
+			tuplaNormalizada.add(row);
+		}
+		return tuplaNormalizada;
 	}
 	
 	/**
