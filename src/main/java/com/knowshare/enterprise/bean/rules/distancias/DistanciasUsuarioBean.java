@@ -114,6 +114,14 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 		return normalizarDistancia(distancia, 3);
 	}
 	
+	/**
+	 * Calcula la distancia entre las preferencias de idea de dos usuarios.
+	 * Se arma la matriz con los pesos y con base en eso se calcula
+	 * dicha distancia.
+	 * @param tags1 preferencias de idea del Usuario1
+	 * @param tags2 preferencias de idea del Usuario2
+	 * @return distancia entre ambas preferencias
+	 */
 	private double calcularDistanciaPrefIdeaTags(Map<String,Integer> tags1, Map<String,Integer> tags2){
 		int size = Double.valueOf(Math.pow(2, tags1.size())).intValue() - 1;
 		final ArrayList<ArrayList<Integer>> matrizBinaria = generarMatrizBinaria(tags1.size(),size);
@@ -137,6 +145,12 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 		return 1;
 	}
 	
+	/**
+	 * Genera la matriz binaria del 0 hasta size.
+	 * @param columns número de columnas que tendrá la matriz.
+	 * @param size número de filas que tendrá la matriz
+	 * @return Una matriz con los números binarios.
+	 */
 	private ArrayList<ArrayList<Integer>> generarMatrizBinaria(int columns, int size){
 		if( columns == 0 )
 			return null;
@@ -153,6 +167,13 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 		return matrizBinaria;
 	}
 	
+	/**
+	 * Se encarga de multiplicar la matriz por los pesos de
+	 * los tags.
+	 * @param matrizBinaria
+	 * @param atributoConPeso
+	 * @param numCol
+	 */
 	private void llenarMatrizConPesos(
 			ArrayList<ArrayList<Integer>> matrizBinaria,
 			Collection<Integer> atributoConPeso,
@@ -166,6 +187,13 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 		}
 	}
 	
+	/**
+	 * Suma las filas para obtener un vector con los pesos
+	 * totales.
+	 * @param matrizBinaria
+	 * @param numCol
+	 * @return Vector con los pesos totales por filas.
+	 */
 	private ArrayList<Integer> sumarPesosPorFilas(
 			ArrayList<ArrayList<Integer>> matrizBinaria,
 			int numCol
@@ -184,6 +212,12 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 		return vectorPesos;
 	}
 	
+	/**
+	 * Crea un nuevo vector con valores únicos y la ordena de forma
+	 * descendente.
+	 * @param vectorPesos
+	 * @return Vector ordenado de forma descendente.
+	 */
 	private ArrayList<Integer> obtenerNumerosUnicos(ArrayList<Integer> vectorPesos){
 		ArrayList<Integer> unicos = new ArrayList<>();
 		for(Integer i: vectorPesos)
@@ -194,6 +228,15 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 		return unicos;
 	}
 	
+	/**
+	 * Se obtiene el vector con las distancias según el peso,
+	 * donde el mayor del vector de pesos representa la distancia
+	 * más cercana (0), y el menor peso representa la más lejana
+	 * (1)
+	 * @param vectorPesos
+	 * @param cuantosPesosUnicos
+	 * @return Tupla normalizada
+	 */
 	private ArrayList<ArrayList<Double>> normalizarPesos(ArrayList<Integer> vectorPesos, int cuantosPesosUnicos){
 		final ArrayList<ArrayList<Double>> tuplaNormalizada = new ArrayList<>();
 		double normalizacion = 1d/(cuantosPesosUnicos - 1);
