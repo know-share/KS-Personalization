@@ -246,14 +246,7 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 		return 1;
 	}
 	
-	/**
-	 * Dado dos conjuntos set1 y set2 se operan ambos conjuntos para obtener
-	 * la distancia de jaccard.
-	 * @param set1
-	 * @param set2
-	 * @return distancia de jaccard entre set1 y set2
-	 */
-	private <T> double calcularDistanciaJaccard(List<T> set1, List<T> set2){
+	public <T> double calcularDistanciaJaccard(List<T> set1, List<T> set2){
 		List<T> interseccion = OperacionsConjuntos.interseccion(set1, set2);
 		
 		List<T> union = OperacionsConjuntos.union(set1, set2);

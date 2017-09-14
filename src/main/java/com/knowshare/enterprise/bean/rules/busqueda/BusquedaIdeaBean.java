@@ -4,7 +4,9 @@
 package com.knowshare.enterprise.bean.rules.busqueda;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.bson.types.ObjectId;
@@ -17,6 +19,8 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
 
 import com.knowshare.dto.idea.IdeaDTO;
+import com.knowshare.enterprise.bean.rules.RuleFireFacade;
+import com.knowshare.enterprise.bean.rules.distancias.DistanciasUsuarioFacade;
 import com.knowshare.enterprise.repository.idea.IdeaRepository;
 import com.knowshare.enterprise.repository.perfilusuario.UsuarioRepository;
 import com.knowshare.enterprise.utils.MapEntities;
@@ -26,6 +30,8 @@ import com.knowshare.entities.idea.Tag;
 import com.knowshare.entities.perfilusuario.InfoUsuario;
 import com.knowshare.entities.perfilusuario.Usuario;
 import com.knowshare.enums.TipoOperacionEnum;
+import com.knowshare.fact.rules.IdeaFact;
+import com.knowshare.fact.rules.TipoIdeaRecomendacionEnum;
 
 /**
  * @author HP
@@ -33,6 +39,12 @@ import com.knowshare.enums.TipoOperacionEnum;
  */
 @Component
 public class BusquedaIdeaBean implements BusquedaIdeaFacade {
+	
+	@Autowired
+	private RuleFireFacade ruleBean;
+	
+	@Autowired
+	private DistanciasUsuarioFacade distBean;
 	
 	@Autowired
 	private IdeaRepository ideaRep;
@@ -166,6 +178,178 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 		return dtos;
 	}
 	
+	public List<IdeaDTO> findProyectos(String username){
+		Map<String,Idea> mapIdea = new HashMap<>();
+		Map<String,String> mapRet = new HashMap<>();
+		List<IdeaFact> facts = new ArrayList<>();
+		List<IdeaDTO> cercanas = new ArrayList<>();
+		List<IdeaDTO> lejanas = new ArrayList<>();
+		List<IdeaDTO> muyLejanas = new ArrayList<>();
+		Usuario usuario = usuRep.findByUsernameIgnoreCase(username);
+		List<InfoUsuario> conexiones = usuario.getAmigos();
+		conexiones.addAll(usuario.getSiguiendo());
+		List<String> usuariosConexion = new ArrayList<>();
+		for (InfoUsuario i : conexiones) {
+			usuariosConexion.add(i.getUsername());
+		}
+		Double d ;
+		List<ObjectId> ids = usuRep.findUsuariosByUsernameProfesor(usuariosConexion)
+				.stream().map(Usuario::getId).collect(Collectors.toList());
+		List<Idea> ideasUsuarios = ideaRep.findIdeaRedProyectos(ids);
+		for (Idea idea : ideasUsuarios) {
+			d = distBean.calcularDistanciaJaccard(
+				usuario.getAreasConocimiento(),idea.getUsuario().getAreasConocimiento());
+			idea.getUsuario();
+			mapIdea.put(idea.getId(), idea);
+			facts.add(new IdeaFact(idea.getId(),d,true));
+		}
+		IdeaDTO dto;
+		mapRet = ruleBean.fireRules(facts,"mapRecomendaciones", new HashMap<String,String>());
+		for (String idea : mapRet.keySet()){
+			dto = MapEntities.mapIdeaToDTO(mapIdea.get(idea));
+			if(mapRet.get(idea).equals(TipoIdeaRecomendacionEnum.CERCANA.name())){
+				if(isLight(mapIdea.get(idea), username)!=null)
+					dto.setIsLight(true);
+				else
+					dto.setIsLight(false);
+				cercanas.add(dto);
+			}
+			if(mapRet.get(idea).equals(TipoIdeaRecomendacionEnum.LEJANA.name())){
+				if(isLight(mapIdea.get(idea), username)!=null)
+					dto.setIsLight(true);
+				else
+					dto.setIsLight(false);
+				lejanas.add(dto);
+			}
+			if(mapRet.get(idea).equals(TipoIdeaRecomendacionEnum.MUY_LEJANA.name())){
+				if(isLight(mapIdea.get(idea), username)!=null)
+					dto.setIsLight(true);
+				else
+					dto.setIsLight(false);
+				muyLejanas.add(dto);
+			}
+		}
+		
+		List<Usuario> noConexiones = usuRep.findMyNoConnections(username);
+		List<ObjectId> idNoConexiones = noConexiones.stream().map(Usuario::getId).collect(Collectors.toList());
+		List<Idea> noConexionesIdea = ideaRep.findIdeaRedProyectos(idNoConexiones);
+		mapIdea = new HashMap<>();
+		facts = new ArrayList<>();
+		for (Idea idea : noConexionesIdea) {
+			d = distBean.calcularDistanciaJaccard(usuario.getAreasConocimiento(),
+					idea.getUsuario().getAreasConocimiento());
+			mapIdea.put(idea.getId(), idea);
+			facts.add(new IdeaFact(idea.getId(),d,false));
+		}
+		mapRet= ruleBean.fireRules(facts,"mapRecomendaciones", new HashMap<String,String>());
+		for (String id : mapRet.keySet()) {
+			dto = MapEntities.mapIdeaToDTO(mapIdea.get(id));
+			if(mapRet.get(id).equals(TipoIdeaRecomendacionEnum.LEJANA.name())){
+				if(isLight(mapIdea.get(id), username)!=null)
+					dto.setIsLight(true);
+				else
+					dto.setIsLight(false);
+				lejanas.add(dto);
+			}
+			if(mapRet.get(id).equals(TipoIdeaRecomendacionEnum.MUY_LEJANA.name())){
+				if(isLight(mapIdea.get(id), username)!=null)
+					dto.setIsLight(true);
+				else
+					dto.setIsLight(false);
+				muyLejanas.add(dto);
+			}
+		}
+		cercanas.addAll(lejanas);
+		cercanas.addAll(muyLejanas);
+		return cercanas;
+	}
+	
+	public List<IdeaDTO> findEmpezar(String username){
+		Map<String,Idea> mapIdea = new HashMap<>();
+		Map<String,String> mapRet = new HashMap<>();
+		List<IdeaFact> facts = new ArrayList<>();
+		List<IdeaDTO> cercanas = new ArrayList<>();
+		List<IdeaDTO> lejanas = new ArrayList<>();
+		List<IdeaDTO> muyLejanas = new ArrayList<>();
+		Usuario usuario = usuRep.findByUsernameIgnoreCase(username);
+		List<InfoUsuario> conexiones = usuario.getAmigos();
+		conexiones.addAll(usuario.getSiguiendo());
+		List<String> usuariosConexion = new ArrayList<>();
+		for (InfoUsuario i : conexiones) {
+			usuariosConexion.add(i.getUsername());
+		}
+		Double d ;
+		List<ObjectId> ids = usuRep.findUsuariosByUsernameProfesor(usuariosConexion)
+				.stream().map(Usuario::getId).collect(Collectors.toList());
+		List<Idea> ideasUsuarios = ideaRep.findIdeaRedEmpezar(ids);
+		for (Idea idea : ideasUsuarios) {
+			d = distBean.calcularDistanciaJaccard(
+				usuario.getAreasConocimiento(),idea.getUsuario().getAreasConocimiento());
+			idea.getUsuario();
+			mapIdea.put(idea.getId(), idea);
+			facts.add(new IdeaFact(idea.getId(),d,true));
+		}
+		IdeaDTO dto;
+		mapRet = ruleBean.fireRules(facts,"mapRecomendaciones", new HashMap<String,String>());
+		for (String idea : mapRet.keySet()){
+			dto = MapEntities.mapIdeaToDTO(mapIdea.get(idea));
+			if(mapRet.get(idea).equals(TipoIdeaRecomendacionEnum.CERCANA.name())){
+				if(isLight(mapIdea.get(idea), username)!=null)
+					dto.setIsLight(true);
+				else
+					dto.setIsLight(false);
+				cercanas.add(dto);
+			}
+			if(mapRet.get(idea).equals(TipoIdeaRecomendacionEnum.LEJANA.name())){
+				if(isLight(mapIdea.get(idea), username)!=null)
+					dto.setIsLight(true);
+				else
+					dto.setIsLight(false);
+				lejanas.add(dto);
+			}
+			if(mapRet.get(idea).equals(TipoIdeaRecomendacionEnum.MUY_LEJANA.name())){
+				if(isLight(mapIdea.get(idea), username)!=null)
+					dto.setIsLight(true);
+				else
+					dto.setIsLight(false);
+				muyLejanas.add(dto);
+			}
+		}
+		
+		List<Usuario> noConexiones = usuRep.findMyNoConnections(username);
+		List<ObjectId> idNoConexiones = noConexiones.stream().map(Usuario::getId).collect(Collectors.toList());
+		List<Idea> noConexionesIdea = ideaRep.findIdeaRedEmpezar(idNoConexiones);
+		mapIdea = new HashMap<>();
+		facts = new ArrayList<>();
+		for (Idea idea : noConexionesIdea) {
+			d = distBean.calcularDistanciaJaccard(usuario.getAreasConocimiento(),
+					idea.getUsuario().getAreasConocimiento());
+			mapIdea.put(idea.getId(), idea);
+			facts.add(new IdeaFact(idea.getId(),d,false));
+		}
+		mapRet= ruleBean.fireRules(facts,"mapRecomendaciones", new HashMap<String,String>());
+		for (String id : mapRet.keySet()) {
+			dto = MapEntities.mapIdeaToDTO(mapIdea.get(id));
+			if(mapRet.get(id).equals(TipoIdeaRecomendacionEnum.LEJANA.name())){
+				if(isLight(mapIdea.get(id), username)!=null)
+					dto.setIsLight(true);
+				else
+					dto.setIsLight(false);
+				lejanas.add(dto);
+			}
+			if(mapRet.get(id).equals(TipoIdeaRecomendacionEnum.MUY_LEJANA.name())){
+				if(isLight(mapIdea.get(id), username)!=null)
+					dto.setIsLight(true);
+				else
+					dto.setIsLight(false);
+				muyLejanas.add(dto);
+			}
+		}
+		cercanas.addAll(lejanas);
+		cercanas.addAll(muyLejanas);
+		return cercanas;
+	}
+	
 	@Override
 	public List<IdeaDTO> findIdeas(List<Tag> tags, String criterio,String username) {
 		if(criterio.equals("tag")){
@@ -176,6 +360,12 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 		}
 		if(criterio.equals("nueva")){
 			return findNuevas(username);
+		}
+		if(criterio.equals("proyecto")){
+			return findProyectos(username);
+		}
+		if(criterio.equals("continuar")){
+			return findContinuar(username);
 		}
 		return null;
 	}
