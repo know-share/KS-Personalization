@@ -5,6 +5,7 @@ package com.knowshare.enterprise.bean.rules.utils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -33,7 +34,7 @@ public class OperacionsConjuntos {
 	 * @param set2 Conjunto 2
 	 * @return Interseccion de los dos conjuntos
 	 */
-	public static <T> List<T> interseccion(List<T> set1, List<T> set2){
+	public static <T> List<T> interseccion(Collection<T> set1, Collection<T> set2){
 		List<T> interseccion = new ArrayList<>(set1);
 		interseccion.retainAll(set2);
 		return interseccion;

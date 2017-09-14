@@ -45,6 +45,7 @@ public class RulesAdminBean implements RulesAdminFacade {
 	@Override
 	public boolean updateRules() {
 		try {
+			logger.info("Synchronizing with rule engine");
 			KieServices ks = KieServices.Factory.get();
 
 			KieResources resources = ks.getResources();
@@ -57,6 +58,7 @@ public class RulesAdminBean implements RulesAdminFacade {
 			KieRepository repo = ks.getRepository();
 			KieModule k = repo.addKieModule(resources.newInputStreamResource(stream));
 			kieContainer.updateToVersion(k.getReleaseId());
+			logger.info("Rules: Synchronization complete.");
 			return true;
 		} catch (IOException e) {
 			logger.error("::::: Error actualizando reglas del repositorio. Error: " + e.getMessage() + ":::::");
@@ -65,6 +67,7 @@ public class RulesAdminBean implements RulesAdminFacade {
 	}
 	
 	public boolean updateRulesSystem(short state){
+		logger.info("Updating use of rules in system with state: {}",state);
 		final Update update = new Update()
 				.set("rules", state);
 		return mongoTemplate.updateFirst(new Query(Criteria.where("_id").is("system")), update, SystemPreferences.class)
