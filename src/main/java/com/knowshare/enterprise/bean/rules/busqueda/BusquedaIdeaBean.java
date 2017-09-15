@@ -34,7 +34,8 @@ import com.knowshare.fact.rules.IdeaFact;
 import com.knowshare.fact.rules.TipoIdeaRecomendacionEnum;
 
 /**
- * @author HP
+ * {@link BusquedaIdeaFacade}
+ * @author Pablo Gaitan
  *
  */
 @Component
@@ -54,6 +55,8 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 	
 	@Autowired
 	private MongoTemplate mongoTemplate;
+	
+	private static final String GLOBAL_RULES = "mapRecomendaciones";
 	
 	public OperacionIdea isLight(Idea idea, String username){
 		for (OperacionIdea o : idea.getOperaciones()) {
@@ -104,9 +107,6 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 				dto.setIsLight(false);
 			dtos.add(dto);
 		}
-//		for (Idea i : ideas) {
-//			dtos.add(MapEntities.mapIdeaToDTO(i));
-//		}
 		return dtos;
 	}
 	
@@ -180,7 +180,7 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 	
 	public List<IdeaDTO> findProyectos(String username){
 		Map<String,Idea> mapIdea = new HashMap<>();
-		Map<String,String> mapRet = new HashMap<>();
+		Map<String,String> mapRet;
 		List<IdeaFact> facts = new ArrayList<>();
 		List<IdeaDTO> cercanas = new ArrayList<>();
 		List<IdeaDTO> lejanas = new ArrayList<>();
@@ -205,7 +205,7 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 			facts.add(new IdeaFact(idea.getId(),d,true));
 		}
 		IdeaDTO dto;
-		mapRet = ruleBean.fireRules(facts,"mapRecomendaciones", new HashMap<String,String>());
+		mapRet = ruleBean.fireRules(facts,GLOBAL_RULES, new HashMap<String,String>());
 		for (String idea : mapRet.keySet()){
 			dto = MapEntities.mapIdeaToDTO(mapIdea.get(idea));
 			if(mapRet.get(idea).equals(TipoIdeaRecomendacionEnum.CERCANA.name())){
@@ -242,7 +242,7 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 			mapIdea.put(idea.getId(), idea);
 			facts.add(new IdeaFact(idea.getId(),d,false));
 		}
-		mapRet= ruleBean.fireRules(facts,"mapRecomendaciones", new HashMap<String,String>());
+		mapRet= ruleBean.fireRules(facts,GLOBAL_RULES, new HashMap<String,String>());
 		for (String id : mapRet.keySet()) {
 			dto = MapEntities.mapIdeaToDTO(mapIdea.get(id));
 			if(mapRet.get(id).equals(TipoIdeaRecomendacionEnum.LEJANA.name())){
@@ -267,7 +267,7 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 	
 	public List<IdeaDTO> findEmpezar(String username){
 		Map<String,Idea> mapIdea = new HashMap<>();
-		Map<String,String> mapRet = new HashMap<>();
+		Map<String,String> mapRet;
 		List<IdeaFact> facts = new ArrayList<>();
 		List<IdeaDTO> cercanas = new ArrayList<>();
 		List<IdeaDTO> lejanas = new ArrayList<>();
@@ -292,7 +292,7 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 			facts.add(new IdeaFact(idea.getId(),d,true));
 		}
 		IdeaDTO dto;
-		mapRet = ruleBean.fireRules(facts,"mapRecomendaciones", new HashMap<String,String>());
+		mapRet = ruleBean.fireRules(facts,GLOBAL_RULES, new HashMap<String,String>());
 		for (String idea : mapRet.keySet()){
 			dto = MapEntities.mapIdeaToDTO(mapIdea.get(idea));
 			if(mapRet.get(idea).equals(TipoIdeaRecomendacionEnum.CERCANA.name())){
@@ -329,7 +329,7 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 			mapIdea.put(idea.getId(), idea);
 			facts.add(new IdeaFact(idea.getId(),d,false));
 		}
-		mapRet= ruleBean.fireRules(facts,"mapRecomendaciones", new HashMap<String,String>());
+		mapRet= ruleBean.fireRules(facts,GLOBAL_RULES, new HashMap<String,String>());
 		for (String id : mapRet.keySet()) {
 			dto = MapEntities.mapIdeaToDTO(mapIdea.get(id));
 			if(mapRet.get(id).equals(TipoIdeaRecomendacionEnum.LEJANA.name())){
