@@ -121,7 +121,7 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 		List<ObjectId> ids = usuRep.findUsuariosByUsername(usuariosConexion)
 				.stream().map(Usuario::getId).collect(Collectors.toList());
 		Sort sort = new Sort(Direction.DESC,"lights");
-		List<Idea> cercanas = ideaRep.findIdeaContinuar(ids,sort);
+		List<Idea> cercanas = ideaRep.findIdea(ids,sort,"PC");
 		List<Usuario> noRed = usuRep.findMyNoConnections(username);
 		List<String> usuariosNoConexion = new ArrayList<>();
 		for (Usuario usu : noRed) {
@@ -129,7 +129,7 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 		}
 		List<ObjectId> idsNoRed = usuRep.findUsuariosByUsername(usuariosNoConexion)
 				.stream().map(Usuario::getId).collect(Collectors.toList());
-		List<Idea> lejanas = ideaRep.findIdeaContinuar(idsNoRed,sort);
+		List<Idea> lejanas = ideaRep.findIdea(idsNoRed,sort,"PC");
 		cercanas.addAll(lejanas);
 		List<IdeaDTO> dtos = new ArrayList<>();
 		IdeaDTO dto;
@@ -155,7 +155,7 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 		List<ObjectId> ids = usuRep.findUsuariosByUsername(usuariosConexion)
 				.stream().map(Usuario::getId).collect(Collectors.toList());
 		Sort sort = new Sort(Direction.DESC,"lights");
-		List<Idea> cercanas = ideaRep.findIdeaNueva(ids,sort);
+		List<Idea> cercanas = ideaRep.findIdea(ids,sort,"NU");
 		List<Usuario> noRed = usuRep.findMyNoConnections(username);
 		List<String> usuariosNoConexion = new ArrayList<>();
 		for (Usuario usu : noRed) {
@@ -163,7 +163,7 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 		}
 		List<ObjectId> idsNoRed = usuRep.findUsuariosByUsername(usuariosNoConexion)
 				.stream().map(Usuario::getId).collect(Collectors.toList());
-		List<Idea> lejanas = ideaRep.findIdeaNueva(idsNoRed,sort);
+		List<Idea> lejanas = ideaRep.findIdea(idsNoRed,sort,"NU");
 		cercanas.addAll(lejanas);
 		List<IdeaDTO> dtos = new ArrayList<>();
 		IdeaDTO dto;
@@ -195,7 +195,8 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 		Double d ;
 		List<ObjectId> ids = usuRep.findUsuariosByUsernameProfesor(usuariosConexion)
 				.stream().map(Usuario::getId).collect(Collectors.toList());
-		List<Idea> ideasUsuarios = ideaRep.findIdeaRedProyectos(ids);
+		Sort sort = new Sort(Direction.DESC,"lights");
+		List<Idea> ideasUsuarios = ideaRep.findIdea(ids,sort,"PR");
 		for (Idea idea : ideasUsuarios) {
 			d = distBean.calcularDistanciaJaccard(
 				usuario.getAreasConocimiento(),idea.getUsuario().getAreasConocimiento());
@@ -232,7 +233,7 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 		
 		List<Usuario> noConexiones = usuRep.findMyNoConnections(username);
 		List<ObjectId> idNoConexiones = noConexiones.stream().map(Usuario::getId).collect(Collectors.toList());
-		List<Idea> noConexionesIdea = ideaRep.findIdeaRedProyectos(idNoConexiones);
+		List<Idea> noConexionesIdea = ideaRep.findIdea(idNoConexiones,sort,"PR");
 		mapIdea = new HashMap<>();
 		facts = new ArrayList<>();
 		for (Idea idea : noConexionesIdea) {
@@ -281,7 +282,8 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 		Double d ;
 		List<ObjectId> ids = usuRep.findUsuariosByUsernameProfesor(usuariosConexion)
 				.stream().map(Usuario::getId).collect(Collectors.toList());
-		List<Idea> ideasUsuarios = ideaRep.findIdeaRedEmpezar(ids);
+		Sort sort = new Sort(Direction.DESC,"lights");
+		List<Idea> ideasUsuarios = ideaRep.findIdea(ids,sort,"PE");
 		for (Idea idea : ideasUsuarios) {
 			d = distBean.calcularDistanciaJaccard(
 				usuario.getAreasConocimiento(),idea.getUsuario().getAreasConocimiento());
@@ -318,7 +320,7 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 		
 		List<Usuario> noConexiones = usuRep.findMyNoConnections(username);
 		List<ObjectId> idNoConexiones = noConexiones.stream().map(Usuario::getId).collect(Collectors.toList());
-		List<Idea> noConexionesIdea = ideaRep.findIdeaRedEmpezar(idNoConexiones);
+		List<Idea> noConexionesIdea = ideaRep.findIdea(idNoConexiones,sort,"PE");
 		mapIdea = new HashMap<>();
 		facts = new ArrayList<>();
 		for (Idea idea : noConexionesIdea) {
@@ -364,8 +366,8 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 		if(criterio.equals("proyecto")){
 			return findProyectos(username);
 		}
-		if(criterio.equals("continuar")){
-			return findContinuar(username);
+		if(criterio.equals("empezar")){
+			return findEmpezar(username);
 		}
 		return null;
 	}
