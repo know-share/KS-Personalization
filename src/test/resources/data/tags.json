@@ -1,0 +1,26 @@
+[
+	{
+		"id":"idTag1",
+		"nombre":"TAG1"
+	},
+	{
+		"id":"idTag2",
+		"nombre":"TAG2"
+	},
+	{
+		"id":"idTag3",
+		"nombre":"TAG3"
+	},
+	{
+		"id":"idTag4",
+		"nombre":"TAG4"
+	},
+	{
+		"id":"idTag5",
+		"nombre":"TAG5"
+	},
+	{
+		"id":"idTag6",
+		"nombre":"TAG6"
+	}
+]
