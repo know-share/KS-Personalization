@@ -11,6 +11,9 @@ import java.util.stream.Collectors;
 
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -60,6 +63,7 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 
 	private static final String GLOBAL_RULES = "mapRecomendaciones";
 	private static final String SORT_ATTR = "lights";
+	private static final int PAGE_SIZE = 10;
 
 	/**
 	 * Revisa si una idea ya tiene un light del usuario
@@ -77,16 +81,17 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 	}
 
 	@Override
-	public List<IdeaDTO> findRed(String username) {
+	public Page<IdeaDTO> findRed(String username,Integer page) {
 		final Usuario usu = usuRep.findByUsernameIgnoreCase(username);
-		List<InfoUsuario> red = usu.getAmigos();
+		final List<InfoUsuario> red = usu.getAmigos();
 		red.addAll(usu.getSiguiendo());
-		List<String> usernamesRed = new ArrayList<>();
+		final List<String> usernamesRed = new ArrayList<>();
 		for (InfoUsuario inf : red)
 			usernamesRed.add(inf.getUsername());
-		List<ObjectId> usuariosId = usuRep.findUsuariosByUsername(usernamesRed).stream().map(Usuario::getId)
+		final List<ObjectId> usuariosId = usuRep.findUsuariosByUsername(usernamesRed).stream().map(Usuario::getId)
 				.collect(Collectors.toList());
-		List<Idea> ideas = ideaRep.findIdeaRed(usuariosId);
+		final Page<Idea> pageable = ideaRep.findIdeaRed(usuariosId,new PageRequest(page, PAGE_SIZE)); 
+		final List<Idea> ideas = pageable.getContent();
 		List<IdeaDTO> dtos = new ArrayList<>();
 		IdeaDTO dto;
 		for (Idea idea : ideas) {
@@ -97,7 +102,7 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 				dto.setIsLight(false);
 			dtos.add(dto);
 		}
-		return dtos;
+		return new PageImpl<>(dtos, new PageRequest(page, pageable.getSize()), pageable.getTotalElements());
 	}
 
 	private List<IdeaDTO> findByTags(List<Tag> tags, String username) {

@@ -5,6 +5,8 @@ package com.knowshare.enterprise.bean.rules.busqueda;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+
 import com.knowshare.dto.idea.IdeaDTO;
 import com.knowshare.entities.idea.Tag;
 
@@ -22,7 +24,7 @@ public interface BusquedaIdeaFacade {
 	 * @param username del usuario actual
 	 * @return lista de {@link IdeaDTO ideas}
 	 */
-	List<IdeaDTO> findRed(String username);
+	Page<IdeaDTO> findRed(String username,Integer page);
 	
 	/**
 	 * Realiza la búsqueda de ideas según el criterio
