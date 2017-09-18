@@ -118,7 +118,6 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 		return normalizarDistancia(distancia, 3);
 	}
 	
-	
 	public double calcularDistanciaPrefIdeaTags(Map<String,Integer> tags1, Map<String,Integer> tags2){
 		int size = Double.valueOf(Math.pow(2, tags1.size())).intValue() - 1;
 		final ArrayList<ArrayList<Integer>> matrizBinaria = generarMatrizBinaria(tags1.size(),size);
@@ -148,7 +147,7 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 		double pesoTotal = 0;
 		List<Double> porcentajes = new ArrayList<>();
 		List<AreaConocimiento> areasRelacionadas = OperacionsConjuntos.interseccion(areas1, areas2);
-		if(!areasRelacionadas.isEmpty()){
+		if(null != matrizBinaria && !areasRelacionadas.isEmpty()){
 			for (AreaConocimiento areaConocimiento : areas2) {
 				porcentajes.add(areaConocimiento.getPorcentaje());
 			}
