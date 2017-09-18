@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.bson.types.ObjectId;
@@ -34,6 +35,7 @@ import com.knowshare.entities.perfilusuario.InfoUsuario;
 import com.knowshare.entities.perfilusuario.Usuario;
 import com.knowshare.enums.TipoIdeaEnum;
 import com.knowshare.enums.TipoOperacionEnum;
+import com.knowshare.enums.TipoUsuariosEnum;
 import com.knowshare.fact.rules.IdeaFact;
 import com.knowshare.fact.rules.TipoIdeaRecomendacionEnum;
 
@@ -81,7 +83,7 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 	}
 
 	@Override
-	public Page<IdeaDTO> findRed(String username,Integer page) {
+	public Page<IdeaDTO> findRed(String username,Integer page){
 		final Usuario usu = usuRep.findByUsernameIgnoreCase(username);
 		final List<InfoUsuario> red = usu.getAmigos();
 		red.addAll(usu.getSiguiendo());
@@ -92,19 +94,68 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 				.collect(Collectors.toList());
 		final Page<Idea> pageable = ideaRep.findIdeaRed(usuariosId,new PageRequest(page, PAGE_SIZE)); 
 		final List<Idea> ideas = pageable.getContent();
-		List<IdeaDTO> dtos = new ArrayList<>();
-		IdeaDTO dto;
-		for (Idea idea : ideas) {
-			dto = MapEntities.mapIdeaToDTO(idea);
-			if (isLight(idea, username) != null)
-				dto.setIsLight(true);
-			else
-				dto.setIsLight(false);
-			dtos.add(dto);
-		}
+		List<IdeaDTO> dtos = mapIdeas(username, ideas);
+//		IdeaDTO dto;
+//		for (Idea idea : ideas) {
+//			dto = MapEntities.mapIdeaToDTO(idea);
+//			if (isLight(idea, username) != null)
+//				dto.setIsLight(true);
+//			else
+//				dto.setIsLight(false);
+//			dtos.add(dto);
+//		}
 		return new PageImpl<>(dtos, new PageRequest(page, pageable.getSize()), pageable.getTotalElements());
 	}
-
+	
+	private  List<IdeaDTO> findIdeasEstudiante(List<Idea> red,Usuario usuario){
+		double relevancia;
+		Set<String> set ;
+		Map<String,Integer> tags;
+		List<Idea> paraRecomendar = new ArrayList<>();
+		List<Idea> paraNoRecomendar = new ArrayList<>();
+		for (Idea idea : red) {
+			relevancia = 0;
+			tags = new HashMap<>();
+			if(idea.getUsuario().getTipo().equals(TipoUsuariosEnum.ESTUDIANTE.name())){
+				relevancia += distBean.calcularDistanciaPrefIdeaTags(usuario.getPreferenciaIdeas(), idea.getUsuario().getPreferenciaIdeas());
+				relevancia += distBean.calcularDistanciaEnfasis(usuario.getEnfasis(), idea.getUsuario().getEnfasis());
+				relevancia = distBean.normalizarDistancia(relevancia, 2);
+			}else if(idea.getUsuario().getTipo().equals(TipoUsuariosEnum.PROFESOR.name())){
+				if(idea.getTipo().equals(TipoIdeaEnum.PC.name()) || idea.getTipo().equals(TipoIdeaEnum.PE.name())){
+					for (Tag t :idea.getTags()) {
+						tags.put(t.getId(), new Integer(1));
+					}
+					if(idea.getTipo().equals(TipoIdeaEnum.PC.name())){
+						set = idea.getUsuario().getPreferenciaIdeas().keySet();
+						for (String idTag : set) {
+							if(!tags.containsKey(idTag)){
+								tags.put(idTag, idea.getUsuario().getPreferenciaIdeas().get(idTag));
+							}
+						}
+					}
+					
+					relevancia += distBean.calcularDistanciaPrefIdeaTags(usuario.getPreferenciaIdeas(), tags);
+					relevancia += distBean.calcularDistanciaAreasExperticia(usuario.getAreasConocimiento(), idea.getUsuario().getAreasConocimiento());
+					relevancia = distBean.normalizarDistancia(relevancia, 2);	
+				}else{
+					relevancia = -1;
+				}
+			}else if(usuario.getTipo().equals(TipoUsuariosEnum.EGRESADO.name())){
+				if(idea.getTipo().equals(TipoIdeaEnum.PC.name())){
+					for (Tag t :idea.getTags()) {
+						tags.put(t.getId(), new Integer(1));
+					}
+				}
+				relevancia += distBean.calcularDistanciaPrefIdeaTags(usuario.getPreferenciaIdeas(), tags);
+				//TODO no hay que normalizar???
+				
+			}
+			
+			//TODO reglas en drools
+		}
+		return mapIdeas(usuario.getUsername(), paraRecomendar);
+	}
+	
 	private List<IdeaDTO> findByTags(List<Tag> tags, String username) {
 		final Query query = new Query(Criteria.where("tags").all(tags));
 		List<Idea> ideas = mongoTemplate.find(query, Idea.class);

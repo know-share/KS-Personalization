@@ -3,6 +3,7 @@
  */
 package com.knowshare.enterprise.bean.rules.distancias;
 
+import java.awt.image.AreaAveragingScaleFilter;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,6 +12,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -23,6 +26,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.knowshare.dto.academia.CarreraDTO;
 import com.knowshare.dto.perfilusuario.UsuarioDTO;
 import com.knowshare.enterprise.bean.rules.utils.OperacionsConjuntos;
+import com.knowshare.entities.academia.AreaConocimiento;
 import com.knowshare.entities.perfilusuario.Enfasis;
 import com.knowshare.enums.TipoRelacionesPersonalidadEnum;
 
@@ -114,15 +118,8 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 		return normalizarDistancia(distancia, 3);
 	}
 	
-	/**
-	 * Calcula la distancia entre las preferencias de idea de dos usuarios.
-	 * Se arma la matriz con los pesos y con base en eso se calcula
-	 * dicha distancia.
-	 * @param tags1 preferencias de idea del Usuario1
-	 * @param tags2 preferencias de idea del Usuario2
-	 * @return distancia entre ambas preferencias
-	 */
-	private double calcularDistanciaPrefIdeaTags(Map<String,Integer> tags1, Map<String,Integer> tags2){
+	
+	public double calcularDistanciaPrefIdeaTags(Map<String,Integer> tags1, Map<String,Integer> tags2){
 		int size = Double.valueOf(Math.pow(2, tags1.size())).intValue() - 1;
 		final ArrayList<ArrayList<Integer>> matrizBinaria = generarMatrizBinaria(tags1.size(),size);
 		double pesoTotal = 0d;
@@ -143,6 +140,55 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 			}
 		}
 		return 1;
+	}
+	
+	public double calcularDistanciaAreasExperticia(List<AreaConocimiento> areas1,List<AreaConocimiento> areas2){
+		int size = Double.valueOf(Math.pow(2, areas1.size())).intValue() - 1;
+		final ArrayList<ArrayList<Double>> matrizBinaria = generarMatrizBinariaAreasConocimiento(areas1.size(),size);
+		double pesoTotal = 0;
+		List<Double> porcentajes = new ArrayList<>();
+		List<AreaConocimiento> areasRelacionadas = OperacionsConjuntos.interseccion(areas1, areas2);
+		if(!areasRelacionadas.isEmpty()){
+			for (AreaConocimiento areaConocimiento : areas2) {
+				porcentajes.add(areaConocimiento.getPorcentaje());
+			}
+			llenarMatrizConPesosAreasConocimiento(matrizBinaria, porcentajes, areas2.size());
+			final ArrayList<Double> vectorPesos = sumarPesosPorFilasAreasConocimiento(matrizBinaria, areas2.size());
+			final ArrayList<Double> cuantosPesosUnicos = obtenerNumerosUnicosAreasConocimiento(vectorPesos);
+			final ArrayList<ArrayList<Double>> tuplaNormalizada = 
+					normalizarPesosAreasConocimiento(cuantosPesosUnicos,cuantosPesosUnicos.size());
+			for (AreaConocimiento area : areasRelacionadas) {
+				pesoTotal += area.getPorcentaje();	
+			}
+			pesoTotal = pesoTotal * areasRelacionadas.size();
+			for(int i = 0; i < cuantosPesosUnicos.size() ; i++){
+				if(tuplaNormalizada.get(i).get(0) == pesoTotal)
+					return tuplaNormalizada.get(i).get(1);
+			}
+		}
+		return 1;
+	}
+	
+	/**
+	 * Genera la matriz binaria del 0 hasta size con Doubles.
+	 * @param columns número de columnas que tendrá la matriz.
+	 * @param size número de filas que tendrá la matriz
+	 * @return Una matriz con los números binarios.
+	 */
+	private ArrayList<ArrayList<Double>> generarMatrizBinariaAreasConocimiento(int columns, int size){
+		if( columns == 0 )
+			return null;
+		ArrayList<ArrayList<Double>> matrizBinaria = new ArrayList<>();
+		for(int i = 0; i <= size;i++){
+			ArrayList<Double> row = new ArrayList<>();
+			for(int j = 0; j < columns ; j++){
+				int pow = Double.valueOf(Math.pow(2, j)).intValue();
+				int result = (i&pow) == pow?1:0;
+				row.add(0, new Double(result));
+			}
+			matrizBinaria.add(row);
+		}
+		return matrizBinaria;
 	}
 	
 	/**
@@ -188,6 +234,51 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 	}
 	
 	/**
+	 * Se encarga de multiplicar la matriz por los porcentajes de
+	 * las areas de conocimiento.
+	 * @param matrizBinaria
+	 * @param atributoConPeso
+	 * @param numCol
+	 */
+	private void llenarMatrizConPesosAreasConocimiento(
+			ArrayList<ArrayList<Double>> matrizBinaria,
+			Collection<Double> atributoConPeso,
+			int numCol
+		){
+		Double[] pesos = atributoConPeso.toArray(new Double[0]);
+		for(int i = 0;i < Math.pow(2, numCol); i++){
+			for(int j = 0; j < numCol ; j++){
+				matrizBinaria.get(i).set(j, matrizBinaria.get(i).get(j)*pesos[j]);
+			}
+		}
+	}
+	
+	/**
+	 * Suma las filas para obtener un vector con los pesos
+	 * totales en Double.
+	 * @param matrizBinaria
+	 * @param numCol
+	 * @return Vector con los pesos totales por filas.
+	 */
+	private ArrayList<Double> sumarPesosPorFilasAreasConocimiento(
+			ArrayList<ArrayList<Double>> matrizBinaria,
+			int numCol
+		){
+		final ArrayList<Double> vectorPesos = new ArrayList<>();
+		for(int i = 0; i < Math.pow(2, numCol) ; i++){
+			int sum = 0;
+			double contUnos = 0;
+			for(int j = 0; j < numCol ; j++){
+				if(matrizBinaria.get(i).get(j) != 0)
+					contUnos++;
+				sum += matrizBinaria.get(i).get(j);
+			}
+			vectorPesos.add(sum * contUnos);
+		}
+		return vectorPesos;
+	}
+	
+	/**
 	 * Suma las filas para obtener un vector con los pesos
 	 * totales.
 	 * @param matrizBinaria
@@ -229,6 +320,22 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 	}
 	
 	/**
+	 * Crea un nuevo vector con valores únicos y la ordena de forma
+	 * descendente en Doubles.
+	 * @param vectorPesos
+	 * @return Vector ordenado de forma descendente.
+	 */
+	private ArrayList<Double> obtenerNumerosUnicosAreasConocimiento(ArrayList<Double> vectorPesos){
+		ArrayList<Double> unicos = new ArrayList<>();
+		for(Double i: vectorPesos)
+			if(!unicos.contains(i))
+				unicos.add(i);
+		Collections.sort(unicos);
+		Collections.reverse(unicos);
+		return unicos;
+	}
+	
+	/**
 	 * Se obtiene el vector con las distancias según el peso,
 	 * donde el mayor del vector de pesos representa la distancia
 	 * más cercana (0), y el menor peso representa la más lejana
@@ -238,6 +345,34 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 	 * @return Tupla normalizada
 	 */
 	private ArrayList<ArrayList<Double>> normalizarPesos(ArrayList<Integer> vectorPesos, int cuantosPesosUnicos){
+		final ArrayList<ArrayList<Double>> tuplaNormalizada = new ArrayList<>();
+		double normalizacion = 1d/(cuantosPesosUnicos - 1);
+		double aumento = normalizacion;
+		for(int i = 0; i < cuantosPesosUnicos;i++){
+			ArrayList<Double> row = new ArrayList<>();
+			row.add(vectorPesos.get(i).doubleValue());
+			if(i==0)
+				row.add(0d);
+			else if(i == (cuantosPesosUnicos - 1))
+				row.add(1d);
+			else
+				row.add(normalizacion);
+			normalizacion += aumento;
+			tuplaNormalizada.add(row);
+		}
+		return tuplaNormalizada;
+	}
+	
+	/**
+	 * Se obtiene el vector con las distancias según el peso,
+	 * donde el mayor del vector de pesos representa la distancia
+	 * más cercana (0), y el menor peso representa la más lejana
+	 * (1) en Doubles
+	 * @param vectorPesos
+	 * @param cuantosPesosUnicos
+	 * @return Tupla normalizada
+	 */
+	private ArrayList<ArrayList<Double>> normalizarPesosAreasConocimiento(ArrayList<Double> vectorPesos, int cuantosPesosUnicos){
 		final ArrayList<ArrayList<Double>> tuplaNormalizada = new ArrayList<>();
 		double normalizacion = 1d/(cuantosPesosUnicos - 1);
 		double aumento = normalizacion;
@@ -323,13 +458,7 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 		return null;
 	}
 	
-	/**
-	 * Calcula la distancia que hay entre varios énfasis de un usuario dado.
-	 * @param enfasis1 Lista del usuario actual
-	 * @param enfasis2 Lista de la posible conexión
-	 * @return distancia entre los énfasis de cada usuario.
-	 */
-	private double calcularDistanciaEnfasis(List<Enfasis> enfasis1, List<Enfasis> enfasis2){
+	public double calcularDistanciaEnfasis(List<Enfasis> enfasis1, List<Enfasis> enfasis2){
 		List<Enfasis> principales1 = null;
 		List<Enfasis> principales2 = null;
 		if(enfasis1.size() > 2)
@@ -397,13 +526,8 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 		return ((union.size() - interseccion.size()) / union.size());
 	}
 	
-	/**
-	 * Normaliza la distancia según el parámetro max.
-	 * @param distancia a normalizar
-	 * @param max 
-	 * @return distancia normalizada
-	 */
-	private double normalizarDistancia(double distancia, int max){
+	
+	public double normalizarDistancia(double distancia, int max){
 		double min=0;
 		double newMax = 1;
 		double newMin = 0;
