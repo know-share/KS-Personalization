@@ -3,7 +3,6 @@
  */
 package com.knowshare.enterprise.bean.rules.distancias;
 
-import java.awt.image.AreaAveragingScaleFilter;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,8 +11,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -153,9 +150,9 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 			}
 			llenarMatrizConPesosAreasConocimiento(matrizBinaria, porcentajes, areas2.size());
 			final ArrayList<Double> vectorPesos = sumarPesosPorFilasAreasConocimiento(matrizBinaria, areas2.size());
-			final ArrayList<Double> cuantosPesosUnicos = obtenerNumerosUnicosAreasConocimiento(vectorPesos);
+			final ArrayList<Double> cuantosPesosUnicos = obtenerNumerosUnicos(vectorPesos);
 			final ArrayList<ArrayList<Double>> tuplaNormalizada = 
-					normalizarPesosAreasConocimiento(cuantosPesosUnicos,cuantosPesosUnicos.size());
+					normalizarPesos(cuantosPesosUnicos,cuantosPesosUnicos.size());
 			for (AreaConocimiento area : areasRelacionadas) {
 				pesoTotal += area.getPorcentaje();	
 			}
@@ -308,25 +305,10 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 	 * @param vectorPesos
 	 * @return Vector ordenado de forma descendente.
 	 */
-	private ArrayList<Integer> obtenerNumerosUnicos(ArrayList<Integer> vectorPesos){
-		ArrayList<Integer> unicos = new ArrayList<>();
-		for(Integer i: vectorPesos)
-			if(!unicos.contains(i))
-				unicos.add(i);
-		Collections.sort(unicos);
-		Collections.reverse(unicos);
-		return unicos;
-	}
-	
-	/**
-	 * Crea un nuevo vector con valores únicos y la ordena de forma
-	 * descendente en Doubles.
-	 * @param vectorPesos
-	 * @return Vector ordenado de forma descendente.
-	 */
-	private ArrayList<Double> obtenerNumerosUnicosAreasConocimiento(ArrayList<Double> vectorPesos){
-		ArrayList<Double> unicos = new ArrayList<>();
-		for(Double i: vectorPesos)
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	private <T extends Comparable> ArrayList<T> obtenerNumerosUnicos(ArrayList<T> vectorPesos){
+		ArrayList<T> unicos = new ArrayList<>();
+		for(T i: vectorPesos)
 			if(!unicos.contains(i))
 				unicos.add(i);
 		Collections.sort(unicos);
@@ -343,35 +325,7 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 	 * @param cuantosPesosUnicos
 	 * @return Tupla normalizada
 	 */
-	private ArrayList<ArrayList<Double>> normalizarPesos(ArrayList<Integer> vectorPesos, int cuantosPesosUnicos){
-		final ArrayList<ArrayList<Double>> tuplaNormalizada = new ArrayList<>();
-		double normalizacion = 1d/(cuantosPesosUnicos - 1);
-		double aumento = normalizacion;
-		for(int i = 0; i < cuantosPesosUnicos;i++){
-			ArrayList<Double> row = new ArrayList<>();
-			row.add(vectorPesos.get(i).doubleValue());
-			if(i==0)
-				row.add(0d);
-			else if(i == (cuantosPesosUnicos - 1))
-				row.add(1d);
-			else
-				row.add(normalizacion);
-			normalizacion += aumento;
-			tuplaNormalizada.add(row);
-		}
-		return tuplaNormalizada;
-	}
-	
-	/**
-	 * Se obtiene el vector con las distancias según el peso,
-	 * donde el mayor del vector de pesos representa la distancia
-	 * más cercana (0), y el menor peso representa la más lejana
-	 * (1) en Doubles
-	 * @param vectorPesos
-	 * @param cuantosPesosUnicos
-	 * @return Tupla normalizada
-	 */
-	private ArrayList<ArrayList<Double>> normalizarPesosAreasConocimiento(ArrayList<Double> vectorPesos, int cuantosPesosUnicos){
+	private <T extends Number> ArrayList<ArrayList<Double>> normalizarPesos(ArrayList<T> vectorPesos, int cuantosPesosUnicos){
 		final ArrayList<ArrayList<Double>> tuplaNormalizada = new ArrayList<>();
 		double normalizacion = 1d/(cuantosPesosUnicos - 1);
 		double aumento = normalizacion;
@@ -524,7 +478,6 @@ public class DistanciasUsuarioBean implements DistanciasUsuarioFacade{
 		List<T> union = OperacionsConjuntos.union(set1, set2);
 		return ((union.size() - interseccion.size()) / union.size());
 	}
-	
 	
 	public double normalizarDistancia(double distancia, int max){
 		double min=0;

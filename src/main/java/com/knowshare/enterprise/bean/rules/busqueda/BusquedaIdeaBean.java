@@ -95,15 +95,6 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 		final Page<Idea> pageable = ideaRep.findIdeaRed(usuariosId,new PageRequest(page, PAGE_SIZE)); 
 		final List<Idea> ideas = pageable.getContent();
 		List<IdeaDTO> dtos = mapIdeas(username, ideas);
-//		IdeaDTO dto;
-//		for (Idea idea : ideas) {
-//			dto = MapEntities.mapIdeaToDTO(idea);
-//			if (isLight(idea, username) != null)
-//				dto.setIsLight(true);
-//			else
-//				dto.setIsLight(false);
-//			dtos.add(dto);
-//		}
 		return new PageImpl<>(dtos, new PageRequest(page, pageable.getSize()), pageable.getTotalElements());
 	}
 	
