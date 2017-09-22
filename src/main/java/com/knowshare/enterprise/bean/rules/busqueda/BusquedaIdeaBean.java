@@ -31,11 +31,10 @@ import com.knowshare.enterprise.utils.MapEntities;
 import com.knowshare.entities.idea.Idea;
 import com.knowshare.entities.idea.OperacionIdea;
 import com.knowshare.entities.idea.Tag;
-import com.knowshare.entities.ludificacion.CualidadAval;
 import com.knowshare.entities.ludificacion.HabilidadAval;
 import com.knowshare.entities.perfilusuario.InfoUsuario;
 import com.knowshare.entities.perfilusuario.Usuario;
-import com.knowshare.enums.TipoCualidadEnum;
+import com.knowshare.enums.PreferenciaIdeaEnum;
 import com.knowshare.enums.TipoHabilidadEnum;
 import com.knowshare.enums.TipoIdeaEnum;
 import com.knowshare.enums.TipoOperacionEnum;
@@ -96,31 +95,45 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 			usernamesRed.add(inf.getUsername());
 		final List<ObjectId> usuariosId = usuRep.findUsuariosByUsername(usernamesRed).stream().map(Usuario::getId)
 				.collect(Collectors.toList());
-		final Page<Idea> pageable = ideaRep.findIdeaRed(usuariosId,new PageRequest(page, PAGE_SIZE)); 
+		final Page<Idea> pageable = ideaRep.findIdeaRed(usuariosId,new PageRequest(page, PAGE_SIZE));
 		final List<Idea> ideas = pageable.getContent();
-		List<IdeaDTO> dtos = mapIdeas(username, ideas);
+		List<IdeaDTO> dtos = new ArrayList<>();
+		if(usu.getTipo().equals(TipoUsuariosEnum.ESTUDIANTE)){
+			dtos = findIdeasEstudiante(ideas, usu);
+		}else if(usu.getTipo().equals(TipoUsuariosEnum.EGRESADO)){
+			dtos = findIdeasEgresado(ideas, usu);
+		}else if(usu.getTipo().equals(TipoUsuariosEnum.PROFESOR)){
+			dtos = findIdeasProfesor(ideas, usu);
+		}
+		if(usu.getPreferencias().getPreferenciaIdea().equals(PreferenciaIdeaEnum.POR_RELEVANCIA)){
+			dtos.sort((idea1,idea2) -> idea2.getLights().intValue()-idea1.getLights().intValue());
+		}else if(usu.getPreferencias().getPreferenciaIdea().equals(PreferenciaIdeaEnum.ORDEN_CRONOLOGICO)){
+			dtos.sort((idea1,idea2) -> new Long(idea2.getFechaCreacion().getTime()).intValue() - new Long(idea2.getFechaCreacion().getTime()).intValue());
+		}	
 		return new PageImpl<>(dtos, new PageRequest(page, pageable.getSize()), pageable.getTotalElements());
 	}
 	
-	private  List<IdeaDTO> findIdeasProfesor(List<Idea> red,Usuario usuario){
+	private List<IdeaDTO> findIdeasProfesor(List<Idea> red,Usuario usuario){
 		double relevancia;
-		Set<String> set ;
 		Map<String,Integer> tags;
-		List<Idea> paraRecomendar = new ArrayList<>();
-		List<Idea> paraNoRecomendar = new ArrayList<>();
+		List<IdeaDTO> paraRecomendar = new ArrayList<>();
+		List<IdeaDTO> paraNoRecomendar = new ArrayList<>();
 		Map<String,Idea> mapIdea = new HashMap<>();
 		List<IdeaFact> facts = new ArrayList<>();
 		Map<String,String> mapRet = new HashMap<>();	
-		List<CualidadAval> cualidadesProfesionalesUsuario = new ArrayList<>();
-		List<CualidadAval> cualidadesProfesionales = new ArrayList<>();
-		for (CualidadAval cualidadAval : usuario.getCualidadesProfesor()) {
-			if(cualidadAval.getCualidad().getTipo().equals(TipoCualidadEnum.PROFESIONAL))
-				cualidadesProfesionalesUsuario.add(cualidadAval);
+		List<HabilidadAval> hb = new ArrayList<>();
+		List<HabilidadAval> habilidadesUsuario = new ArrayList<>();
+		for (HabilidadAval habilidadAval : usuario.getHabilidades()) {
+			if(habilidadAval.getHabilidad().getTipo().equals(TipoHabilidadEnum.PROFESIONALES)){
+				habilidadesUsuario.add(habilidadAval);
+			}
 		}
 		for (Idea idea : red) {
-			for (CualidadAval cualidadAval : idea.getUsuario().getCualidadesProfesor()) {
-				if(cualidadAval.getCualidad().getTipo().equals(TipoCualidadEnum.PROFESIONAL))
-					cualidadesProfesionales.add(cualidadAval);
+			hb.clear();
+			for (HabilidadAval habilidadAval : idea.getUsuario().getHabilidades()) {
+				if(habilidadAval.getHabilidad().getTipo().equals(TipoHabilidadEnum.PROFESIONALES)){
+					hb.add(habilidadAval);
+				}
 			}
 			relevancia = 0;
 			tags = new HashMap<>();
@@ -129,13 +142,10 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 			}
 			if(idea.getUsuario().getTipo().equals(TipoUsuariosEnum.ESTUDIANTE.name())){
 				relevancia += distBean.calcularDistanciaPrefIdeaTags(usuario.getPreferenciaIdeas(), tags);
-				relevancia += distBean.calcularDistanciaJaccard(cualidadesProfesionalesUsuario, cualidadesProfesionales);//PENDIENTE
+				relevancia += distBean.calcularDistanciaJaccard(habilidadesUsuario, hb);//PENDIENTE
 				relevancia = distBean.normalizarDistancia(relevancia, 2);
 			}else if(idea.getUsuario().getTipo().equals(TipoUsuariosEnum.PROFESOR.name())){
 				if(idea.getTipo().equals(TipoIdeaEnum.PE.name()) || idea.getTipo().equals(TipoIdeaEnum.PR.name())){
-//					for (Tag t :idea.getTags()) {
-//						tags.put(t.getId(), new Integer(1));
-//					}
 					relevancia += distBean.calcularDistanciaPrefIdeaTags(usuario.getPreferenciaIdeas(), tags);
 					relevancia += distBean.calcularDistanciaJaccard(usuario.getAreasConocimiento(), idea.getUsuario().getAreasConocimiento());
 					relevancia = distBean.normalizarDistancia(relevancia, 2);	
@@ -144,33 +154,29 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 				}
 			}else if(usuario.getTipo().equals(TipoUsuariosEnum.EGRESADO.name())){
 				
-				if(idea.getTipo().equals(TipoIdeaEnum.NU.name())){
-//					List<HabilidadAval> hb = new ArrayList<>();
-//					for (HabilidadAval habilidadAval : idea.getUsuario().getHabilidades()) {
-//						if(habilidadAval.getHabilidad().getTipo().equals(TipoHabilidadEnum.PROFESIONALES)){
-//							hb.add(habilidadAval);
-//						}
-//					}
+				if(idea.getTipo().equals(TipoIdeaEnum.NU.name())){					
 					relevancia += distBean.calcularDistanciaPrefIdeaTags(usuario.getPreferenciaIdeas(), tags);
-					relevancia += distBean.calcularDistanciaJaccard(cualidadesProfesionalesUsuario, cualidadesProfesionales);					
+					relevancia += distBean.calcularDistanciaJaccard(habilidadesUsuario, hb);					
 					relevancia = distBean.normalizarDistancia(relevancia, 2);
 				}else{
 					relevancia = -1;
 				}
 			}
 			mapIdea.put(idea.getId(),idea);
-			facts.add(new IdeaFact(idea.getId(), relevancia,false));
-			//TODO reglas en drools
+			facts.add(new IdeaFact(idea.getId(), relevancia,false,true));
 		}
-		return mapIdeas(usuario.getUsername(), paraRecomendar);
+		
+		mapRet= ruleBean.fireRules(facts,GLOBAL_RULES, new HashMap<String,String>());
+		mapFacts(usuario.getUsername(), mapRet, mapIdea, paraRecomendar, paraNoRecomendar,null);
+		paraRecomendar.addAll(paraNoRecomendar);
+		return paraRecomendar;
 	}
 	
 	private  List<IdeaDTO> findIdeasEgresado(List<Idea> red,Usuario usuario){
 		double relevancia;
-		Set<String> set ;
 		Map<String,Integer> tags;
-		List<Idea> paraRecomendar = new ArrayList<>();
-		List<Idea> paraNoRecomendar = new ArrayList<>();
+		List<IdeaDTO> paraRecomendar = new ArrayList<>();
+		List<IdeaDTO> paraNoRecomendar = new ArrayList<>();
 		Map<String,Idea> mapIdea = new HashMap<>();
 		List<IdeaFact> facts = new ArrayList<>();
 		Map<String,String> mapRet = new HashMap<>();
@@ -182,6 +188,7 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 			}
 		}
 		for (Idea idea : red) {
+			habilidadesUsuarioIdea.clear();
 			for (HabilidadAval habilidadAval : idea.getUsuario().getHabilidades()) {
 				if(habilidadAval.getHabilidad().getTipo().equals(TipoHabilidadEnum.PROFESIONALES)){
 					habilidadesUsuarioIdea.add(habilidadAval);
@@ -202,32 +209,34 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 //						tags.put(t.getId(), new Integer(1));
 //					}
 					relevancia += distBean.calcularDistanciaPrefIdeaTags(usuario.getPreferenciaIdeas(), tags);
-//					relevancia = distBean.normalizarDistancia(relevancia, 2);	
+					relevancia = distBean.normalizarDistancia(relevancia, 2);	
 				}else{
 					relevancia = -1;
 				}
 			}else if(usuario.getTipo().equals(TipoUsuariosEnum.EGRESADO.name())){
 				if(idea.getTipo().equals(TipoIdeaEnum.NU.name())){
 					relevancia += distBean.calcularDistanciaPrefIdeaTags(usuario.getPreferenciaIdeas(), tags);
-					relevancia += distBean.calcularDistanciaJaccard(habilidadesUsuario, habilidadesUsuarioIdea);//PENDIENTE
+					relevancia += distBean.calcularDistanciaJaccard(habilidadesUsuario, habilidadesUsuarioIdea);//PENDIENTE	
 					relevancia = distBean.normalizarDistancia(relevancia, 2);
 				}else{
 					relevancia = -1;
 				}
 			}
 			mapIdea.put(idea.getId(),idea);
-			facts.add(new IdeaFact(idea.getId(), relevancia,false));
-			//TODO reglas en drools
+			facts.add(new IdeaFact(idea.getId(), relevancia,false,true));
 		}
-		return mapIdeas(usuario.getUsername(), paraRecomendar);
+		mapRet= ruleBean.fireRules(facts,GLOBAL_RULES, new HashMap<String,String>());
+		mapFacts(usuario.getUsername(), mapRet, mapIdea, paraRecomendar, paraNoRecomendar,null);
+		paraRecomendar.addAll(paraNoRecomendar);
+		return paraRecomendar;
 	}
 	
 	private  List<IdeaDTO> findIdeasEstudiante(List<Idea> red,Usuario usuario){
 		double relevancia;
 		Set<String> set ;
 		Map<String,Integer> tags;
-		List<Idea> paraRecomendar = new ArrayList<>();
-		List<Idea> paraNoRecomendar = new ArrayList<>();
+		List<IdeaDTO> paraRecomendar = new ArrayList<>();
+		List<IdeaDTO> paraNoRecomendar = new ArrayList<>();
 		Map<String,Idea> mapIdea = new HashMap<>();
 		List<IdeaFact> facts = new ArrayList<>();
 		Map<String,String> mapRet = new HashMap<>();	
@@ -243,9 +252,6 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 				relevancia = distBean.normalizarDistancia(relevancia, 2);
 			}else if(idea.getUsuario().getTipo().equals(TipoUsuariosEnum.PROFESOR.name())){
 				if(idea.getTipo().equals(TipoIdeaEnum.PC.name()) || idea.getTipo().equals(TipoIdeaEnum.PE.name())){
-//					for (Tag t :idea.getTags()) {
-//						tags.put(t.getId(), new Integer(1));
-//					}
 					if(idea.getTipo().equals(TipoIdeaEnum.PC.name())){
 						set = idea.getUsuario().getPreferenciaIdeas().keySet();
 						for (String idTag : set) {
@@ -267,15 +273,15 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 						tags.put(t.getId(), new Integer(1));
 					}
 				}
-				relevancia += distBean.calcularDistanciaPrefIdeaTags(usuario.getPreferenciaIdeas(), tags);
-				//TODO no hay que normalizar???
-				
+				relevancia += distBean.calcularDistanciaPrefIdeaTags(usuario.getPreferenciaIdeas(), tags);				
 			}
 			mapIdea.put(idea.getId(),idea);
-			facts.add(new IdeaFact(idea.getId(), relevancia,false));
-			//TODO reglas en drools
+			facts.add(new IdeaFact(idea.getId(), relevancia,false,true));
 		}
-		return mapIdeas(usuario.getUsername(), paraRecomendar);
+		mapRet= ruleBean.fireRules(facts,GLOBAL_RULES, new HashMap<String,String>());
+		mapFacts(usuario.getUsername(), mapRet, mapIdea, paraRecomendar, paraNoRecomendar,null);
+		paraRecomendar.addAll(paraNoRecomendar);
+		return paraRecomendar;
 	}
 	
 	private List<IdeaDTO> findByTags(List<Tag> tags, String username) {
@@ -331,7 +337,7 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 				usuario.getAreasConocimiento(),idea.getUsuario().getAreasConocimiento());
 			idea.getUsuario();
 			mapIdea.put(idea.getId(), idea);
-			facts.add(new IdeaFact(idea.getId(),d,true));
+			facts.add(new IdeaFact(idea.getId(),d,true,false));
 		}
 		mapRet = ruleBean.fireRules(facts,GLOBAL_RULES, new HashMap<String,String>());
 		mapFacts(username, mapRet, mapIdea, cercanas, lejanas, muyLejanas);
@@ -348,7 +354,7 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 			d = distBean.calcularDistanciaJaccard(usuario.getAreasConocimiento(),
 					idea.getUsuario().getAreasConocimiento());
 			mapIdea.put(idea.getId(), idea);
-			facts.add(new IdeaFact(idea.getId(),d,false));
+			facts.add(new IdeaFact(idea.getId(),d,false,false));
 		}
 		mapRet= ruleBean.fireRules(facts,GLOBAL_RULES, new HashMap<String,String>());
 		mapFacts(username, mapRet, mapIdea, cercanas, lejanas, muyLejanas);
