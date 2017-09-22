@@ -138,9 +138,9 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 			relevancia = 0;
 			tags = new HashMap<>();
 			for (Tag t :idea.getTags()) {
-				tags.put(t.getId(), new Integer(1));
+				tags.put(t.getId(), Integer.valueOf(1));
 			}
-			if(idea.getUsuario().getTipo().equals(TipoUsuariosEnum.ESTUDIANTE.name())){
+			if(idea.getUsuario().getTipo().equals(TipoUsuariosEnum.ESTUDIANTE)){
 				relevancia += distBean.calcularDistanciaPrefIdeaTags(usuario.getPreferenciaIdeas(), tags);
 				relevancia += distBean.calcularDistanciaJaccard(habilidadesUsuario, hb);//PENDIENTE
 				relevancia = distBean.normalizarDistancia(relevancia, 2);
@@ -152,8 +152,7 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 				}else{
 					relevancia = -1;
 				}
-			}else if(usuario.getTipo().equals(TipoUsuariosEnum.EGRESADO.name())){
-				
+			}else if(usuario.getTipo().equals(TipoUsuariosEnum.EGRESADO)){
 				if(idea.getTipo().equals(TipoIdeaEnum.NU.name())){					
 					relevancia += distBean.calcularDistanciaPrefIdeaTags(usuario.getPreferenciaIdeas(), tags);
 					relevancia += distBean.calcularDistanciaJaccard(habilidadesUsuario, hb);					
@@ -179,7 +178,7 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 		List<IdeaDTO> paraNoRecomendar = new ArrayList<>();
 		Map<String,Idea> mapIdea = new HashMap<>();
 		List<IdeaFact> facts = new ArrayList<>();
-		Map<String,String> mapRet = new HashMap<>();
+		Map<String,String> mapRet;
 		List<HabilidadAval> habilidadesUsuario = new ArrayList<>();
 		List<HabilidadAval> habilidadesUsuarioIdea = new ArrayList<>();
 		for (HabilidadAval habilidadAval : usuario.getHabilidades()) {
@@ -197,24 +196,21 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 			relevancia = 0;
 			tags = new HashMap<>();
 			for (Tag t :idea.getTags()) {
-				tags.put(t.getId(), new Integer(1));
+				tags.put(t.getId(), Integer.valueOf(1));
 			}
-			if(idea.getUsuario().getTipo().equals(TipoUsuariosEnum.ESTUDIANTE.name())){
+			if(idea.getUsuario().getTipo().equals(TipoUsuariosEnum.ESTUDIANTE)){
 				relevancia += distBean.calcularDistanciaPrefIdeaTags(usuario.getPreferenciaIdeas(), tags);
 				relevancia += distBean.calcularDistanciaJaccard(habilidadesUsuario, habilidadesUsuarioIdea);//PENDIENTE
 				relevancia = distBean.normalizarDistancia(relevancia, 2);
-			}else if(idea.getUsuario().getTipo().equals(TipoUsuariosEnum.PROFESOR.name())){
-				if(idea.getTipo().equals(TipoIdeaEnum.PR.name())){
-//					for (Tag t :idea.getTags()) {
-//						tags.put(t.getId(), new Integer(1));
-//					}
+			}else if(idea.getUsuario().getTipo().equals(TipoUsuariosEnum.PROFESOR)){
+				if(idea.getTipo().equals(TipoIdeaEnum.PR)){
 					relevancia += distBean.calcularDistanciaPrefIdeaTags(usuario.getPreferenciaIdeas(), tags);
 					relevancia = distBean.normalizarDistancia(relevancia, 2);	
 				}else{
 					relevancia = -1;
 				}
-			}else if(usuario.getTipo().equals(TipoUsuariosEnum.EGRESADO.name())){
-				if(idea.getTipo().equals(TipoIdeaEnum.NU.name())){
+			}else if(usuario.getTipo().equals(TipoUsuariosEnum.EGRESADO)){
+				if(idea.getTipo().equals(TipoIdeaEnum.NU)){
 					relevancia += distBean.calcularDistanciaPrefIdeaTags(usuario.getPreferenciaIdeas(), tags);
 					relevancia += distBean.calcularDistanciaJaccard(habilidadesUsuario, habilidadesUsuarioIdea);//PENDIENTE	
 					relevancia = distBean.normalizarDistancia(relevancia, 2);
@@ -239,14 +235,14 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 		List<IdeaDTO> paraNoRecomendar = new ArrayList<>();
 		Map<String,Idea> mapIdea = new HashMap<>();
 		List<IdeaFact> facts = new ArrayList<>();
-		Map<String,String> mapRet = new HashMap<>();	
+		Map<String,String> mapRet;	
 		for (Idea idea : red) {
 			relevancia = 0;
 			tags = new HashMap<>();
 			for (Tag t :idea.getTags()) {
-				tags.put(t.getId(), new Integer(1));
+				tags.put(t.getId(), Integer.valueOf(1));
 			}
-			if(idea.getUsuario().getTipo().equals(TipoUsuariosEnum.ESTUDIANTE.name())){
+			if(idea.getUsuario().getTipo().equals(TipoUsuariosEnum.ESTUDIANTE)){
 				relevancia += distBean.calcularDistanciaPrefIdeaTags(usuario.getPreferenciaIdeas(), tags);
 				relevancia += distBean.calcularDistanciaEnfasis(usuario.getEnfasis(), idea.getUsuario().getEnfasis());
 				relevancia = distBean.normalizarDistancia(relevancia, 2);
@@ -267,8 +263,8 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 				}else{
 					relevancia = -1;
 				}
-			}else if(usuario.getTipo().equals(TipoUsuariosEnum.EGRESADO.name())){
-				if(idea.getTipo().equals(TipoIdeaEnum.PC.name())){
+			}else if(usuario.getTipo().equals(TipoUsuariosEnum.EGRESADO)){
+				if(idea.getTipo().equals(TipoIdeaEnum.PC)){
 					for (Tag t :idea.getTags()) {
 						tags.put(t.getId(), new Integer(1));
 					}
@@ -326,7 +322,14 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 			usuariosConexion.add(i.getUsername());
 		}
 		Double d;
-		final List<ObjectId> ids = usuRep.findUsuariosByUsernameProfesor(usuariosConexion)
+		List<ObjectId> ids;
+		if(tipo.equals(TipoIdeaEnum.PR))
+			ids = usuRep.findUsuariosByUsernameProfesor(usuariosConexion)
+				.stream()
+				.map(Usuario::getId)
+				.collect(Collectors.toList());
+		else
+			ids = usuRep.findUsuariosByUsername(usuariosConexion)
 				.stream()
 				.map(Usuario::getId)
 				.collect(Collectors.toList());
