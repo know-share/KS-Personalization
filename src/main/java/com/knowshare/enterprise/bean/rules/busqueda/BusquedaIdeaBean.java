@@ -93,7 +93,9 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 		final List<String> usernamesRed = new ArrayList<>();
 		for (InfoUsuario inf : red)
 			usernamesRed.add(inf.getUsername());
-		final List<ObjectId> usuariosId = usuRep.findUsuariosByUsername(usernamesRed).stream().map(Usuario::getId)
+		final List<ObjectId> usuariosId = usuRep.findUsuariosByUsername(usernamesRed)
+				.stream()
+				.map(Usuario::getId)
 				.collect(Collectors.toList());
 		final Page<Idea> pageable = ideaRep.findIdeaRed(usuariosId,new PageRequest(page, PAGE_SIZE));
 		final List<Idea> ideas = pageable.getContent();
@@ -108,7 +110,7 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 		if(usu.getPreferencias().getPreferenciaIdea().equals(PreferenciaIdeaEnum.POR_RELEVANCIA)){
 			dtos.sort((idea1,idea2) -> idea2.getLights().intValue()-idea1.getLights().intValue());
 		}else if(usu.getPreferencias().getPreferenciaIdea().equals(PreferenciaIdeaEnum.ORDEN_CRONOLOGICO)){
-			dtos.sort((idea1,idea2) -> new Long(idea2.getFechaCreacion().getTime()).intValue() - new Long(idea2.getFechaCreacion().getTime()).intValue());
+			dtos.sort((idea1,idea2) -> new Long(idea2.getFechaCreacion().getTime()).intValue() - new Long(idea1.getFechaCreacion().getTime()).intValue());
 		}	
 		return new PageImpl<>(dtos, new PageRequest(page, pageable.getSize()), pageable.getTotalElements());
 	}
@@ -120,7 +122,7 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 		List<IdeaDTO> paraNoRecomendar = new ArrayList<>();
 		Map<String,Idea> mapIdea = new HashMap<>();
 		List<IdeaFact> facts = new ArrayList<>();
-		Map<String,String> mapRet = new HashMap<>();	
+		Map<String,String> mapRet;	
 		List<HabilidadAval> hb = new ArrayList<>();
 		List<HabilidadAval> habilidadesUsuario = new ArrayList<>();
 		for (HabilidadAval habilidadAval : usuario.getHabilidades()) {
@@ -142,10 +144,10 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 			}
 			if(idea.getUsuario().getTipo().equals(TipoUsuariosEnum.ESTUDIANTE)){
 				relevancia += distBean.calcularDistanciaPrefIdeaTags(usuario.getPreferenciaIdeas(), tags);
-				relevancia += distBean.calcularDistanciaJaccard(habilidadesUsuario, hb);//PENDIENTE
+				relevancia += distBean.calcularDistanciaJaccard(habilidadesUsuario, hb);
 				relevancia = distBean.normalizarDistancia(relevancia, 2);
-			}else if(idea.getUsuario().getTipo().equals(TipoUsuariosEnum.PROFESOR.name())){
-				if(idea.getTipo().equals(TipoIdeaEnum.PE.name()) || idea.getTipo().equals(TipoIdeaEnum.PR.name())){
+			}else if(idea.getUsuario().getTipo().equals(TipoUsuariosEnum.PROFESOR)){
+				if(idea.getTipo().equals(TipoIdeaEnum.PE) || idea.getTipo().equals(TipoIdeaEnum.PR)){
 					relevancia += distBean.calcularDistanciaPrefIdeaTags(usuario.getPreferenciaIdeas(), tags);
 					relevancia += distBean.calcularDistanciaJaccard(usuario.getAreasConocimiento(), idea.getUsuario().getAreasConocimiento());
 					relevancia = distBean.normalizarDistancia(relevancia, 2);	
@@ -153,7 +155,7 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 					relevancia = -1;
 				}
 			}else if(usuario.getTipo().equals(TipoUsuariosEnum.EGRESADO)){
-				if(idea.getTipo().equals(TipoIdeaEnum.NU.name())){					
+				if(idea.getTipo().equals(TipoIdeaEnum.NU)){					
 					relevancia += distBean.calcularDistanciaPrefIdeaTags(usuario.getPreferenciaIdeas(), tags);
 					relevancia += distBean.calcularDistanciaJaccard(habilidadesUsuario, hb);					
 					relevancia = distBean.normalizarDistancia(relevancia, 2);
@@ -246,9 +248,9 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 				relevancia += distBean.calcularDistanciaPrefIdeaTags(usuario.getPreferenciaIdeas(), tags);
 				relevancia += distBean.calcularDistanciaEnfasis(usuario.getEnfasis(), idea.getUsuario().getEnfasis());
 				relevancia = distBean.normalizarDistancia(relevancia, 2);
-			}else if(idea.getUsuario().getTipo().equals(TipoUsuariosEnum.PROFESOR.name())){
-				if(idea.getTipo().equals(TipoIdeaEnum.PC.name()) || idea.getTipo().equals(TipoIdeaEnum.PE.name())){
-					if(idea.getTipo().equals(TipoIdeaEnum.PC.name())){
+			}else if(idea.getUsuario().getTipo().equals(TipoUsuariosEnum.PROFESOR)){
+				if(idea.getTipo().equals(TipoIdeaEnum.PC) || idea.getTipo().equals(TipoIdeaEnum.PE)){
+					if(idea.getTipo().equals(TipoIdeaEnum.PC)){
 						set = idea.getUsuario().getPreferenciaIdeas().keySet();
 						for (String idTag : set) {
 							if(!tags.containsKey(idTag)){
@@ -266,7 +268,7 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 			}else if(usuario.getTipo().equals(TipoUsuariosEnum.EGRESADO)){
 				if(idea.getTipo().equals(TipoIdeaEnum.PC)){
 					for (Tag t :idea.getTags()) {
-						tags.put(t.getId(), new Integer(1));
+						tags.put(t.getId(), Integer.valueOf(1));
 					}
 				}
 				relevancia += distBean.calcularDistanciaPrefIdeaTags(usuario.getPreferenciaIdeas(), tags);				
