@@ -1,0 +1,32 @@
+[
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23002,"counter":1},
+		"nombre": "Cualidad 1",
+		"tipo": "PROFESOR"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23002,"counter":2},
+		"nombre": "Cualidad 2",
+		"tipo": "PROFESOR"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23002,"counter":3},
+		"nombre": "Cualidad 3",
+		"tipo": "PROFESOR"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23002,"counter":4},
+		"nombre": "Cualidad 4",
+		"tipo": "PROFESOR"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23002,"counter":5},
+		"nombre": "Cualidad 5",
+		"tipo": "PROFESOR"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23002,"counter":6},
+		"nombre": "Cualidad 6",
+		"tipo": "PROFESOR"
+	}
+]

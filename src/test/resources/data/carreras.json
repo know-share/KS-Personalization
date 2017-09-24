@@ -1,0 +1,52 @@
+[
+	{
+		"id": "idCarreraSistemas",
+		"nombre": "Ingeniería de sistemas",
+		"facultad": "Ingeniería",
+		"carrerasAfines": [],
+		"enfasis": [
+			"Enfasis sistemas 1",
+			"Enfasis sistemas 2",
+			"Enfasis sistemas 3",
+			"Enfasis sistemas 4"
+		],
+		"areaConocimiento": [
+			"AC sistemas 1",
+			"AC sistemas 2",
+			"AC sistemas 3"
+		]
+	},
+	{
+		"id": "idCarreraCivil",
+		"nombre": "Ingeniería civil",
+		"facultad": "Ingeniería",
+		"carrerasAfines": [],
+		"enfasis": [
+			"Enfasis civil 1",
+			"Enfasis civil 2",
+			"Enfasis civil 3",
+			"Enfasis civil 4"
+		],
+		"areaConocimiento": [
+			"AC civil 1",
+			"AC civil 2",
+			"AC civil 3"
+		]
+	},
+	{
+		"id": "idCarreraElectronica",
+		"nombre": "Ingeniería electrónica",
+		"facultad": "Ingeniería",
+		"carrerasAfines": [],
+		"enfasis": [
+			"Enfasis electronica 1",
+			"Enfasis electronica 2",
+			"Enfasis electronica 3"
+		],
+		"areaConocimiento": [
+			"AC electronica 1",
+			"AC electronica 2",
+			"AC electronica 3"
+		]
+	}
+]

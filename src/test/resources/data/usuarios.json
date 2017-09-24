@@ -1,0 +1,501 @@
+[
+	{
+		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":1},
+		"username": "Estudiante 1",
+		"password": "8e21d61d91c6c6e1f3137b783a1b524d",
+		"nombre": "Estudiante",
+		"apellido": "Uno",
+		"correo": "estudiante1@mail.com",
+		"tipo": "ESTUDIANTE",
+		"habilidades": [],
+		"enfasis":[],
+		"areasConocimiento": [],
+		"amigos": [],
+		"seguidores": [],
+		"siguiendo": [],
+		"solicitudesAmistad": [],
+		"gustos": [],
+		"carreras": [],
+		"personalidad": {
+			"nombre":
+		},
+		"preferenciaIdeas":{}
+	},{
+		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":2},
+		"username": "Estudiante 2",
+		"password": "8e21d61d91c6c6e1f3137b783a1b524d",
+		"nombre": "Estudiante",
+		"apellido": "Dos",
+		"correo": "estudiante2@mail.com",
+		"tipo": "ESTUDIANTE",
+		"habilidades": [],
+		"enfasis":[],
+		"areasConocimiento": [],
+		"amigos": [],
+		"seguidores": [],
+		"siguiendo": [],
+		"solicitudesAmistad": [],
+		"gustos": [],
+		"carreras": [],
+		"personalidad": {
+			"nombre":
+		},
+		"preferenciaIdeas":{}
+	},{
+		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":3},
+		"username": "Estudiante 3",
+		"password": "8e21d61d91c6c6e1f3137b783a1b524d",
+		"nombre": "Estudiante",
+		"apellido": "Tres",
+		"correo": "estudiante3@mail.com",
+		"tipo": "ESTUDIANTE",
+		"habilidades": [],
+		"enfasis":[],
+		"areasConocimiento": [],
+		"amigos": [],
+		"seguidores": [],
+		"siguiendo": [],
+		"solicitudesAmistad": [],
+		"gustos": [],
+		"carreras": [],
+		"personalidad": {
+			"nombre":
+		},
+		"preferenciaIdeas":{}
+	},{
+		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":4},
+		"username": "Estudiante 4",
+		"password": "8e21d61d91c6c6e1f3137b783a1b524d",
+		"nombre": "Estudiante",
+		"apellido": "Cuatro",
+		"correo": "estudiante4@mail.com",
+		"tipo": "ESTUDIANTE",
+		"habilidades": [],
+		"enfasis":[],
+		"areasConocimiento": [],
+		"amigos": [],
+		"seguidores": [],
+		"siguiendo": [],
+		"solicitudesAmistad": [],
+		"gustos": [],
+		"carreras": [],
+		"personalidad": {
+			"nombre":
+		},
+		"preferenciaIdeas":{}
+	},{
+		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":5},
+		"username": "Estudiante 5",
+		"password": "8e21d61d91c6c6e1f3137b783a1b524d",
+		"nombre": "Estudiante",
+		"apellido": "Cinco",
+		"correo": "estudiante5@mail.com",
+		"tipo": "ESTUDIANTE",
+		"habilidades": [],
+		"enfasis":[],
+		"areasConocimiento": [],
+		"amigos": [],
+		"seguidores": [],
+		"siguiendo": [],
+		"solicitudesAmistad": [],
+		"gustos": [],
+		"carreras": [],
+		"personalidad": {
+			"nombre":
+		},
+		"preferenciaIdeas":{}
+	},{
+		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":6},
+		"username": "Estudiante 6",
+		"password": "8e21d61d91c6c6e1f3137b783a1b524d",
+		"nombre": "Estudiante",
+		"apellido": "Seis",
+		"correo": "estudiante6@mail.com",
+		"tipo": "ESTUDIANTE",
+		"habilidades": [],
+		"enfasis":[],
+		"areasConocimiento": [],
+		"amigos": [],
+		"seguidores": [],
+		"siguiendo": [],
+		"solicitudesAmistad": [],
+		"gustos": [],
+		"carreras": [],
+		"personalidad": {
+			"nombre":
+		},
+		"preferenciaIdeas":{}
+	},{
+		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":7},
+		"username": "Estudiante 7",
+		"password": "8e21d61d91c6c6e1f3137b783a1b524d",
+		"nombre": "Estudiante",
+		"apellido": "Siete",
+		"correo": "estudiante7@mail.com",
+		"tipo": "ESTUDIANTE",
+		"habilidades": [],
+		"enfasis":[],
+		"areasConocimiento": [],
+		"amigos": [],
+		"seguidores": [],
+		"siguiendo": [],
+		"solicitudesAmistad": [],
+		"gustos": [],
+		"carreras": [],
+		"personalidad": {
+			"nombre":
+		},
+		"preferenciaIdeas":{}
+	},{
+		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":8},
+		"username": "Estudiante 8",
+		"password": "8e21d61d91c6c6e1f3137b783a1b524d",
+		"nombre": "Estudiante",
+		"apellido": "Ocho",
+		"correo": "estudiante8@mail.com",
+		"tipo": "ESTUDIANTE",
+		"habilidades": [],
+		"enfasis":[],
+		"areasConocimiento": [],
+		"amigos": [],
+		"seguidores": [],
+		"siguiendo": [],
+		"solicitudesAmistad": [],
+		"gustos": [],
+		"carreras": [],
+		"personalidad": {
+			"nombre":
+		},
+		"preferenciaIdeas":{}
+	},{
+		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":9},
+		"username": "Estudiante 9",
+		"password": "8e21d61d91c6c6e1f3137b783a1b524d",
+		"nombre": "Estudiante",
+		"apellido": "Nueve",
+		"correo": "estudiante9@mail.com",
+		"tipo": "ESTUDIANTE",
+		"habilidades": [],
+		"enfasis":[],
+		"areasConocimiento": [],
+		"amigos": [],
+		"seguidores": [],
+		"siguiendo": [],
+		"solicitudesAmistad": [],
+		"gustos": [],
+		"carreras": [],
+		"personalidad": {
+			"nombre":
+		},
+		"preferenciaIdeas":{}
+	},{
+		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":10},
+		"username": "Estudiante 10",
+		"password": "8e21d61d91c6c6e1f3137b783a1b524d",
+		"nombre": "Estudiante",
+		"apellido": "Diez",
+		"correo": "estudiante10@mail.com",
+		"tipo": "ESTUDIANTE",
+		"habilidades": [],
+		"enfasis":[],
+		"areasConocimiento": [],
+		"amigos": [],
+		"seguidores": [],
+		"siguiendo": [],
+		"solicitudesAmistad": [],
+		"gustos": [],
+		"carreras": [],
+		"personalidad": {
+			"nombre":
+		},
+		"preferenciaIdeas":{}
+	},{
+		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":11},
+		"username": "Profesor 1",
+		"password": "8e21d61d91c6c6e1f3137b783a1b524d",
+		"nombre": "Profesor",
+		"apellido": "Uno",
+		"correo": "profesor1@mail.com",
+		"tipo": "PROFESOR",
+		"habilidades": [],
+		"cualidades": [],
+		"enfasis":[],
+		"areasConocimiento": [],
+		"amigos": [],
+		"seguidores": [],
+		"siguiendo": [],
+		"solicitudesAmistad": [],
+		"carreras": [],
+		"personalidad": {
+			"nombre":
+		},
+		"preferenciaIdeas":{}
+	},{
+		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":12},
+		"username": "Profesor 2",
+		"password": "8e21d61d91c6c6e1f3137b783a1b524d",
+		"nombre": "Profesor",
+		"apellido": "Dos",
+		"correo": "profesor2@mail.com",
+		"tipo": "PROFESOR",
+		"habilidades": [],
+		"cualidades": [],
+		"enfasis":[],
+		"areasConocimiento": [],
+		"amigos": [],
+		"seguidores": [],
+		"siguiendo": [],
+		"solicitudesAmistad": [],
+		"carreras": [],
+		"personalidad": {
+			"nombre":
+		},
+		"preferenciaIdeas":{}
+	},{
+		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":13},
+		"username": "Profesor 3",
+		"password": "8e21d61d91c6c6e1f3137b783a1b524d",
+		"nombre": "Profesor",
+		"apellido": "Tres",
+		"correo": "profesor3@mail.com",
+		"tipo": "PROFESOR",
+		"habilidades": [],
+		"cualidades": [],
+		"enfasis":[],
+		"areasConocimiento": [],
+		"amigos": [],
+		"seguidores": [],
+		"siguiendo": [],
+		"solicitudesAmistad": [],
+		"carreras": [],
+		"personalidad": {
+			"nombre":
+		},
+		"preferenciaIdeas":{}
+	},{
+		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":14},
+		"username": "Profesor 4",
+		"password": "8e21d61d91c6c6e1f3137b783a1b524d",
+		"nombre": "Profesor",
+		"apellido": "Cuatro",
+		"correo": "profesor4@mail.com",
+		"tipo": "PROFESOR",
+		"habilidades": [],
+		"cualidades": [],
+		"enfasis":[],
+		"areasConocimiento": [],
+		"amigos": [],
+		"seguidores": [],
+		"siguiendo": [],
+		"solicitudesAmistad": [],
+		"carreras": [],
+		"personalidad": {
+			"nombre":
+		},
+		"preferenciaIdeas":{}
+	},{
+		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":15},
+		"username": "Profesor 5",
+		"password": "8e21d61d91c6c6e1f3137b783a1b524d",
+		"nombre": "Profesor",
+		"apellido": "Cinco",
+		"correo": "profesor5@mail.com",
+		"tipo": "PROFESOR",
+		"habilidades": [],
+		"cualidades": [],
+		"enfasis":[],
+		"areasConocimiento": [],
+		"amigos": [],
+		"seguidores": [],
+		"siguiendo": [],
+		"solicitudesAmistad": [],
+		"carreras": [],
+		"personalidad": {
+			"nombre":
+		},
+		"preferenciaIdeas":{}
+	},{
+		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":16},
+		"username": "Profesor 6",
+		"password": "8e21d61d91c6c6e1f3137b783a1b524d",
+		"nombre": "Profesor",
+		"apellido": "Seis",
+		"correo": "profesor6@mail.com",
+		"tipo": "PROFESOR",
+		"habilidades": [],
+		"cualidades": [],
+		"enfasis":[],
+		"areasConocimiento": [],
+		"amigos": [],
+		"seguidores": [],
+		"siguiendo": [],
+		"solicitudesAmistad": [],
+		"carreras": [],
+		"personalidad": {
+			"nombre":
+		},
+		"preferenciaIdeas":{}
+	},{
+		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":17},
+		"username": "Profesor 7",
+		"password": "8e21d61d91c6c6e1f3137b783a1b524d",
+		"nombre": "Profesor",
+		"apellido": "Siete",
+		"correo": "profesor7@mail.com",
+		"tipo": "PROFESOR",
+		"habilidades": [],
+		"cualidades": [],
+		"enfasis":[],
+		"areasConocimiento": [],
+		"amigos": [],
+		"seguidores": [],
+		"siguiendo": [],
+		"solicitudesAmistad": [],
+		"carreras": [],
+		"personalidad": {
+			"nombre":
+		},
+		"preferenciaIdeas":{}
+	},{
+		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":18},
+		"username": "Profesor 8",
+		"password": "8e21d61d91c6c6e1f3137b783a1b524d",
+		"nombre": "Profesor",
+		"apellido": "Ocho",
+		"correo": "profesor8@mail.com",
+		"tipo": "PROFESOR",
+		"habilidades": [],
+		"cualidades": [],
+		"enfasis":[],
+		"areasConocimiento": [],
+		"amigos": [],
+		"seguidores": [],
+		"siguiendo": [],
+		"solicitudesAmistad": [],
+		"carreras": [],
+		"personalidad": {
+			"nombre":
+		},
+		"preferenciaIdeas":{}
+	},{
+		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":19},
+		"username": "Egresado 1",
+		"password": "8e21d61d91c6c6e1f3137b783a1b524d",
+		"nombre": "Egresado",
+		"apellido": "Uno",
+		"correo": "egresado1@mail.com",
+		"tipo": "EGRESADO",
+		"habilidades": [],
+		"enfasis":[],
+		"areasConocimiento": [],
+		"amigos": [],
+		"seguidores": [],
+		"siguiendo": [],
+		"solicitudesAmistad": [],
+		"carreras": [],
+		"personalidad": {
+			"nombre":
+		},
+		"preferenciaIdeas":{}
+	},{
+		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":20},
+		"username": "Egresado 2",
+		"password": "8e21d61d91c6c6e1f3137b783a1b524d",
+		"nombre": "Egresado",
+		"apellido": "Dos",
+		"correo": "egresado2@mail.com",
+		"tipo": "EGRESADO",
+		"habilidades": [],
+		"enfasis":[],
+		"areasConocimiento": [],
+		"amigos": [],
+		"seguidores": [],
+		"siguiendo": [],
+		"solicitudesAmistad": [],
+		"carreras": [],
+		"personalidad": {
+			"nombre":
+		},
+		"preferenciaIdeas":{}
+	},{
+		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":21},
+		"username": "Egresado 3",
+		"password": "8e21d61d91c6c6e1f3137b783a1b524d",
+		"nombre": "Egresado",
+		"apellido": "Tres",
+		"correo": "egresado3@mail.com",
+		"tipo": "EGRESADO",
+		"habilidades": [],
+		"enfasis":[],
+		"areasConocimiento": [],
+		"amigos": [],
+		"seguidores": [],
+		"siguiendo": [],
+		"solicitudesAmistad": [],
+		"carreras": [],
+		"personalidad": {
+			"nombre":
+		},
+		"preferenciaIdeas":{}
+	},{
+		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":22},
+		"username": "Egresado 4",
+		"password": "8e21d61d91c6c6e1f3137b783a1b524d",
+		"nombre": "Egresado",
+		"apellido": "Cuatro",
+		"correo": "egresado4@mail.com",
+		"tipo": "EGRESADO",
+		"habilidades": [],
+		"enfasis":[],
+		"areasConocimiento": [],
+		"amigos": [],
+		"seguidores": [],
+		"siguiendo": [],
+		"solicitudesAmistad": [],
+		"carreras": [],
+		"personalidad": {
+			"nombre":
+		},
+		"preferenciaIdeas":{}
+	},{
+		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":23},
+		"username": "Egresado 5",
+		"password": "8e21d61d91c6c6e1f3137b783a1b524d",
+		"nombre": "Egresado",
+		"apellido": "Cinco",
+		"correo": "egresado5@mail.com",
+		"tipo": "EGRESADO",
+		"habilidades": [],
+		"enfasis":[],
+		"areasConocimiento": [],
+		"amigos": [],
+		"seguidores": [],
+		"siguiendo": [],
+		"solicitudesAmistad": [],
+		"carreras": [],
+		"personalidad": {
+			"nombre":
+		},
+		"preferenciaIdeas":{}
+	},{
+		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":24},
+		"username": "Egresado 6",
+		"password": "8e21d61d91c6c6e1f3137b783a1b524d",
+		"nombre": "Egresado",
+		"apellido": "Seis",
+		"correo": "egresado6@mail.com",
+		"tipo": "EGRESADO",
+		"habilidades": [],
+		"enfasis":[],
+		"areasConocimiento": [],
+		"amigos": [],
+		"seguidores": [],
+		"siguiendo": [],
+		"solicitudesAmistad": [],
+		"carreras": [],
+		"personalidad": {
+			"nombre":
+		},
+		"preferenciaIdeas":{}
+	}
+]

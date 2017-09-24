@@ -1,0 +1,176 @@
+[
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":1},
+		"nombre":"Habilidad Personal 1",
+		"tipo": "PERSONALES"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":2},
+		"nombre": "Habilidad Personal 2",
+		"tipo": "PERSONALES"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":3},
+		"nombre": "Habilidad Personal 3",
+		"tipo": "PERSONALES"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":4},
+		"nombre": "Habilidad Personal 4",
+		"tipo": "PERSONALES"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":5},
+		"nombre": "Habilidad Personal 5",
+		"tipo": "PERSONALES"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":6},
+		"nombre": "Habilidad Personal 6",
+		"tipo": "PERSONALES"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":7},
+		"nombre": "Habilidad Profesional sistemas 1",
+		"tipo": "PROFESIONALES",
+		"carrera": {
+			"id": "idCarreraSistemas"
+		}
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":8},
+		"nombre": "Habilidad Profesional sistemas  2",
+		"tipo": "PROFESIONALES",
+		"carrera": {
+			"id": "idCarreraSistemas"
+		}
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":9},
+		"nombre": "Habilidad Profesional sistemas  3",
+		"tipo": "PROFESIONALES",
+		"carrera": {
+			"id": "idCarreraSistemas"
+		}
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":10},
+		"nombre": "Habilidad Profesional sistemas  4",
+		"tipo": "PROFESIONALES",
+		"carrera": {
+			"id": "idCarreraSistemas"
+		}
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":11},
+		"nombre": "Habilidad Profesional sistemas  5",
+		"tipo": "PROFESIONALES",
+		"carrera": {
+			"id": "idCarreraSistemas"
+		}
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":12},
+		"nombre": "Habilidad Profesional sistemas  6",
+		"tipo": "PROFESIONALES",
+		"carrera": {
+			"id": "idCarreraSistemas"
+		}
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":13},
+		"nombre": "Habilidad Profesional civil 1",
+		"tipo": "PROFESIONALES",
+		"carrera": {
+			"id": "idCarreraCivil"
+		}
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":14},
+		"nombre": "Habilidad Profesional civil 2",
+		"tipo": "PROFESIONALES",
+		"carrera": {
+			"id": "idCarreraCivil"
+		}
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":15},
+		"nombre": "Habilidad Profesional civil 3",
+		"tipo": "PROFESIONALES",
+		"carrera": {
+			"id": "idCarreraCivil"
+		}
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":16},
+		"nombre": "Habilidad Profesional civil 4",
+		"tipo": "PROFESIONALES",
+		"carrera": {
+			"id": "idCarreraCivil"
+		}
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":17},
+		"nombre": "Habilidad Profesional civil 5",
+		"tipo": "PROFESIONALES",
+		"carrera": {
+			"id": "idCarreraCivil"
+		}
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":18},
+		"nombre": "Habilidad Profesional civil 6",
+		"tipo": "PROFESIONALES",
+		"carrera": {
+			"id": "idCarreraCivil"
+		}
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":19},
+		"nombre": "Habilidad Profesional electronica 1",
+		"tipo": "PROFESIONALES",
+		"carrera": {
+			"id": "idCarreraElectronica"
+		}
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":20},
+		"nombre": "Habilidad Profesional electronica 2",
+		"tipo": "PROFESIONALES",
+		"carrera": {
+			"id": "idCarreraElectronica"
+		}
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":21},
+		"nombre": "Habilidad Profesional electronica 3",
+		"tipo": "PROFESIONALES",
+		"carrera": {
+			"id": "idCarreraElectronica"
+		}
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":22},
+		"nombre": "Habilidad Profesional electronica 4",
+		"tipo": "PROFESIONALES",
+		"carrera": {
+			"id": "idCarreraElectronica"
+		}
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":23},
+		"nombre": "Habilidad Profesional electronica 5",
+		"tipo": "PROFESIONALES",
+		"carrera": {
+			"id": "idCarreraElectronica"
+		}
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":24},
+		"nombre": "Habilidad Profesional electronica 6",
+		"tipo": "PROFESIONALES",
+		"carrera": {
+			"id": "idCarreraElectronica"
+		}
+	}
+]

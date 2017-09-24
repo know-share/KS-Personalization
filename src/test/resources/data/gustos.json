@@ -1,0 +1,152 @@
+[
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":1},
+		"tipo": "GENERALES",
+		"imagePath": "imgGenerales.png"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":2},
+		"tipo": "GENERALES",
+		"imagePath": "imgGenerales.png"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":3},
+		"tipo": "GENERALES",
+		"imagePath": "imgGenerales.png"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":4},
+		"tipo": "GENERALES",
+		"imagePath": "imgGenerales.png"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":5},
+		"tipo": "GENERALES",
+		"imagePath": "imgGenerales.png"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":6},
+		"tipo": "GENERALES",
+		"imagePath": "imgGenerales.png"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":7},
+		"tipo": "GENERALES",
+		"imagePath": "imgGenerales.png"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":8},
+		"tipo": "GENERALES",
+		"imagePath": "imgGenerales.png"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":9},
+		"tipo": "GENERALES",
+		"imagePath": "imgGenerales.png"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":10},
+		"tipo": "GENERALES",
+		"imagePath": "imgGenerales.png"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":11},
+		"tipo": "DEPORTES",
+		"imagePath": "imgDeportes.png"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":12},
+		"tipo": "DEPORTES",
+		"imagePath": "imgDeportes.png"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":13},
+		"tipo": "DEPORTES",
+		"imagePath": "imgDeportes.png"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":14},
+		"tipo": "DEPORTES",
+		"imagePath": "imgDeportes.png"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":15},
+		"tipo": "DEPORTES",
+		"imagePath": "imgDeportes.png"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":16},
+		"tipo": "DEPORTES",
+		"imagePath": "imgDeportes.png"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":17},
+		"tipo": "DEPORTES",
+		"imagePath": "imgDeportes.png"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":18},
+		"tipo": "DEPORTES",
+		"imagePath": "imgDeportes.png"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":19},
+		"tipo": "DEPORTES",
+		"imagePath": "imgDeportes.png"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":20},
+		"tipo": "DEPORTES",
+		"imagePath": "imgDeportes.png"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":21},
+		"tipo": "ARTES",
+		"imagePath": "imgArtes.png"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":22},
+		"tipo": "ARTES",
+		"imagePath": "imgArtes.png"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":23},
+		"tipo": "ARTES",
+		"imagePath": "imgArtes.png"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":24},
+		"tipo": "ARTES",
+		"imagePath": "imgArtes.png"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":25},
+		"tipo": "ARTES",
+		"imagePath": "imgArtes.png"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":26},
+		"tipo": "ARTES",
+		"imagePath": "imgArtes.png"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":27},
+		"tipo": "ARTES",
+		"imagePath": "imgArtes.png"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":28},
+		"tipo": "ARTES",
+		"imagePath": "imgArtes.png"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":29},
+		"tipo": "ARTES",
+		"imagePath": "imgArtes.png"
+	},
+	{
+		"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":30},
+		"tipo": "ARTES",
+		"imagePath": "imgArtes.png"
+	}
+]
