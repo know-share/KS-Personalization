@@ -1,0 +1,22 @@
+dist: trusty
+language: java
+jdk:
+  - oraclejdk8
+maven: 
+  version: 3.3.9
+before_install:
+  - sudo apt-get remove mongodb* --purge
+  - sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
+  - echo "deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
+  - sudo apt-get update
+  - sudo apt-get install -y mongodb-org
+  - mongo -version
+  - mongod -version
+  - git clone --branch=$TRAVIS_BRANCH https://github.com/know-share/KS-Data.git
+  - cd KS-Data && mvn install
+  - git clone --branch=$TRAVIS_BRANCH https://github.com/know-share/KS-Enterprise.git
+  - cd KS-Enterprise && mvn install -DskipTests
+script: cd $TRAVIS_BUILD_DIR/ && mvn test -B
+after_success:
+  - mvn jacoco:report
+  - bash <(curl -s https://codecov.io/bash)

@@ -11,6 +11,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.bson.types.ObjectId;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -50,6 +52,8 @@ import com.knowshare.fact.rules.TipoIdeaRecomendacionEnum;
  */
 @Component
 public class BusquedaIdeaBean implements BusquedaIdeaFacade {
+	
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
 	private RuleFireFacade ruleBean;
@@ -108,8 +112,10 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 			dtos = findIdeasProfesor(ideas, usu);
 		}
 		if(usu.getPreferencias().getPreferenciaIdea().equals(PreferenciaIdeaEnum.POR_RELEVANCIA)){
+			logger.info("IDEAS HOME: SORTING IDEAS BY RELEVANCIA");
 			dtos.sort((idea1,idea2) -> idea2.getLights().intValue()-idea1.getLights().intValue());
 		}else if(usu.getPreferencias().getPreferenciaIdea().equals(PreferenciaIdeaEnum.ORDEN_CRONOLOGICO)){
+			logger.info("IDEAS HOME: SORTING IDEAS BY DATE");
 			dtos.sort((idea1,idea2) -> new Long(idea2.getFechaCreacion().getTime()).intValue() - new Long(idea1.getFechaCreacion().getTime()).intValue());
 		}	
 		return new PageImpl<>(dtos, new PageRequest(page, pageable.getSize()), pageable.getTotalElements());

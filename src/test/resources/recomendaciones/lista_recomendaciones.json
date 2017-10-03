@@ -1,0 +1,746 @@
+{
+	"Estudiante 10": {
+		"NO_RECOMENDAR": [
+			"Egresado 1",
+			"Profesor 3",
+			"Profesor 5",
+			"Estudiante 6",
+			"Estudiante 7",
+			"Egresado 3",
+			"Estudiante 5",
+			"Estudiante 3"
+		],
+		"CONFIANZA": [
+			"Profesor 7",
+			"Profesor 8",
+			"Estudiante 9"
+		],
+		"RELEVANTE": [
+			"Profesor 6",
+			"Estudiante 8",
+			"Egresado 4",
+			"Profesor 2",
+			"Egresado 5",
+			"Egresado 2",
+			"Profesor 4",
+			"Profesor 1",
+			"Egresado 6",
+			"Estudiante 1",
+			"Estudiante 4",
+			"Estudiante 2"
+		]
+	},
+	"Profesor 7": {
+		"NO_RECOMENDAR": [
+			"Profesor 3",
+			"Egresado 4",
+			"Profesor 2",
+			"Profesor 5",
+			"Estudiante 6",
+			"Profesor 4",
+			"Estudiante 7"
+		],
+		"CONFIANZA": [
+			"Estudiante 10",
+			"Profesor 8",
+			"Estudiante 9"
+		],
+		"RELEVANTE": [
+			"Profesor 6",
+			"Egresado 1",
+			"Estudiante 8",
+			"Egresado 5",
+			"Egresado 2",
+			"Egresado 3",
+			"Profesor 1",
+			"Egresado 6",
+			"Estudiante 1",
+			"Estudiante 4",
+			"Estudiante 5",
+			"Estudiante 2",
+			"Estudiante 3"
+		]
+	},
+	"Profesor 6": {
+		"NO_RECOMENDAR": [
+			"Egresado 1",
+			"Egresado 2",
+			"Estudiante 7",
+			"Egresado 3",
+			"Profesor 1",
+			"Estudiante 1",
+			"Estudiante 4",
+			"Estudiante 5",
+			"Estudiante 2",
+			"Estudiante 3"
+		],
+		"CONFIANZA": [
+			"Estudiante 8"
+		],
+		"RELEVANTE": [
+			"Estudiante 10",
+			"Profesor 7",
+			"Profesor 8",
+			"Profesor 3",
+			"Egresado 4",
+			"Profesor 2",
+			"Estudiante 9",
+			"Egresado 5",
+			"Profesor 5",
+			"Estudiante 6",
+			"Profesor 4",
+			"Egresado 6"
+		]
+	},
+	"Egresado 1": {
+		"NO_RECOMENDAR": [
+			"Estudiante 10",
+			"Profesor 6",
+			"Estudiante 8",
+			"Estudiante 9",
+			"Profesor 5",
+			"Estudiante 6",
+			"Profesor 4"
+		],
+		"CONFIANZA": [
+			"Profesor 2",
+			"Egresado 5",
+			"Egresado 2",
+			"Egresado 3",
+			"Profesor 1",
+			"Egresado 6",
+			"Estudiante 1",
+			"Estudiante 2",
+			"Estudiante 3"
+		],
+		"RELEVANTE": [
+			"Profesor 7",
+			"Profesor 8",
+			"Profesor 3",
+			"Egresado 4",
+			"Estudiante 7",
+			"Estudiante 4",
+			"Estudiante 5"
+		]
+	},
+	"Profesor 8": {
+		"NO_RECOMENDAR": [
+			"Egresado 4",
+			"Profesor 5",
+			"Estudiante 6",
+			"Profesor 4",
+			"Estudiante 7",
+			"Egresado 3",
+			"Profesor 1",
+			"Estudiante 5"
+		],
+		"CONFIANZA": [
+			"Estudiante 10",
+			"Profesor 7",
+			"Estudiante 9"
+		],
+		"RELEVANTE": [
+			"Profesor 6",
+			"Egresado 1",
+			"Profesor 3",
+			"Estudiante 8",
+			"Profesor 2",
+			"Egresado 5",
+			"Egresado 2",
+			"Egresado 6",
+			"Estudiante 1",
+			"Estudiante 4",
+			"Estudiante 2",
+			"Estudiante 3"
+		]
+	},
+	"Estudiante 8": {
+		"NO_RECOMENDAR": [
+			"Egresado 1",
+			"Profesor 3",
+			"Profesor 2",
+			"Egresado 2",
+			"Estudiante 1",
+			"Estudiante 4",
+			"Estudiante 2",
+			"Estudiante 3"
+		],
+		"CONFIANZA": [
+			"Profesor 6",
+			"Egresado 5",
+			"Egresado 6"
+		],
+		"RELEVANTE": [
+			"Estudiante 10",
+			"Profesor 7",
+			"Profesor 8",
+			"Egresado 4",
+			"Estudiante 9",
+			"Profesor 5",
+			"Estudiante 6",
+			"Profesor 4",
+			"Estudiante 7",
+			"Egresado 3",
+			"Profesor 1",
+			"Estudiante 5"
+		]
+	},
+	"Profesor 3": {
+		"NO_RECOMENDAR": [
+			"Estudiante 10",
+			"Profesor 7",
+			"Estudiante 8",
+			"Egresado 4",
+			"Estudiante 9",
+			"Estudiante 6",
+			"Estudiante 4"
+		],
+		"CONFIANZA": [
+			"Estudiante 2"
+		],
+		"RELEVANTE": [
+			"Profesor 6",
+			"Egresado 1",
+			"Profesor 8",
+			"Profesor 2",
+			"Egresado 5",
+			"Profesor 5",
+			"Egresado 2",
+			"Profesor 4",
+			"Estudiante 7",
+			"Egresado 3",
+			"Profesor 1",
+			"Egresado 6",
+			"Estudiante 1",
+			"Estudiante 5",
+			"Estudiante 3"
+		]
+	},
+	"Egresado 4": {
+		"NO_RECOMENDAR": [
+			"Estudiante 10",
+			"Profesor 7",
+			"Profesor 8",
+			"Profesor 3",
+			"Profesor 2",
+			"Profesor 1",
+			"Estudiante 1",
+			"Estudiante 2",
+			"Estudiante 3"
+		],
+		"CONFIANZA": [
+			"Egresado 5",
+			"Estudiante 6",
+			"Profesor 4",
+			"Estudiante 7",
+			"Egresado 3",
+			"Egresado 6",
+			"Estudiante 5"
+		],
+		"RELEVANTE": [
+			"Profesor 6",
+			"Egresado 1",
+			"Estudiante 8",
+			"Estudiante 9",
+			"Profesor 5",
+			"Egresado 2",
+			"Estudiante 4"
+		]
+	},
+	"Estudiante 9": {
+		"NO_RECOMENDAR": [
+			"Profesor 3",
+			"Profesor 5",
+			"Egresado 2",
+			"Estudiante 7",
+			"Egresado 3",
+			"Estudiante 4",
+			"Estudiante 5",
+			"Estudiante 3"
+		],
+		"CONFIANZA": [
+			"Estudiante 10",
+			"Profesor 7",
+			"Profesor 8"
+		],
+		"RELEVANTE": [
+			"Profesor 6",
+			"Egresado 1",
+			"Estudiante 8",
+			"Egresado 4",
+			"Profesor 2",
+			"Egresado 5",
+			"Estudiante 6",
+			"Profesor 4",
+			"Profesor 1",
+			"Egresado 6",
+			"Estudiante 1",
+			"Estudiante 2"
+		]
+	},
+	"Profesor 2": {
+		"NO_RECOMENDAR": [
+			"Profesor 7",
+			"Estudiante 8",
+			"Egresado 4",
+			"Egresado 5",
+			"Profesor 5",
+			"Estudiante 6",
+			"Profesor 4",
+			"Estudiante 7",
+			"Egresado 3",
+			"Egresado 6",
+			"Estudiante 5"
+		],
+		"CONFIANZA": [
+			"Egresado 1",
+			"Egresado 2",
+			"Profesor 1",
+			"Estudiante 2",
+			"Estudiante 3"
+		],
+		"RELEVANTE": [
+			"Estudiante 10",
+			"Profesor 6",
+			"Profesor 8",
+			"Profesor 3",
+			"Estudiante 9",
+			"Estudiante 1",
+			"Estudiante 4"
+		]
+	},
+	"Egresado 5": {
+		"NO_RECOMENDAR": [
+			"Profesor 2",
+			"Profesor 4",
+			"Profesor 1",
+			"Estudiante 1",
+			"Estudiante 4",
+			"Estudiante 2"
+		],
+		"CONFIANZA": [
+			"Egresado 1",
+			"Estudiante 8",
+			"Egresado 4",
+			"Egresado 3",
+			"Egresado 6"
+		],
+		"RELEVANTE": [
+			"Estudiante 10",
+			"Profesor 7",
+			"Profesor 6",
+			"Profesor 8",
+			"Profesor 3",
+			"Estudiante 9",
+			"Profesor 5",
+			"Estudiante 6",
+			"Egresado 2",
+			"Estudiante 7",
+			"Estudiante 5",
+			"Estudiante 3"
+		]
+	},
+	"Estudiante 6": {
+		"NO_RECOMENDAR": [
+			"Estudiante 10",
+			"Profesor 7",
+			"Egresado 1",
+			"Profesor 8",
+			"Profesor 3",
+			"Profesor 2",
+			"Egresado 2",
+			"Profesor 1",
+			"Estudiante 1",
+			"Estudiante 2",
+			"Estudiante 3"
+		],
+		"CONFIANZA": [
+			"Egresado 4",
+			"Profesor 4",
+			"Estudiante 7",
+			"Egresado 3",
+			"Estudiante 5"
+		],
+		"RELEVANTE": [
+			"Profesor 6",
+			"Estudiante 8",
+			"Estudiante 9",
+			"Egresado 5",
+			"Profesor 5",
+			"Egresado 6",
+			"Estudiante 4"
+		]
+	},
+	"Profesor 5": {
+		"NO_RECOMENDAR": [
+			"Estudiante 10",
+			"Profesor 7",
+			"Egresado 1",
+			"Profesor 8",
+			"Profesor 2",
+			"Estudiante 9",
+			"Profesor 1",
+			"Estudiante 1",
+			"Estudiante 2",
+			"Estudiante 3"
+		],
+		"CONFIANZA": [
+			"Profesor 4",
+			"Estudiante 7",
+			"Egresado 3",
+			"Estudiante 4",
+			"Estudiante 5"
+		],
+		"RELEVANTE": [
+			"Profesor 6",
+			"Profesor 3",
+			"Estudiante 8",
+			"Egresado 4",
+			"Egresado 5",
+			"Estudiante 6",
+			"Egresado 2",
+			"Egresado 6"
+		]
+	},
+	"Egresado 2": {
+		"NO_RECOMENDAR": [
+			"Profesor 6",
+			"Estudiante 8",
+			"Estudiante 9",
+			"Estudiante 6",
+			"Profesor 4",
+			"Estudiante 7",
+			"Estudiante 5"
+		],
+		"CONFIANZA": [
+			"Egresado 1",
+			"Profesor 2",
+			"Profesor 1",
+			"Estudiante 1",
+			"Estudiante 2",
+			"Estudiante 3"
+		],
+		"RELEVANTE": [
+			"Estudiante 10",
+			"Profesor 7",
+			"Profesor 8",
+			"Profesor 3",
+			"Egresado 4",
+			"Egresado 5",
+			"Profesor 5",
+			"Egresado 3",
+			"Egresado 6",
+			"Estudiante 4"
+		]
+	},
+	"Estudiante 7": {
+		"NO_RECOMENDAR": [
+			"Estudiante 10",
+			"Profesor 7",
+			"Profesor 6",
+			"Profesor 8",
+			"Profesor 2",
+			"Estudiante 9",
+			"Profesor 1",
+			"Estudiante 1",
+			"Estudiante 2"
+		],
+		"CONFIANZA": [
+			"Egresado 4",
+			"Profesor 5",
+			"Estudiante 6",
+			"Egresado 3",
+			"Estudiante 5"
+		],
+		"RELEVANTE": [
+			"Egresado 1",
+			"Profesor 3",
+			"Estudiante 8",
+			"Egresado 5",
+			"Egresado 2",
+			"Profesor 4",
+			"Egresado 6",
+			"Estudiante 4",
+			"Estudiante 3"
+		]
+	},
+	"Profesor 4": {
+		"NO_RECOMENDAR": [
+			"Profesor 7",
+			"Egresado 1",
+			"Profesor 8",
+			"Profesor 2",
+			"Egresado 5",
+			"Egresado 2",
+			"Profesor 1",
+			"Egresado 6",
+			"Estudiante 1",
+			"Estudiante 2",
+			"Estudiante 3"
+		],
+		"CONFIANZA": [
+			"Egresado 4",
+			"Profesor 5",
+			"Estudiante 6"
+		],
+		"RELEVANTE": [
+			"Estudiante 10",
+			"Profesor 6",
+			"Profesor 3",
+			"Estudiante 8",
+			"Estudiante 9",
+			"Estudiante 7",
+			"Egresado 3",
+			"Estudiante 4",
+			"Estudiante 5"
+		]
+	},
+	"Egresado 3": {
+		"NO_RECOMENDAR": [
+			"Estudiante 10",
+			"Profesor 6",
+			"Profesor 8",
+			"Profesor 2",
+			"Estudiante 9",
+			"Profesor 1",
+			"Estudiante 2"
+		],
+		"CONFIANZA": [
+			"Egresado 1",
+			"Egresado 4",
+			"Egresado 5",
+			"Profesor 5",
+			"Estudiante 6",
+			"Estudiante 7",
+			"Egresado 6",
+			"Estudiante 5"
+		],
+		"RELEVANTE": [
+			"Profesor 7",
+			"Profesor 3",
+			"Estudiante 8",
+			"Egresado 2",
+			"Profesor 4",
+			"Estudiante 1",
+			"Estudiante 4",
+			"Estudiante 3"
+		]
+	},
+	"Profesor 1": {
+		"NO_RECOMENDAR": [
+			"Profesor 6",
+			"Profesor 8",
+			"Egresado 4",
+			"Egresado 5",
+			"Profesor 5",
+			"Estudiante 6",
+			"Profesor 4",
+			"Estudiante 7",
+			"Egresado 3",
+			"Egresado 6",
+			"Estudiante 5"
+		],
+		"CONFIANZA": [
+			"Egresado 1",
+			"Profesor 2",
+			"Egresado 2",
+			"Estudiante 1",
+			"Estudiante 3"
+		],
+		"RELEVANTE": [
+			"Estudiante 10",
+			"Profesor 7",
+			"Profesor 3",
+			"Estudiante 8",
+			"Estudiante 9",
+			"Estudiante 4",
+			"Estudiante 2"
+		]
+	},
+	"Egresado 6": {
+		"NO_RECOMENDAR": [
+			"Profesor 2",
+			"Profesor 4",
+			"Profesor 1",
+			"Estudiante 1",
+			"Estudiante 4",
+			"Estudiante 2"
+		],
+		"CONFIANZA": [
+			"Egresado 1",
+			"Estudiante 8",
+			"Egresado 4",
+			"Egresado 5",
+			"Egresado 3"
+		],
+		"RELEVANTE": [
+			"Estudiante 10",
+			"Profesor 7",
+			"Profesor 6",
+			"Profesor 8",
+			"Profesor 3",
+			"Estudiante 9",
+			"Profesor 5",
+			"Estudiante 6",
+			"Egresado 2",
+			"Estudiante 7",
+			"Estudiante 5",
+			"Estudiante 3"
+		]
+	},
+	"Estudiante 1": {
+		"NO_RECOMENDAR": [
+			"Profesor 6",
+			"Estudiante 8",
+			"Egresado 4",
+			"Egresado 5",
+			"Profesor 5",
+			"Estudiante 6",
+			"Profesor 4",
+			"Estudiante 7",
+			"Egresado 6"
+		],
+		"CONFIANZA": [
+			"Egresado 1",
+			"Egresado 2",
+			"Profesor 1",
+			"Estudiante 2",
+			"Estudiante 3"
+		],
+		"RELEVANTE": [
+			"Estudiante 10",
+			"Profesor 7",
+			"Profesor 8",
+			"Profesor 3",
+			"Profesor 2",
+			"Estudiante 9",
+			"Egresado 3",
+			"Estudiante 4",
+			"Estudiante 5"
+		]
+	},
+	"Estudiante 4": {
+		"NO_RECOMENDAR": [
+			"Profesor 6",
+			"Profesor 3",
+			"Estudiante 8",
+			"Estudiante 9",
+			"Egresado 5",
+			"Egresado 6"
+		],
+		"CONFIANZA": [
+			"Profesor 5",
+			"Egresado 2"
+		],
+		"RELEVANTE": [
+			"Estudiante 10",
+			"Profesor 7",
+			"Egresado 1",
+			"Profesor 8",
+			"Egresado 4",
+			"Profesor 2",
+			"Estudiante 6",
+			"Profesor 4",
+			"Estudiante 7",
+			"Egresado 3",
+			"Profesor 1",
+			"Estudiante 1",
+			"Estudiante 5",
+			"Estudiante 2",
+			"Estudiante 3"
+		]
+	},
+	"Estudiante 5": {
+		"NO_RECOMENDAR": [
+			"Estudiante 10",
+			"Profesor 6",
+			"Profesor 8",
+			"Profesor 2",
+			"Estudiante 9",
+			"Egresado 2",
+			"Profesor 1",
+			"Estudiante 2"
+		],
+		"CONFIANZA": [
+			"Egresado 4",
+			"Profesor 5",
+			"Estudiante 6",
+			"Estudiante 7",
+			"Egresado 3",
+			"Egresado 6"
+		],
+		"RELEVANTE": [
+			"Profesor 7",
+			"Egresado 1",
+			"Profesor 3",
+			"Estudiante 8",
+			"Egresado 5",
+			"Profesor 4",
+			"Estudiante 1",
+			"Estudiante 4",
+			"Estudiante 3"
+		]
+	},
+	"Estudiante 2": {
+		"NO_RECOMENDAR": [
+			"Profesor 6",
+			"Estudiante 8",
+			"Egresado 4",
+			"Egresado 5",
+			"Profesor 5",
+			"Estudiante 6",
+			"Profesor 4",
+			"Estudiante 7",
+			"Egresado 3",
+			"Egresado 6",
+			"Estudiante 5"
+		],
+		"CONFIANZA": [
+			"Egresado 1",
+			"Profesor 3",
+			"Profesor 2",
+			"Egresado 2",
+			"Estudiante 1",
+			"Estudiante 3"
+		],
+		"RELEVANTE": [
+			"Estudiante 10",
+			"Profesor 7",
+			"Profesor 8",
+			"Estudiante 9",
+			"Profesor 1",
+			"Estudiante 4"
+		]
+	},
+	"Estudiante 3": {
+		"NO_RECOMENDAR": [
+			"Estudiante 10",
+			"Profesor 6",
+			"Estudiante 8",
+			"Egresado 4",
+			"Estudiante 9",
+			"Profesor 5",
+			"Estudiante 6",
+			"Profesor 4"
+		],
+		"CONFIANZA": [
+			"Egresado 1",
+			"Profesor 2",
+			"Egresado 2",
+			"Profesor 1",
+			"Estudiante 1",
+			"Estudiante 2"
+		],
+		"RELEVANTE": [
+			"Profesor 7",
+			"Profesor 8",
+			"Profesor 3",
+			"Egresado 5",
+			"Estudiante 7",
+			"Egresado 3",
+			"Egresado 6",
+			"Estudiante 4",
+			"Estudiante 5"
+		]
+	}
+}

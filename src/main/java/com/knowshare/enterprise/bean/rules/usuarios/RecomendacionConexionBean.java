@@ -53,7 +53,7 @@ public class RecomendacionConexionBean implements RecomendacionConexionFacade {
 	public void recomendacionesUsuario(UsuarioDTO usuario, List<UsuarioDTO> usuarios,
 			List<RecomendacionDTO> recomendacionesConfianza, List<RecomendacionDTO> recomendacionesRelevante,
 			List<RecomendacionDTO> recomendacionesNoRecomendar) {
-		final List<UsuarioFact> usuariosFact =new ArrayList<>();
+		final List<UsuarioFact> usuariosFact = new ArrayList<>();
 		final Map<String,UsuarioDTO> mapUsuarios = new HashMap<>();
 		final Map<String,Double> mapDistancias = new HashMap<>();
 		double distancia;
