@@ -158,15 +158,15 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 					relevancia += distBean.calcularDistanciaJaccard(usuario.getAreasConocimiento(), idea.getUsuario().getAreasConocimiento());
 					relevancia = distBean.normalizarDistancia(relevancia, 2);	
 				}else{
-					relevancia = -1;
+					relevancia = 1;
 				}
-			}else if(usuario.getTipo().equals(TipoUsuariosEnum.EGRESADO)){
+			}else if(idea.getUsuario().getTipo().equals(TipoUsuariosEnum.EGRESADO)){
 				if(idea.getTipo().equals(TipoIdeaEnum.NU)){					
 					relevancia += distBean.calcularDistanciaPrefIdeaTags(usuario.getPreferenciaIdeas(), tags);
 					relevancia += distBean.calcularDistanciaJaccard(habilidadesUsuario, hb);					
 					relevancia = distBean.normalizarDistancia(relevancia, 2);
 				}else{
-					relevancia = -1;
+					relevancia = 1;
 				}
 			}
 			mapIdea.put(idea.getId(),idea);
@@ -215,15 +215,15 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 					relevancia += distBean.calcularDistanciaPrefIdeaTags(usuario.getPreferenciaIdeas(), tags);
 					relevancia = distBean.normalizarDistancia(relevancia, 2);	
 				}else{
-					relevancia = -1;
+					relevancia = 1;
 				}
-			}else if(usuario.getTipo().equals(TipoUsuariosEnum.EGRESADO)){
+			}else if(idea.getUsuario().getTipo().equals(TipoUsuariosEnum.EGRESADO)){
 				if(idea.getTipo().equals(TipoIdeaEnum.NU)){
 					relevancia += distBean.calcularDistanciaPrefIdeaTags(usuario.getPreferenciaIdeas(), tags);
 					relevancia += distBean.calcularDistanciaJaccard(habilidadesUsuario, habilidadesUsuarioIdea);//PENDIENTE	
 					relevancia = distBean.normalizarDistancia(relevancia, 2);
 				}else{
-					relevancia = -1;
+					relevancia = 1;
 				}
 			}
 			mapIdea.put(idea.getId(),idea);
@@ -269,9 +269,9 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 					relevancia += distBean.calcularDistanciaAreasExperticia(usuario.getAreasConocimiento(), idea.getUsuario().getAreasConocimiento());
 					relevancia = distBean.normalizarDistancia(relevancia, 2);	
 				}else{
-					relevancia = -1;
+					relevancia = 1;
 				}
-			}else if(usuario.getTipo().equals(TipoUsuariosEnum.EGRESADO)){
+			}else if(idea.getUsuario().getTipo().equals(TipoUsuariosEnum.EGRESADO)){
 				if(idea.getTipo().equals(TipoIdeaEnum.PC)){
 					for (Tag t :idea.getTags()) {
 						tags.put(t.getId(), Integer.valueOf(1));

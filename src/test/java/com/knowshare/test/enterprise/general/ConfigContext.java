@@ -37,6 +37,8 @@ import com.knowshare.enterprise.bean.habilidad.HabilidadModBean;
 import com.knowshare.enterprise.bean.habilidad.HabilidadModFacade;
 import com.knowshare.enterprise.bean.rules.RuleFireBean;
 import com.knowshare.enterprise.bean.rules.RuleFireFacade;
+import com.knowshare.enterprise.bean.rules.busqueda.BusquedaIdeaBean;
+import com.knowshare.enterprise.bean.rules.busqueda.BusquedaIdeaFacade;
 import com.knowshare.enterprise.bean.rules.distancias.DistanciasUsuarioBean;
 import com.knowshare.enterprise.bean.rules.distancias.DistanciasUsuarioFacade;
 import com.knowshare.enterprise.bean.rules.usuarios.RecomendacionConexionBean;
@@ -48,6 +50,7 @@ import com.knowshare.enterprise.bean.usuario.UsuarioListFacade;
 import com.knowshare.enterprise.bean.usuario.UsuarioModBean;
 import com.knowshare.enterprise.bean.usuario.UsuarioModFacade;
 import com.knowshare.entities.academia.Carrera;
+import com.knowshare.entities.academia.TrabajoGrado;
 import com.knowshare.entities.idea.Idea;
 import com.knowshare.entities.idea.Tag;
 import com.knowshare.entities.perfilusuario.Cualidad;
@@ -91,6 +94,8 @@ public class ConfigContext {
 				ResourceUtils.getURL("classpath:data/tags.json").openStream(),Tag[].class);
 		Usuario[] usuarios = mapper.readValue(
 				ResourceUtils.getURL("classpath:data/usuarios.json").openStream(),Usuario[].class);
+		TrabajoGrado[] tgs = mapper.readValue(
+				ResourceUtils.getURL("classpath:data/trabajo_grados.json").openStream(), TrabajoGrado[].class);
 		Idea[] ideas = mapper.readValue(
 				ResourceUtils.getURL("classpath:data/ideas.json").openStream(),Idea[].class);
 		
@@ -101,6 +106,7 @@ public class ConfigContext {
 		this.mongoTemplate().insertAll(Arrays.asList(personalidades));
 		this.mongoTemplate().insertAll(Arrays.asList(tags));
 		this.mongoTemplate().insertAll(Arrays.asList(usuarios));
+		this.mongoTemplate().insertAll(Arrays.asList(tgs));
 		this.mongoTemplate().insertAll(Arrays.asList(ideas));
 		
 		String command = "mongodump --host " +env.getProperty("db.host") + " --port " + env.getProperty("db.port")
@@ -178,8 +184,14 @@ public class ConfigContext {
 		return new HabilidadModBean();
 	}
 	
-	@Bean HabilidadListFacade getHabilidadListFacade(){
+	@Bean 
+	public HabilidadListFacade getHabilidadListFacade(){
 		return new HabilidadListBean();
+	}
+	
+	@Bean
+	public BusquedaIdeaFacade getBusquedaIdeaFacade(){
+		return new BusquedaIdeaBean();
 	}
 	
 	@PreDestroy

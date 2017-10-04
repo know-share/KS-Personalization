@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,7 +58,7 @@ public class RecomendacionConexionBeanTest extends AbstractTest{
 	 */
 	@Test
 	@SuppressWarnings("unchecked")
-	public void setDeRecomendacionesTestEstudiantes() {
+	public void setDeRecomendacionesEstudiantesTest() {
 		Usuario estudiante = null;
 		List<RecomendacionDTO> recomendaciones = null;
 		
@@ -79,7 +80,7 @@ public class RecomendacionConexionBeanTest extends AbstractTest{
 	 */
 	@Test
 	@SuppressWarnings("unchecked")
-	public void setDeRecomendacionesTestProfesores() {
+	public void setDeRecomendacionesProfesoresTest() {
 		Usuario estudiante = null;
 		List<RecomendacionDTO> recomendaciones = null;
 		
@@ -101,7 +102,7 @@ public class RecomendacionConexionBeanTest extends AbstractTest{
 	 */
 	@Test
 	@SuppressWarnings("unchecked")
-	public void setDeRecomendacionesTestEgresados(){
+	public void setDeRecomendacionesEgresadosTest(){
 		Usuario estudiante = null;
 		List<RecomendacionDTO> recomendaciones = null;
 		
@@ -138,4 +139,7 @@ public class RecomendacionConexionBeanTest extends AbstractTest{
 			}
 		}
 	}
+	
+	@AfterClass
+	public static void tearDown(){}
 }

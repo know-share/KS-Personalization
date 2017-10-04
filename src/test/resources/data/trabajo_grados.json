@@ -1,0 +1,72 @@
+[
+    {
+    	"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23005,"counter":1},
+        "nombre": "OCLING",
+        "periodoFin": "2015-1",
+        "resumen": "Aplicación para apoyar la enseñaza de química orgánica en universidades",
+        "numEstudiantes": 2
+    },
+    {
+    	"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23005,"counter":2},
+        "nombre": "TurnOs",
+        "periodoFin": "2015-3",
+        "resumen": "Sistema de asignación eficiente de turnos y cálculo de nómina para los empleados de una empresa prestadora de servicios temporales",
+        "numEstudiantes": 3 
+    },
+    {
+    	"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23005,"counter":3},
+        "nombre": "Yanapay",
+        "periodoFin": "2016-1",
+        "resumen": "Sistema de notificaciones y apoyo al rescate usando telefonía móvil",
+        "numEstudiantes": 3 
+    },
+    {
+    	"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23005,"counter":4},
+        "nombre": "Android Wear",
+        "periodoFin": "2016-1",
+        "resumen": "Guias de implementación y características propias de un prototipo para AndroidWear",
+        "numEstudiantes": 2
+    },
+    {
+    	"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23005,"counter":5},
+        "nombre": "Colombia exporta fácil",
+        "periodoFin": "2014-3",
+        "resumen": "Aplicación web centrada en pymes para la exportación de servicios de manufactura",
+        "numEstudiantes": 1 
+    },                        
+    {
+    	"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23005,"counter":6},
+        "nombre": "MV LIFE Gym Mobile",
+        "periodoFin": "2014-1",
+        "resumen": "Aplicación móvil personalizada para usuarios de gimnasio",
+        "numEstudiantes": 1
+    },
+    {
+    	"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23005,"counter":7},
+        "nombre": "MAGIS",
+        "periodoFin": "2015-3",
+        "resumen": "Sistema de orientación vocacional basado en características del individuo así como de su contexto",
+        "numEstudiantes": 2 
+    },
+    {
+    	"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23005,"counter":8},
+        "nombre": "SmartGauge",
+        "periodoFin": "2015-1",
+        "resumen": "plicación móvil de toma de medidas volumétricas de productos de consumo para mejorar los procesos de comercio B2B",
+        "numEstudiantes": 2 
+    },
+    {
+    	"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23005,"counter":9},
+        "nombre": "CALEAN",
+        "periodoFin": "2016-1",
+        "resumen": "Servicios de comunicación en tiempo real entre clientes y comercio",
+        "numEstudiantes": 3 
+    },
+    {
+    	"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23005,"counter":10},
+        "nombre": "iZafiro",
+        "periodoFin": "2016-3",
+        "resumen": "Software modo video-juego de apoyo al aprendizaje en números fraccionarios en niños de 9 a 10 años",
+        "numEstudiantes": 1 
+    }
+]
