@@ -11,6 +11,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.bson.types.ObjectId;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -50,6 +52,8 @@ import com.knowshare.fact.rules.TipoIdeaRecomendacionEnum;
  */
 @Component
 public class BusquedaIdeaBean implements BusquedaIdeaFacade {
+	
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
 	private RuleFireFacade ruleBean;
@@ -108,13 +112,22 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 			dtos = findIdeasProfesor(ideas, usu);
 		}
 		if(usu.getPreferencias().getPreferenciaIdea().equals(PreferenciaIdeaEnum.POR_RELEVANCIA)){
+			logger.info("IDEAS HOME: SORTING IDEAS BY RELEVANCIA");
 			dtos.sort((idea1,idea2) -> idea2.getLights().intValue()-idea1.getLights().intValue());
 		}else if(usu.getPreferencias().getPreferenciaIdea().equals(PreferenciaIdeaEnum.ORDEN_CRONOLOGICO)){
+			logger.info("IDEAS HOME: SORTING IDEAS BY DATE");
 			dtos.sort((idea1,idea2) -> new Long(idea2.getFechaCreacion().getTime()).intValue() - new Long(idea1.getFechaCreacion().getTime()).intValue());
 		}	
 		return new PageImpl<>(dtos, new PageRequest(page, pageable.getSize()), pageable.getTotalElements());
 	}
 	
+	/**
+	 * Ordena las ideas de la red de un usuario
+	 * tipo {@link TipoUsuariosEnum.PROFESOR}
+	 * @param red, ideas de la red previamente obtenidas
+	 * @param usuario, usuario actual
+	 * @return {@link IdeaDTO ideas}
+	 */
 	private List<IdeaDTO> findIdeasProfesor(List<Idea> red,Usuario usuario){
 		double relevancia;
 		Map<String,Integer> tags;
@@ -152,15 +165,15 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 					relevancia += distBean.calcularDistanciaJaccard(usuario.getAreasConocimiento(), idea.getUsuario().getAreasConocimiento());
 					relevancia = distBean.normalizarDistancia(relevancia, 2);	
 				}else{
-					relevancia = -1;
+					relevancia = 1;
 				}
-			}else if(usuario.getTipo().equals(TipoUsuariosEnum.EGRESADO)){
+			}else if(idea.getUsuario().getTipo().equals(TipoUsuariosEnum.EGRESADO)){
 				if(idea.getTipo().equals(TipoIdeaEnum.NU)){					
 					relevancia += distBean.calcularDistanciaPrefIdeaTags(usuario.getPreferenciaIdeas(), tags);
 					relevancia += distBean.calcularDistanciaJaccard(habilidadesUsuario, hb);					
 					relevancia = distBean.normalizarDistancia(relevancia, 2);
 				}else{
-					relevancia = -1;
+					relevancia = 1;
 				}
 			}
 			mapIdea.put(idea.getId(),idea);
@@ -173,6 +186,13 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 		return paraRecomendar;
 	}
 	
+	/**
+	 * Ordena las ideas de la red de un usuario
+	 * tipo {@link TipoUsuariosEnum.EGRESADO}
+	 * @param red, ideas de la red previamente obtenidas
+	 * @param usuario, usuario actual
+	 * @return {@link IdeaDTO ideas}
+	 */
 	private  List<IdeaDTO> findIdeasEgresado(List<Idea> red,Usuario usuario){
 		double relevancia;
 		Map<String,Integer> tags;
@@ -209,15 +229,15 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 					relevancia += distBean.calcularDistanciaPrefIdeaTags(usuario.getPreferenciaIdeas(), tags);
 					relevancia = distBean.normalizarDistancia(relevancia, 2);	
 				}else{
-					relevancia = -1;
+					relevancia = 1;
 				}
-			}else if(usuario.getTipo().equals(TipoUsuariosEnum.EGRESADO)){
+			}else if(idea.getUsuario().getTipo().equals(TipoUsuariosEnum.EGRESADO)){
 				if(idea.getTipo().equals(TipoIdeaEnum.NU)){
 					relevancia += distBean.calcularDistanciaPrefIdeaTags(usuario.getPreferenciaIdeas(), tags);
 					relevancia += distBean.calcularDistanciaJaccard(habilidadesUsuario, habilidadesUsuarioIdea);//PENDIENTE	
 					relevancia = distBean.normalizarDistancia(relevancia, 2);
 				}else{
-					relevancia = -1;
+					relevancia = 1;
 				}
 			}
 			mapIdea.put(idea.getId(),idea);
@@ -229,6 +249,13 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 		return paraRecomendar;
 	}
 	
+	/**
+	 * Ordena las ideas de la red de un usuario
+	 * tipo {@link TipoUsuariosEnum.ESTUDIANTE}
+	 * @param red, ideas de la red previamente obtenidas
+	 * @param usuario, usuario actual
+	 * @return {@link IdeaDTO ideas}
+	 */
 	private  List<IdeaDTO> findIdeasEstudiante(List<Idea> red,Usuario usuario){
 		double relevancia;
 		Set<String> set ;
@@ -263,9 +290,9 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 					relevancia += distBean.calcularDistanciaAreasExperticia(usuario.getAreasConocimiento(), idea.getUsuario().getAreasConocimiento());
 					relevancia = distBean.normalizarDistancia(relevancia, 2);	
 				}else{
-					relevancia = -1;
+					relevancia = 1;
 				}
-			}else if(usuario.getTipo().equals(TipoUsuariosEnum.EGRESADO)){
+			}else if(idea.getUsuario().getTipo().equals(TipoUsuariosEnum.EGRESADO)){
 				if(idea.getTipo().equals(TipoIdeaEnum.PC)){
 					for (Tag t :idea.getTags()) {
 						tags.put(t.getId(), Integer.valueOf(1));
@@ -282,12 +309,25 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 		return paraRecomendar;
 	}
 	
+	/**
+	 * Busca ideas por los tags indicados
+	 * @param tags
+	 * @param username
+	 * @return {@link IdeaDTO ideas}
+	 */
 	private List<IdeaDTO> findByTags(List<Tag> tags, String username) {
 		final Query query = new Query(Criteria.where("tags").all(tags));
 		List<Idea> ideas = mongoTemplate.find(query, Idea.class);
 		return mapIdeas(username, ideas);
 	}
 
+	/**
+	 * Encargado de realizar la búsqueda de ideas para los
+	 * tipos de ideas: {@link TipoIdeaEnum.PC} y {@link TipoIdeaEnum.NU}
+	 * @param username
+	 * @param tipo
+	 * @return {@link IdeaDTO ideas}
+	 */
 	private List<IdeaDTO> findContinuarNueva(String username, TipoIdeaEnum tipo) {
 		Usuario usuario = usuRep.findByUsernameIgnoreCase(username);
 		final List<InfoUsuario> conexiones = usuario.getAmigos();
@@ -309,6 +349,13 @@ public class BusquedaIdeaBean implements BusquedaIdeaFacade {
 		return mapIdeas(username, cercanas);
 	}
 
+	/**
+	 * Encargado de realizar la búsqueda de ideas para los
+	 * tipos de ideas: {@link TipoIdeaEnum.PR} y {@link TipoIdeaEnum.PE}
+	 * @param username
+	 * @param tipo
+	 * @return
+	 */
 	private List<IdeaDTO> findProyectosEmpezar(String username,TipoIdeaEnum tipo){
 		Map<String,Idea> mapIdea = new HashMap<>();
 		Map<String,String> mapRet;

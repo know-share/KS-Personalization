@@ -1,2 +1,424 @@
 [
+	{
+		"id":"NU01",
+		"contenido": "Idea nueva 1",
+		"estado": "NOTG",
+		"fechaCreacion": "2017-08-14T21:12:19.857Z",
+		"tipo": "NU",
+		"lights": 6,
+		"comentarios": 0,
+		"operaciones": [],
+		"compartida": false,
+		"ideasProyecto": [],
+		"usuario": {
+			"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":2}
+		},
+		"tags":[
+			{ "id":"idTag1"	},
+			{ "id":"idTag2"	}
+		]
+	},
+	{
+		"id":"PE01",
+		"contenido": "Idea para empezar 1",
+		"estado": "NOTG",
+		"fechaCreacion": "2017-08-15T21:12:19.857Z",
+		"tipo": "PE",
+		"numeroEstudiantes" : 5,
+		"alcance" : "Alcance para idea PE01",
+		"problematica" : "Problema con número de estudiantes",
+		"lights": 3,
+		"comentarios": 0,
+		"operaciones": [],
+		"compartida": false,
+		"ideasProyecto": [],
+		"usuario": {
+			"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":2}
+		},
+		"tags":[
+			{ "id":"idTag2"	},
+			{ "id":"idTag4"	}
+		]
+	},
+	{
+		"id":"PC01",
+		"contenido": "Idea para continuar 1",
+		"estado": "NOTG",
+		"fechaCreacion": "2017-08-16T21:12:19.857Z",
+		"tipo": "PC",
+		"numeroEstudiantes" : 3,
+		"lights": 10,
+		"comentarios": 0,
+		"operaciones": [],
+		"compartida": false,
+		"ideasProyecto": [],
+		"usuario": {
+			"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":2}
+		},
+		"tags":[
+			{ "id":"idTag6"	},
+			{ "id":"idTag5"	}
+		],
+		"tg":{
+			"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23005,"counter":1}
+		}
+	},
+	{
+		"id":"NU02",
+		"contenido": "Idea nueva 2",
+		"estado": "NOTG",
+		"fechaCreacion": "2017-08-17T21:12:19.857Z",
+		"tipo": "NU",
+		"lights": 8,
+		"comentarios": 0,
+		"operaciones": [],
+		"compartida": false,
+		"ideasProyecto": [],
+		"usuario": {
+			"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":24}
+		},
+		"tags":[
+			{ "id":"idTag3"	},
+			{ "id":"idTag5"	}
+		]
+	},
+	{
+		"id":"PE02",
+		"contenido": "Idea para empezar 2",
+		"estado": "NOTG",
+		"fechaCreacion": "2017-08-18T21:12:19.857Z",
+		"tipo": "PE",
+		"numeroEstudiantes" : 5,
+		"alcance" : "Alcance para idea PE02",
+		"problematica" : "Problema con número de estudiantes",
+		"lights": 1,
+		"comentarios": 0,
+		"operaciones": [],
+		"compartida": false,
+		"ideasProyecto": [],
+		"usuario": {
+			"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":24}
+		},
+		"tags":[
+			{ "id":"idTag1"	},
+			{ "id":"idTag3"	},
+			{ "id":"idTag4"	}
+		]
+	},
+	{
+		"id":"PC02",
+		"contenido": "Idea para continuar 2",
+		"estado": "NOTG",
+		"fechaCreacion": "2017-08-20T21:12:19.857Z",
+		"tipo": "PC",
+		"numeroEstudiantes" : 5,
+		"lights": 0,
+		"comentarios": 0,
+		"operaciones": [],
+		"compartida": false,
+		"ideasProyecto": [],
+		"usuario": {
+			"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":24}
+		},
+		"tags":[
+			{ "id":"idTag6"	}
+		],
+		"tg":{
+			"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23005,"counter":2}
+		}
+	},
+	{
+		"id":"NU03",
+		"contenido": "Idea nueva 3",
+		"estado": "NOTG",
+		"fechaCreacion": "2017-08-21T21:12:19.857Z",
+		"tipo": "NU",
+		"lights": 2,
+		"comentarios": 0,
+		"operaciones": [],
+		"compartida": false,
+		"ideasProyecto": [],
+		"usuario": {
+			"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":5}
+		},
+		"tags":[
+			{ "id":"idTag1"	},
+			{ "id":"idTag2"	}
+		]
+	},
+	{
+		"id":"PE03",
+		"contenido": "Idea para empezar 3",
+		"estado": "NOTG",
+		"fechaCreacion": "2017-08-22T21:12:19.857Z",
+		"tipo": "PE",
+		"numeroEstudiantes" : 1,
+		"alcance" : "Alcance para idea PE03",
+		"problematica" : "Problema con número de estudiantes",
+		"lights": 11,
+		"comentarios": 0,
+		"operaciones": [],
+		"compartida": false,
+		"ideasProyecto": [],
+		"usuario": {
+			"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":5}
+		},
+		"tags":[
+			{ "id":"idTag1"	},
+			{ "id":"idTag5"	}
+		]
+	},
+	{
+		"id":"PC03",
+		"contenido": "Idea para continuar 3",
+		"estado": "NOTG",
+		"fechaCreacion": "2017-08-25T21:12:19.857Z",
+		"tipo": "PC",
+		"numeroEstudiantes" : 5,
+		"lights": 5,
+		"comentarios": 0,
+		"operaciones": [],
+		"compartida": false,
+		"ideasProyecto": [],
+		"usuario": {
+			"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":5}
+		},
+		"tags":[
+			{ "id":"idTag2"	},
+			{ "id":"idTag3"	},
+			{ "id":"idTag4"	},
+			{ "id":"idTag5"	}
+		],
+		"tg":{
+			"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23005,"counter":3}
+		}
+	},
+	{
+		"id":"NU04",
+		"contenido": "Idea nueva 4",
+		"estado": "NOTG",
+		"fechaCreacion": "2017-08-26T21:12:19.857Z",
+		"tipo": "NU",
+		"lights": 0,
+		"comentarios": 0,
+		"operaciones": [],
+		"compartida": false,
+		"ideasProyecto": [],
+		"usuario": {
+			"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":20}
+		},
+		"tags":[
+			{ "id":"idTag4"	},
+			{ "id":"idTag2"	}
+		]
+	},
+	{
+		"id":"PE04",
+		"contenido": "Idea para empezar 4",
+		"estado": "NOTG",
+		"fechaCreacion": "2017-08-27T21:12:19.857Z",
+		"tipo": "PE",
+		"numeroEstudiantes" : 1,
+		"alcance" : "Alcance para idea PE04",
+		"problematica" : "Problema con número de estudiantes",
+		"lights": 3,
+		"comentarios": 0,
+		"operaciones": [],
+		"compartida": false,
+		"ideasProyecto": [],
+		"usuario": {
+			"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":20}
+		},
+		"tags":[
+			{ "id":"idTag6"	},
+			{ "id":"idTag3"	}
+		]
+	},
+	{
+		"id":"PC04",
+		"contenido": "Idea para continuar 4",
+		"estado": "NOTG",
+		"fechaCreacion": "2017-08-30T21:12:19.857Z",
+		"tipo": "PC",
+		"numeroEstudiantes" : 2,
+		"lights": 5,
+		"comentarios": 0,
+		"operaciones": [],
+		"compartida": false,
+		"ideasProyecto": [],
+		"usuario": {
+			"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":20}
+		},
+		"tags":[
+			{ "id":"idTag1"	},
+			{ "id":"idTag5"	},
+			{ "id":"idTag6"	}
+		],
+		"tg":{
+			"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23005,"counter":4}
+		}
+	},
+	{
+		"id":"NU05",
+		"contenido": "Idea nueva 5",
+		"estado": "NOTG",
+		"fechaCreacion": "2017-09-01T21:12:19.857Z",
+		"tipo": "NU",
+		"lights": 20,
+		"comentarios": 0,
+		"operaciones": [],
+		"compartida": false,
+		"ideasProyecto": [],
+		"usuario": {
+			"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":12}
+		},
+		"tags":[
+			{ "id":"idTag4"	},
+			{ "id":"idTag2"	}
+		]
+	},
+	{
+		"id":"PE05",
+		"contenido": "Idea para empezar 5",
+		"estado": "NOTG",
+		"fechaCreacion": "2017-09-02T21:12:19.857Z",
+		"tipo": "PE",
+		"numeroEstudiantes" : 1,
+		"alcance" : "Alcance para idea PE05",
+		"problematica" : "Problema con número de estudiantes",
+		"lights": 4,
+		"comentarios": 0,
+		"operaciones": [],
+		"compartida": false,
+		"ideasProyecto": [],
+		"usuario": {
+			"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":12}
+		},
+		"tags":[
+			{ "id":"idTag4"	}
+		]
+	},
+	{
+		"id":"PC05",
+		"contenido": "Idea para continuar 5",
+		"estado": "NOTG",
+		"fechaCreacion": "2017-09-03T21:12:19.857Z",
+		"tipo": "PC",
+		"numeroEstudiantes" : 5,
+		"lights": 10,
+		"comentarios": 0,
+		"operaciones": [],
+		"compartida": false,
+		"ideasProyecto": [],
+		"usuario": {
+			"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":12}
+		},
+		"tags":[
+			{ "id":"idTag6"	},
+			{ "id":"idTag1"	},
+			{ "id":"idTag5"	}
+		],
+		"tg":{
+			"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23005,"counter":5}
+		}
+	},
+	{
+		"id":"PR01",
+		"contenido": "Idea proyecto 01",
+		"estado": "NOTG",
+		"fechaCreacion": "2017-09-04T21:12:19.857Z",
+		"tipo": "PR",
+		"lights": 0,
+		"comentarios": 0,
+		"operaciones": [],
+		"compartida": false,
+		"ideasProyecto": [],
+		"usuario": {
+			"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":12}
+		},
+		"tags":[
+			{ "id":"idTag6"	}
+		]
+	},
+	{
+		"id":"NU06",
+		"contenido": "Idea nueva 6",
+		"estado": "NOTG",
+		"fechaCreacion": "2017-09-05T21:12:19.857Z",
+		"tipo": "NU",
+		"lights": 5,
+		"comentarios": 0,
+		"operaciones": [],
+		"compartida": false,
+		"ideasProyecto": [],
+		"usuario": {
+			"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":13}
+		},
+		"tags":[
+			{ "id":"idTag5"	},
+			{ "id":"idTag3"	}
+		]
+	},
+	{
+		"id":"PE06",
+		"contenido": "Idea para empezar 6",
+		"estado": "NOTG",
+		"fechaCreacion": "2017-09-06T21:12:19.857Z",
+		"tipo": "PE",
+		"numeroEstudiantes" : 1,
+		"alcance" : "Alcance para idea PE06",
+		"problematica" : "Problema con número de estudiantes",
+		"lights": 4,
+		"comentarios": 0,
+		"operaciones": [],
+		"compartida": false,
+		"ideasProyecto": [],
+		"usuario": {
+			"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":13}
+		},
+		"tags":[
+			{ "id":"idTag3"	}
+		]
+	},
+	{
+		"id":"PC06",
+		"contenido": "Idea para continuar 6",
+		"estado": "NOTG",
+		"fechaCreacion": "2017-09-07T21:12:19.857Z",
+		"tipo": "PC",
+		"numeroEstudiantes" : 1,
+		"lights": 3,
+		"comentarios": 0,
+		"operaciones": [],
+		"compartida": false,
+		"ideasProyecto": [],
+		"usuario": {
+			"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":13}
+		},
+		"tags":[
+			{ "id":"idTag5"	}
+		],
+		"tg":{
+			"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23005,"counter":6}
+		}
+	},
+	{
+		"id":"PR02",
+		"contenido": "Idea proyecto 02",
+		"estado": "NOTG",
+		"fechaCreacion": "2017-09-08T21:12:19.857Z",
+		"tipo": "PR",
+		"lights": 10,
+		"comentarios": 0,
+		"operaciones": [],
+		"compartida": false,
+		"ideasProyecto": [],
+		"usuario": {
+			"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":13}
+		},
+		"tags":[
+			{ "id":"idTag4"	},
+			{ "id":"idTag2"	}
+		]
+	}
 ]

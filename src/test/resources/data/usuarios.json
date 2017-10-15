@@ -7,19 +7,106 @@
 		"apellido": "Uno",
 		"correo": "estudiante1@mail.com",
 		"tipo": "ESTUDIANTE",
-		"habilidades": [],
-		"enfasis":[],
+		"habilidades": [
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":1}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":4}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":3}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":7}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":8}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":11}
+				}
+			}
+		],
+		"enfasis":[
+			{
+				"nombre": "Enfasis sistemas 1",
+				"carrera": "idCarreraSistemas"
+			},
+			{
+				"nombre": "Enfasis sistemas 3",
+				"carrera": "idCarreraSistemas"
+			}
+		],
 		"areasConocimiento": [],
 		"amigos": [],
 		"seguidores": [],
 		"siguiendo": [],
 		"solicitudesAmistad": [],
-		"gustos": [],
-		"carreras": [],
+		"gustos": [
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":1}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":2}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":3}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":11}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":12}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":13}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":21}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":22}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":23}
+			}
+		],
 		"personalidad": {
-			"nombre":
+			"nombre": "INTJ"
 		},
-		"preferenciaIdeas":{}
+		"carreras": [
+			{
+				"id": "idCarreraSistemas"
+			}
+		],
+		"preferenciaIdeas":{
+			"idTag1":3,
+			"idTag2":2,
+			"idTag3":1,
+			"idTag4":5
+		},
+		"preferencias" : {
+			"preferenciaIdea" : "ORDEN_CRONOLOGICO"
+		},
+		"insignias":[]
 	},{
 		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":2},
 		"username": "Estudiante 2",
@@ -28,19 +115,106 @@
 		"apellido": "Dos",
 		"correo": "estudiante2@mail.com",
 		"tipo": "ESTUDIANTE",
-		"habilidades": [],
-		"enfasis":[],
+		"habilidades": [
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":6}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":5}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":4}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":9}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":10}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":12}
+				}
+			}
+		],
+		"enfasis":[
+			{
+				"nombre": "Enfasis sistemas 4",
+				"carrera": "idCarreraSistemas"
+			},
+			{
+				"nombre": "Enfasis sistemas 3",
+				"carrera": "idCarreraSistemas"
+			}
+		],
 		"areasConocimiento": [],
 		"amigos": [],
 		"seguidores": [],
 		"siguiendo": [],
 		"solicitudesAmistad": [],
-		"gustos": [],
-		"carreras": [],
+		"gustos": [
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":4}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":5}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":6}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":14}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":15}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":16}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":24}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":25}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":26}
+			}
+		],
 		"personalidad": {
-			"nombre":
+			"nombre": "INTP"
 		},
-		"preferenciaIdeas":{}
+		"carreras": [
+			{
+				"id": "idCarreraSistemas"
+			}
+		],
+		"preferenciaIdeas":{
+			"idTag5":1,
+			"idTag6":1,
+			"idTag1":3,
+			"idTag2":2
+		},
+		"preferencias" : {
+			"preferenciaIdea" : "ORDEN_CRONOLOGICO"
+		},
+		"insignias":[]
 	},{
 		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":3},
 		"username": "Estudiante 3",
@@ -49,19 +223,103 @@
 		"apellido": "Tres",
 		"correo": "estudiante3@mail.com",
 		"tipo": "ESTUDIANTE",
-		"habilidades": [],
-		"enfasis":[],
+		"habilidades": [
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":6}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":2}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":3}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":7}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":10}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":12}
+				}
+			}
+		],
+		"enfasis":[
+			{
+				"nombre": "Enfasis sistemas 1",
+				"carrera": "idCarreraSistemas"
+			},
+			null
+		],
 		"areasConocimiento": [],
 		"amigos": [],
 		"seguidores": [],
 		"siguiendo": [],
 		"solicitudesAmistad": [],
-		"gustos": [],
-		"carreras": [],
+		"gustos": [
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":7}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":8}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":9}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":17}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":18}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":19}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":27}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":28}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":29}
+			}
+		],
 		"personalidad": {
-			"nombre":
+			"nombre": "ENTJ"
 		},
-		"preferenciaIdeas":{}
+		"carreras": [
+			{
+				"id": "idCarreraSistemas"
+			}
+		],
+		"preferenciaIdeas":{
+			"idTag3":5,
+			"idTag4":6,
+			"idTag5":3,
+			"idTag6":1
+		},
+		"preferencias" : {
+			"preferenciaIdea" : "ORDEN_CRONOLOGICO"
+		},
+		"insignias":[]
 	},{
 		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":4},
 		"username": "Estudiante 4",
@@ -70,19 +328,106 @@
 		"apellido": "Cuatro",
 		"correo": "estudiante4@mail.com",
 		"tipo": "ESTUDIANTE",
-		"habilidades": [],
-		"enfasis":[],
+		"habilidades": [
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":4}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":3}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":2}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":19}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":20}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":21}
+				}
+			}
+		],
+		"enfasis":[
+			{
+				"nombre": "Enfasis electronica 3",
+				"carrera": "idCarreraElectronica"
+			},
+			{
+				"nombre": "Enfasis electronica 1",
+				"carrera": "idCarreraElectronica"
+			}
+		],
 		"areasConocimiento": [],
 		"amigos": [],
 		"seguidores": [],
 		"siguiendo": [],
 		"solicitudesAmistad": [],
-		"gustos": [],
-		"carreras": [],
+		"gustos": [
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":10}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":1}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":2}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":20}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":11}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":12}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":30}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":21}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":22}
+			}
+		],
 		"personalidad": {
-			"nombre":
+			"nombre": "ENTP"
 		},
-		"preferenciaIdeas":{}
+		"carreras": [
+			{
+				"id": "idCarreraElectronica"
+			}
+		],
+		"preferenciaIdeas":{
+			"idTag1":2,
+			"idTag2":1,
+			"idTag3":1,
+			"idTag4":1
+		},
+		"preferencias" : {
+			"preferenciaIdea" : "ORDEN_CRONOLOGICO"
+		},
+		"insignias":[]
 	},{
 		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":5},
 		"username": "Estudiante 5",
@@ -91,19 +436,106 @@
 		"apellido": "Cinco",
 		"correo": "estudiante5@mail.com",
 		"tipo": "ESTUDIANTE",
-		"habilidades": [],
-		"enfasis":[],
+		"habilidades": [
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":1}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":3}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":4}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":20}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":24}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":22}
+				}
+			}
+		],
+		"enfasis":[
+			{
+				"nombre": "Enfasis electronica 3",
+				"carrera": "idCarreraElectronica"
+			},
+			{
+				"nombre": "Enfasis electronica 4",
+				"carrera": "idCarreraElectronica"
+			}
+		],
 		"areasConocimiento": [],
 		"amigos": [],
 		"seguidores": [],
 		"siguiendo": [],
 		"solicitudesAmistad": [],
-		"gustos": [],
-		"carreras": [],
+		"gustos": [
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":3}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":4}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":5}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":13}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":14}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":15}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":23}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":24}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":25}
+			}
+		],
 		"personalidad": {
-			"nombre":
+			"nombre": "ISTJ"
 		},
-		"preferenciaIdeas":{}
+		"carreras": [
+			{
+				"id": "idCarreraElectronica"
+			}
+		],
+		"preferenciaIdeas":{
+			"idTag5":4,
+			"idTag6":2,
+			"idTag1":2,
+			"idTag2":1
+		},
+		"preferencias" : {
+			"preferenciaIdea" : "ORDEN_CRONOLOGICO"
+		},
+		"insignias":[]
 	},{
 		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":6},
 		"username": "Estudiante 6",
@@ -112,19 +544,103 @@
 		"apellido": "Seis",
 		"correo": "estudiante6@mail.com",
 		"tipo": "ESTUDIANTE",
-		"habilidades": [],
-		"enfasis":[],
+		"habilidades": [
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":5}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":1}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":2}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":23}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":24}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":19}
+				}
+			}
+		],
+		"enfasis":[
+			{
+				"nombre": "Enfasis electronica 2",
+				"carrera": "idCarreraElectronica"
+			},
+			null
+		],
 		"areasConocimiento": [],
 		"amigos": [],
 		"seguidores": [],
 		"siguiendo": [],
 		"solicitudesAmistad": [],
-		"gustos": [],
-		"carreras": [],
+		"gustos": [
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":6}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":7}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":8}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":16}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":17}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":18}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":26}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":27}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":28}
+			}
+		],
 		"personalidad": {
-			"nombre":
+			"nombre": "ISFJ"
 		},
-		"preferenciaIdeas":{}
+		"carreras": [
+			{
+				"id": "idCarreraElectronica"
+			}
+		],
+		"preferenciaIdeas":{
+			"idTag3":7,
+			"idTag4":4,
+			"idTag5":4,
+			"idTag6":1
+		},
+		"preferencias" : {
+			"preferenciaIdea" : "ORDEN_CRONOLOGICO"
+		},
+		"insignias":[]
 	},{
 		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":7},
 		"username": "Estudiante 7",
@@ -133,19 +649,106 @@
 		"apellido": "Siete",
 		"correo": "estudiante7@mail.com",
 		"tipo": "ESTUDIANTE",
-		"habilidades": [],
-		"enfasis":[],
+		"habilidades": [
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":3}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":4}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":5}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":20}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":21}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":19}
+				}
+			}
+		],
+		"enfasis":[
+			{
+				"nombre": "Enfasis electronica 2",
+				"carrera": "idCarreraElectronica"
+			},
+			{
+				"nombre": "Enfasis electronica 4",
+				"carrera": "idCarreraElectronica"
+			}
+		],
 		"areasConocimiento": [],
 		"amigos": [],
 		"seguidores": [],
 		"siguiendo": [],
 		"solicitudesAmistad": [],
-		"gustos": [],
-		"carreras": [],
+		"gustos": [
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":9}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":10}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":1}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":19}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":20}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":11}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":29}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":30}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":21}
+			}
+		],
 		"personalidad": {
-			"nombre":
+			"nombre": "ESTJ"
 		},
-		"preferenciaIdeas":{}
+		"carreras": [
+			{
+				"id": "idCarreraElectronica"
+			}
+		],
+		"preferenciaIdeas":{
+			"idTag1":1,
+			"idTag2":3,
+			"idTag3":5,
+			"idTag4":5
+		},
+		"preferencias" : {
+			"preferenciaIdea" : "ORDEN_CRONOLOGICO"
+		},
+		"insignias":[]
 	},{
 		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":8},
 		"username": "Estudiante 8",
@@ -154,19 +757,106 @@
 		"apellido": "Ocho",
 		"correo": "estudiante8@mail.com",
 		"tipo": "ESTUDIANTE",
-		"habilidades": [],
-		"enfasis":[],
+		"habilidades": [
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":1}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":2}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":3}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":13}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":18}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":15}
+				}
+			}
+		],
+		"enfasis":[
+			{
+				"nombre": "Enfasis civil 1",
+				"carrera": "idCarreraCivil"
+			},
+			{
+				"nombre": "Enfasis civil 3",
+				"carrera": "idCarreraCivil"
+			}
+		],
 		"areasConocimiento": [],
 		"amigos": [],
 		"seguidores": [],
 		"siguiendo": [],
 		"solicitudesAmistad": [],
-		"gustos": [],
-		"carreras": [],
+		"gustos": [
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":2}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":3}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":4}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":12}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":13}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":14}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":22}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":23}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":24}
+			}
+		],
 		"personalidad": {
-			"nombre":
+			"nombre": "ESFJ"
 		},
-		"preferenciaIdeas":{}
+		"carreras": [
+			{
+				"id": "idCarreraCivil"
+			}
+		],
+		"preferenciaIdeas":{
+			"idTag5":3,
+			"idTag6":1,
+			"idTag1":9,
+			"idTag2":8
+		},
+		"preferencias" : {
+			"preferenciaIdea" : "ORDEN_CRONOLOGICO"
+		},
+		"insignias":[]
 	},{
 		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":9},
 		"username": "Estudiante 9",
@@ -175,19 +865,106 @@
 		"apellido": "Nueve",
 		"correo": "estudiante9@mail.com",
 		"tipo": "ESTUDIANTE",
-		"habilidades": [],
-		"enfasis":[],
+		"habilidades": [
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":3}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":6}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":5}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":14}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":16}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":17}
+				}
+			}
+		],
+		"enfasis":[
+			{
+				"nombre": "Enfasis civil 2",
+				"carrera": "idCarreraCivil"
+			},
+			{
+				"nombre": "Enfasis civil 4",
+				"carrera": "idCarreraCivil"
+			}
+		],
 		"areasConocimiento": [],
 		"amigos": [],
 		"seguidores": [],
 		"siguiendo": [],
 		"solicitudesAmistad": [],
-		"gustos": [],
-		"carreras": [],
+		"gustos": [
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":5}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":6}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":7}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":15}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":16}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":17}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":25}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":26}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":27}
+			}
+		],
 		"personalidad": {
-			"nombre":
+			"nombre": "INFJ"
 		},
-		"preferenciaIdeas":{}
+		"carreras": [
+			{
+				"id": "idCarreraCivil"
+			}
+		],
+		"preferenciaIdeas":{
+			"idTag3":1,
+			"idTag4":1,
+			"idTag5":1,
+			"idTag6":1
+		},
+		"preferencias" : {
+			"preferenciaIdea" : "ORDEN_CRONOLOGICO"
+		},
+		"insignias":[]
 	},{
 		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":10},
 		"username": "Estudiante 10",
@@ -196,19 +973,103 @@
 		"apellido": "Diez",
 		"correo": "estudiante10@mail.com",
 		"tipo": "ESTUDIANTE",
-		"habilidades": [],
-		"enfasis":[],
+		"habilidades": [
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":5}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":2}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":1}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":13}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":14}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":16}
+				}
+			}
+		],
+		"enfasis":[
+			{
+				"nombre": "Enfasis civil 1",
+				"carrera": "idCarreraCivil"
+			},
+			null
+		],
 		"areasConocimiento": [],
 		"amigos": [],
 		"seguidores": [],
 		"siguiendo": [],
 		"solicitudesAmistad": [],
-		"gustos": [],
-		"carreras": [],
+		"gustos": [
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":8}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":9}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":10}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":18}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":19}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":20}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":28}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":29}
+			},
+			{
+				"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23001,"counter":30}
+			}
+		],
 		"personalidad": {
-			"nombre":
+			"nombre": "INFP"
 		},
-		"preferenciaIdeas":{}
+		"carreras": [
+			{
+				"id": "idCarreraCivil"
+			}
+		],
+		"preferenciaIdeas":{
+			"idTag1":6,
+			"idTag2":7,
+			"idTag5":3,
+			"idTag6":9
+		},
+		"preferencias" : {
+			"preferenciaIdea" : "ORDEN_CRONOLOGICO"
+		},
+		"insignias":[]
 	},{
 		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":11},
 		"username": "Profesor 1",
@@ -217,19 +1078,77 @@
 		"apellido": "Uno",
 		"correo": "profesor1@mail.com",
 		"tipo": "PROFESOR",
-		"habilidades": [],
-		"cualidades": [],
-		"enfasis":[],
-		"areasConocimiento": [],
+		"habilidades": [
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":7}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":8}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":9}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":12}
+				}
+			}
+		],
+		"cualidadesProfesor": [],
+		"enfasis":[
+			{
+				"nombre": "Enfasis sistemas 1",
+				"carrera": "idCarreraSistemas"
+			},
+			{
+				"nombre": "Enfasis sistemas 3",
+				"carrera": "idCarreraSistemas"
+			}
+		],
+		"areasConocimiento": [
+			{
+				"nombre": "AC sistemas 1",
+				"porcentaje": 0,
+				"carrera": "idCarreraSistemas"
+			},
+			{
+				"nombre": "AC sistemas 2",
+				"porcentaje": 0,
+				"carrera": "idCarreraSistemas"
+			}
+		],
 		"amigos": [],
 		"seguidores": [],
 		"siguiendo": [],
 		"solicitudesAmistad": [],
-		"carreras": [],
 		"personalidad": {
-			"nombre":
+			"nombre": "ENFJ"
 		},
-		"preferenciaIdeas":{}
+		"carreras": [
+			{
+				"id": "idCarreraSistemas"
+			}
+		],
+		"preferenciaIdeas":{
+			"idTag5":4,
+			"idTag6":1,
+			"idTag1":1,
+			"idTag2":6
+		},
+		"preferencias" : {
+			"preferenciaIdea" : "ORDEN_CRONOLOGICO"
+		},
+		"insignias":[]
 	},{
 		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":12},
 		"username": "Profesor 2",
@@ -238,19 +1157,77 @@
 		"apellido": "Dos",
 		"correo": "profesor2@mail.com",
 		"tipo": "PROFESOR",
-		"habilidades": [],
-		"cualidades": [],
-		"enfasis":[],
-		"areasConocimiento": [],
+		"habilidades": [
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":12}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":11}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":10}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":8}
+				}
+			}
+		],
+		"cualidadesProfesor": [],
+		"enfasis":[
+			{
+				"nombre": "Enfasis sistemas 4",
+				"carrera": "idCarreraSistemas"
+			},
+			{
+				"nombre": "Enfasis sistemas 3",
+				"carrera": "idCarreraSistemas"
+			}
+		],
+		"areasConocimiento": [
+			{
+				"nombre": "AC sistemas 3",
+				"porcentaje": 0,
+				"carrera": "idCarreraSistemas"
+			},
+			{
+				"nombre": "AC sistemas 2",
+				"porcentaje": 0,
+				"carrera": "idCarreraSistemas"
+			}
+		],
 		"amigos": [],
 		"seguidores": [],
 		"siguiendo": [],
 		"solicitudesAmistad": [],
-		"carreras": [],
 		"personalidad": {
-			"nombre":
+			"nombre": "ENFP"
 		},
-		"preferenciaIdeas":{}
+		"carreras": [
+			{
+				"id": "idCarreraSistemas"
+			}
+		],
+		"preferenciaIdeas":{
+			"idTag3":6,
+			"idTag4":6,
+			"idTag5":6,
+			"idTag6":6
+		},
+		"preferencias" : {
+			"preferenciaIdea" : "ORDEN_CRONOLOGICO"
+		},
+		"insignias":[]
 	},{
 		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":13},
 		"username": "Profesor 3",
@@ -259,19 +1236,74 @@
 		"apellido": "Tres",
 		"correo": "profesor3@mail.com",
 		"tipo": "PROFESOR",
-		"habilidades": [],
-		"cualidades": [],
-		"enfasis":[],
-		"areasConocimiento": [],
+		"habilidades": [
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":8}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":10}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":12}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":11}
+				}
+			}
+		],
+		"cualidadesProfesor": [],
+		"enfasis":[
+			{
+				"nombre": "Enfasis sistemas 1",
+				"carrera": "idCarreraSistemas"
+			},
+			null
+		],
+		"areasConocimiento": [
+			{
+				"nombre": "AC sistemas 1",
+				"porcentaje": 0,
+				"carrera": "idCarreraSistemas"
+			},
+			{
+				"nombre": "AC sistemas 3",
+				"porcentaje": 0,
+				"carrera": "idCarreraSistemas"
+			}
+		],
 		"amigos": [],
 		"seguidores": [],
 		"siguiendo": [],
 		"solicitudesAmistad": [],
-		"carreras": [],
 		"personalidad": {
-			"nombre":
+			"nombre": "ISTP"
 		},
-		"preferenciaIdeas":{}
+		"carreras": [
+			{
+				"id": "idCarreraSistemas"
+			}
+		],
+		"preferenciaIdeas":{
+			"idTag4":1,
+			"idTag5":8,
+			"idTag6":4,
+			"idTag1":3
+		},
+		"preferencias" : {
+			"preferenciaIdea" : "ORDEN_CRONOLOGICO"
+		},
+		"insignias":[]
 	},{
 		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":14},
 		"username": "Profesor 4",
@@ -280,19 +1312,74 @@
 		"apellido": "Cuatro",
 		"correo": "profesor4@mail.com",
 		"tipo": "PROFESOR",
-		"habilidades": [],
-		"cualidades": [],
-		"enfasis":[],
-		"areasConocimiento": [],
+		"habilidades": [
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":19}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":20}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":21}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":22}
+				}
+			}
+		],
+		"cualidadesProfesor": [],
+		"enfasis":[
+			{
+				"nombre": "Enfasis electronica 4",
+				"carrera": "idCarreraElectronica"
+			},
+			null
+		],
+		"areasConocimiento": [
+			{
+				"nombre": "AC electronica 1",
+				"porcentaje": 0,
+				"carrera": "idCarreraElectronica"
+			},
+			{
+				"nombre": "AC electronica 2",
+				"porcentaje": 0,
+				"carrera": "idCarreraElectronica"
+			}
+		],
 		"amigos": [],
 		"seguidores": [],
 		"siguiendo": [],
 		"solicitudesAmistad": [],
-		"carreras": [],
 		"personalidad": {
-			"nombre":
+			"nombre": "ISFP"
 		},
-		"preferenciaIdeas":{}
+		"carreras": [
+			{
+				"id": "idCarreraElectronica"
+			}
+		],
+		"preferenciaIdeas":{
+			"idTag2":1,
+			"idTag3":2,
+			"idTag4":3,
+			"idTag5":4
+		},
+		"preferencias" : {
+			"preferenciaIdea" : "ORDEN_CRONOLOGICO"
+		},
+		"insignias":[]
 	},{
 		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":15},
 		"username": "Profesor 5",
@@ -301,19 +1388,74 @@
 		"apellido": "Cinco",
 		"correo": "profesor5@mail.com",
 		"tipo": "PROFESOR",
-		"habilidades": [],
-		"cualidades": [],
-		"enfasis":[],
-		"areasConocimiento": [],
+		"habilidades": [
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":23}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":24}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":20}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":19}
+				}
+			}
+		],
+		"cualidadesProfesor": [],
+		"enfasis":[
+			{
+				"nombre": "Enfasis electronica 3",
+				"carrera": "idCarreraElectronica"
+			},
+			null
+		],
+		"areasConocimiento": [
+			{
+				"nombre": "AC electronica 1",
+				"porcentaje": 0,
+				"carrera": "idCarreraElectronica"
+			},
+			{
+				"nombre": "AC electronica 3",
+				"porcentaje": 0,
+				"carrera": "idCarreraElectronica"
+			}
+		],
 		"amigos": [],
 		"seguidores": [],
 		"siguiendo": [],
 		"solicitudesAmistad": [],
-		"carreras": [],
 		"personalidad": {
-			"nombre":
+			"nombre": "ESTP"
 		},
-		"preferenciaIdeas":{}
+		"carreras": [
+			{
+				"id": "idCarreraElectronica"
+			}
+		],
+		"preferenciaIdeas":{
+			"idTag3":1,
+			"idTag4":3,
+			"idTag5":1,
+			"idTag6":3
+		},
+		"preferencias" : {
+			"preferenciaIdea" : "ORDEN_CRONOLOGICO"
+		},
+		"insignias":[]
 	},{
 		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":16},
 		"username": "Profesor 6",
@@ -322,19 +1464,74 @@
 		"apellido": "Seis",
 		"correo": "profesor6@mail.com",
 		"tipo": "PROFESOR",
-		"habilidades": [],
-		"cualidades": [],
-		"enfasis":[],
-		"areasConocimiento": [],
+		"habilidades": [
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":13}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":14}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":15}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":16}
+				}
+			}
+		],
+		"cualidadesProfesor": [],
+		"enfasis":[
+			{
+				"nombre": "Enfasis civil 1",
+				"carrera": "idCarreraCivil"
+			},
+			null
+		],
+		"areasConocimiento": [
+			{
+				"nombre": "AC civil 1",
+				"porcentaje": 0,
+				"carrera": "idCarreraCivil"
+			},
+			{
+				"nombre": "AC civil 2",
+				"porcentaje": 0,
+				"carrera": "idCarreraCivil"
+			}
+		],
 		"amigos": [],
 		"seguidores": [],
 		"siguiendo": [],
 		"solicitudesAmistad": [],
-		"carreras": [],
 		"personalidad": {
-			"nombre":
+			"nombre": "ESFP"
 		},
-		"preferenciaIdeas":{}
+		"carreras": [
+			{
+				"id": "idCarreraCivil"
+			}
+		],
+		"preferenciaIdeas":{
+			"idTag1":2,
+			"idTag2":12,
+			"idTag3":22,
+			"idTag4":11
+		},
+		"preferencias" : {
+			"preferenciaIdea" : "ORDEN_CRONOLOGICO"
+		},
+		"insignias":[]
 	},{
 		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":17},
 		"username": "Profesor 7",
@@ -343,19 +1540,77 @@
 		"apellido": "Siete",
 		"correo": "profesor7@mail.com",
 		"tipo": "PROFESOR",
-		"habilidades": [],
-		"cualidades": [],
-		"enfasis":[],
-		"areasConocimiento": [],
+		"habilidades": [
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":17}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":18}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":15}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":16}
+				}
+			}
+		],
+		"cualidadesProfesor": [],
+		"enfasis":[
+			{
+				"nombre": "Enfasis civil 2",
+				"carrera": "idCarreraCivil"
+			},
+			{
+				"nombre": "Enfasis civil 3",
+				"carrera": "idCarreraCivil"
+			}
+		],
+		"areasConocimiento": [
+			{
+				"nombre": "AC civil 1",
+				"porcentaje": 0,
+				"carrera": "idCarreraCivil"
+			},
+			{
+				"nombre": "AC civil 3",
+				"porcentaje": 0,
+				"carrera": "idCarreraCivil"
+			}
+		],
 		"amigos": [],
 		"seguidores": [],
 		"siguiendo": [],
 		"solicitudesAmistad": [],
-		"carreras": [],
 		"personalidad": {
-			"nombre":
+			"nombre": "INTJ"
 		},
-		"preferenciaIdeas":{}
+		"carreras": [
+			{
+				"id": "idCarreraCivil"
+			}
+		],
+		"preferenciaIdeas":{
+			"idTag5":6,
+			"idTag6":6,
+			"idTag1":7,
+			"idTag2":6
+		},
+		"preferencias" : {
+			"preferenciaIdea" : "ORDEN_CRONOLOGICO"
+		},
+		"insignias":[]
 	},{
 		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":18},
 		"username": "Profesor 8",
@@ -364,19 +1619,77 @@
 		"apellido": "Ocho",
 		"correo": "profesor8@mail.com",
 		"tipo": "PROFESOR",
-		"habilidades": [],
-		"cualidades": [],
-		"enfasis":[],
-		"areasConocimiento": [],
+		"habilidades": [
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":13}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":18}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":14}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":17}
+				}
+			}
+		],
+		"cualidadesProfesor": [],
+		"enfasis":[
+			{
+				"nombre": "Enfasis civil 1",
+				"carrera": "idCarreraCivil"
+			},
+			{
+				"nombre": "Enfasis civil 4",
+				"carrera": "idCarreraCivil"
+			}
+		],
+		"areasConocimiento": [
+			{
+				"nombre": "AC civil 3",
+				"porcentaje": 0,
+				"carrera": "idCarreraCivil"
+			},
+			{
+				"nombre": "AC civil 2",
+				"porcentaje": 0,
+				"carrera": "idCarreraCivil"
+			}
+		],
 		"amigos": [],
 		"seguidores": [],
 		"siguiendo": [],
 		"solicitudesAmistad": [],
-		"carreras": [],
 		"personalidad": {
-			"nombre":
+			"nombre": "INTP"
 		},
-		"preferenciaIdeas":{}
+		"carreras": [
+			{
+				"id": "idCarreraCivil"
+			}
+		],
+		"preferenciaIdeas":{
+			"idTag6":4,
+			"idTag5":3,
+			"idTag3":4,
+			"idTag2":3
+		},
+		"preferencias" : {
+			"preferenciaIdea" : "ORDEN_CRONOLOGICO"
+		},
+		"insignias":[]
 	},{
 		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":19},
 		"username": "Egresado 1",
@@ -385,18 +1698,77 @@
 		"apellido": "Uno",
 		"correo": "egresado1@mail.com",
 		"tipo": "EGRESADO",
-		"habilidades": [],
-		"enfasis":[],
+		"habilidades": [
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":1}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":2}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":6}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":7}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":8}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":11}
+				}
+			}
+		],
+		"enfasis":[
+			{
+				"nombre": "Enfasis sistemas 2",
+				"carrera": "idCarreraSistemas"
+			},
+			{
+				"nombre": "Enfasis sistemas 3",
+				"carrera": "idCarreraSistemas"
+			}
+		],
 		"areasConocimiento": [],
 		"amigos": [],
 		"seguidores": [],
 		"siguiendo": [],
 		"solicitudesAmistad": [],
-		"carreras": [],
 		"personalidad": {
-			"nombre":
+			"nombre": "ENTJ"
 		},
-		"preferenciaIdeas":{}
+		"carreras": [
+			{
+				"id": "idCarreraSistemas"
+			}
+		],
+		"preferenciaIdeas":{
+			"idTag5":1,
+			"idTag6":1,
+			"idTag1":1,
+			"idTag2":1
+		},
+		"preferencias" : {
+			"preferenciaIdea" : "ORDEN_CRONOLOGICO"
+		},
+		"insignias":[]
 	},{
 		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":20},
 		"username": "Egresado 2",
@@ -405,18 +1777,77 @@
 		"apellido": "Dos",
 		"correo": "egresado2@mail.com",
 		"tipo": "EGRESADO",
-		"habilidades": [],
-		"enfasis":[],
+		"habilidades": [
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":4}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":2}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":5}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":9}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":10}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":7}
+				}
+			}
+		],
+		"enfasis":[
+			{
+				"nombre": "Enfasis sistemas 1",
+				"carrera": "idCarreraSistemas"
+			},
+			{
+				"nombre": "Enfasis sistemas 4",
+				"carrera": "idCarreraSistemas"
+			}
+		],
 		"areasConocimiento": [],
 		"amigos": [],
 		"seguidores": [],
 		"siguiendo": [],
 		"solicitudesAmistad": [],
-		"carreras": [],
 		"personalidad": {
-			"nombre":
+			"nombre": "ENTP"
 		},
-		"preferenciaIdeas":{}
+		"carreras": [
+			{
+				"id": "idCarreraSistemas"
+			}
+		],
+		"preferenciaIdeas":{
+			"idTag3":1,
+			"idTag4":5,
+			"idTag5":5,
+			"idTag6":4
+		},
+		"preferencias" : {
+			"preferenciaIdea" : "ORDEN_CRONOLOGICO"
+		},
+		"insignias":[]
 	},{
 		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":21},
 		"username": "Egresado 3",
@@ -425,18 +1856,77 @@
 		"apellido": "Tres",
 		"correo": "egresado3@mail.com",
 		"tipo": "EGRESADO",
-		"habilidades": [],
-		"enfasis":[],
+		"habilidades": [
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":2}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":5}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":3}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":20}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":21}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":23}
+				}
+			}
+		],
+		"enfasis":[
+			{
+				"nombre": "Enfasis electronica 1",
+				"carrera": "idCarreraElectronica"
+			},
+			{
+				"nombre": "Enfasis electronica 3",
+				"carrera": "idCarreraElectronica"
+			}
+		],
 		"areasConocimiento": [],
 		"amigos": [],
 		"seguidores": [],
 		"siguiendo": [],
 		"solicitudesAmistad": [],
-		"carreras": [],
 		"personalidad": {
-			"nombre":
+			"nombre": "ISTJ"
 		},
-		"preferenciaIdeas":{}
+		"carreras": [
+			{
+				"id": "idCarreraElectronica"
+			}
+		],
+		"preferenciaIdeas":{
+			"idTag1":7,
+			"idTag2":3,
+			"idTag4":2,
+			"idTag6":1
+		},
+		"preferencias" : {
+			"preferenciaIdea" : "ORDEN_CRONOLOGICO"
+		},
+		"insignias":[]
 	},{
 		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":22},
 		"username": "Egresado 4",
@@ -445,18 +1935,77 @@
 		"apellido": "Cuatro",
 		"correo": "egresado4@mail.com",
 		"tipo": "EGRESADO",
-		"habilidades": [],
-		"enfasis":[],
+		"habilidades": [
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":4}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":2}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":6}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":21}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":23}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":22}
+				}
+			}
+		],
+		"enfasis":[
+			{
+				"nombre": "Enfasis electronica 4",
+				"carrera": "idCarreraElectronica"
+			},
+			{
+				"nombre": "Enfasis electronica 2",
+				"carrera": "idCarreraElectronica"
+			}
+		],
 		"areasConocimiento": [],
 		"amigos": [],
 		"seguidores": [],
 		"siguiendo": [],
 		"solicitudesAmistad": [],
-		"carreras": [],
 		"personalidad": {
-			"nombre":
+			"nombre": "ISFJ"
 		},
-		"preferenciaIdeas":{}
+		"carreras": [
+			{
+				"id": "idCarreraElectronica"
+			}
+		],
+		"preferenciaIdeas":{
+			"idTag3":9,
+			"idTag2":1,
+			"idTag5":1,
+			"idTag1":1
+		},
+		"preferencias" : {
+			"preferenciaIdea" : "ORDEN_CRONOLOGICO"
+		},
+		"insignias":[]
 	},{
 		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":23},
 		"username": "Egresado 5",
@@ -465,18 +2014,77 @@
 		"apellido": "Cinco",
 		"correo": "egresado5@mail.com",
 		"tipo": "EGRESADO",
-		"habilidades": [],
-		"enfasis":[],
+		"habilidades": [
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":2}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":4}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":5}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":14}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":18}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":17}
+				}
+			}
+		],
+		"enfasis":[
+			{
+				"nombre": "Enfasis civil 3",
+				"carrera": "idCarreraCivil"
+			},
+			{
+				"nombre": "Enfasis civil 4",
+				"carrera": "idCarreraCivil"
+			}
+		],
 		"areasConocimiento": [],
 		"amigos": [],
 		"seguidores": [],
 		"siguiendo": [],
 		"solicitudesAmistad": [],
-		"carreras": [],
 		"personalidad": {
-			"nombre":
+			"nombre": "ESTJ"
 		},
-		"preferenciaIdeas":{}
+		"carreras": [
+			{
+				"id": "idCarreraCivil"
+			}
+		],
+		"preferenciaIdeas":{
+			"idTag3":10,
+			"idTag4":11,
+			"idTag5":7,
+			"idTag6":6
+		},
+		"preferencias" : {
+			"preferenciaIdea" : "ORDEN_CRONOLOGICO"
+		},
+		"insignias":[]
 	},{
 		"id":{"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23004,"counter":24},
 		"username": "Egresado 6",
@@ -485,17 +2093,76 @@
 		"apellido": "Seis",
 		"correo": "egresado6@mail.com",
 		"tipo": "EGRESADO",
-		"habilidades": [],
-		"enfasis":[],
+		"habilidades": [
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":2}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":6}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":5}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":13}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":16}
+				}
+			},
+			{
+				"cantidad": 0,
+				"habilidad": {
+					"id": {"timestamp":1498358259,"machineIdentifier":8252218,"processIdentifier":-23003,"counter":15}
+				}
+			}
+		],
+		"enfasis":[
+			{
+				"nombre": "Enfasis civil 1",
+				"carrera": "idCarreraCivil"
+			},
+			{
+				"nombre": "Enfasis civil 2",
+				"carrera": "idCarreraCivil"
+			}
+		],
 		"areasConocimiento": [],
 		"amigos": [],
 		"seguidores": [],
 		"siguiendo": [],
 		"solicitudesAmistad": [],
-		"carreras": [],
 		"personalidad": {
-			"nombre":
+			"nombre": "ESTJ"
 		},
-		"preferenciaIdeas":{}
+		"carreras": [
+			{
+				"id": "idCarreraCivil"
+			}
+		],
+		"preferenciaIdeas":{
+			"idTag1":3,
+			"idTag2":4,
+			"idTag3":5,
+			"idTag6":1
+		},
+		"preferencias" : {
+			"preferenciaIdea" : "ORDEN_CRONOLOGICO"
+		},
+		"insignias":[]
 	}
 ]
